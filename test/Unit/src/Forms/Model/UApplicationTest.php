@@ -4,7 +4,7 @@
  */
 namespace Test\Unit\src\Forms;
 
-use Papi\Forms\Model\UApplication;
+use Treasure\Forms\Model\UApplication;
 
 /**
  * UApplicationTest

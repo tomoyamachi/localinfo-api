@@ -1,11 +1,11 @@
 <?php
-namespace Papi\V1\Controllers;
+namespace Treasure\V1\Controllers;
 
-use \Papi\Models\Model\Product;
-use \Papi\Models\Model\ProductLottery as Lottery;
-use \Papi\Response\Lottery as RLottery;
+use \Treasure\Models\Model\Product;
+use \Treasure\Models\Model\ProductLottery as Lottery;
+use \Treasure\Response\Lottery as RLottery;
 
-class LotteryController extends \Papi\V1\Controllers\GetUserController
+class LotteryController extends \Treasure\V1\Controllers\GetUserController
 {
     /**
      * 全データを返却

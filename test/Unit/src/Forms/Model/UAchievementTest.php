@@ -4,7 +4,7 @@
  */
 namespace Test\Unit\src\Forms;
 
-use Papi\Forms\Model\UAchievement;
+use Treasure\Forms\Model\UAchievement;
 
 /**
  * UAchievementTest
@@ -15,6 +15,6 @@ class UAchievementTest extends \Test\Unit\TestCase
     public function testConstruct()
     {
         $form = new UAchievement();
-        $this->assertInstanceOf('Papi\Forms\Model\UAchievement', $form);
+        $this->assertInstanceOf('Treasure\Forms\Model\UAchievement', $form);
     }
 }

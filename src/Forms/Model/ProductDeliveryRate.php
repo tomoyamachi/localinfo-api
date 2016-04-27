@@ -1,13 +1,13 @@
 <?php
 /**
- * Papi\Forms\Model
+ * Treasure\Forms\Model
  */
-namespace Papi\Forms\Model;
+namespace Treasure\Forms\Model;
 
 /**
  * ProductDeliveryRate
  */
-class ProductDeliveryRate extends \Papi\Forms\Model\Base\ProductDeliveryRate
+class ProductDeliveryRate extends \Treasure\Forms\Model\Base\ProductDeliveryRate
 {
 
     /**

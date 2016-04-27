@@ -1,13 +1,13 @@
 <?php
 /**
- * Papi\Models\Model
+ * Treasure\Models\Model
  */
-namespace Papi\Models\Model;
+namespace Treasure\Models\Model;
 
 /**
  * ProductDeliveryRate
  */
-class ProductDeliveryRate extends \Papi\Models\Model\UserAbstract
+class ProductDeliveryRate extends \Treasure\Models\Model\UserAbstract
 {
     /**
      * group_idを返す。現在無い情報であれば作成する

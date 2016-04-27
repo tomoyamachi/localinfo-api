@@ -1,5 +1,5 @@
 <?php
-namespace Papi\Models\Model;
+namespace Treasure\Models\Model;
 
 /**
  * ユーザーが作成するデータ

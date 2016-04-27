@@ -1,12 +1,12 @@
 <?php
 /**
- * Papi\Models\Model
+ * Treasure\Models\Model
  */
-namespace Papi\Models\Model;
+namespace Treasure\Models\Model;
 
 /**
  * ProductCategory
  */
-class ProductCategory extends \Papi\Models\Model\UserAbstract
+class ProductCategory extends \Treasure\Models\Model\UserAbstract
 {
 }

@@ -1,13 +1,13 @@
 <?php
 /**
- * Papi\Forms\Model
+ * Treasure\Forms\Model
  */
-namespace Papi\Forms\Model;
+namespace Treasure\Forms\Model;
 
 /**
  * MMailTemplate
  */
-class MMailTemplate extends \Papi\Forms\Model\Base\MMailTemplate
+class MMailTemplate extends \Treasure\Forms\Model\Base\MMailTemplate
 {
 
     /**

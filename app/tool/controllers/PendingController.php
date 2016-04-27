@@ -1,13 +1,13 @@
 <?php
-namespace Papi\Tool\Controllers;
+namespace Treasure\Tool\Controllers;
 
-use \Papi\Models\Model\Customer;
+use \Treasure\Models\Model\Customer;
 use \Api\Paginator;
 use \Api\Models\Tool\Label;
 use \Gcl\Util\Inflector;
 
 //賞品待ち一覧を表示
-class PendingController extends \Papi\Tool\Controllers\AbstractController
+class PendingController extends \Treasure\Tool\Controllers\AbstractController
 {
     protected $customerActions = []; // 顧客
     protected $employeeActions = []; // 社内バイト
@@ -44,7 +44,7 @@ class PendingController extends \Papi\Tool\Controllers\AbstractController
         $req = $this->request;
         $table = $req->get('table');
         if ($table) {
-            $namespace = '\\Papi\\Models\\Model\\'.\Gcl\Util\Inflector::upperCamel($table);
+            $namespace = '\\Treasure\\Models\\Model\\'.\Gcl\Util\Inflector::upperCamel($table);
             $model = $namespace::query();
             $httpParam = ['table' => $table];
             $this->view->paginator = $this->returnPaginatorByModel($model, $req, $httpParam, 50);

@@ -3,19 +3,19 @@
  *  ReportControllerクラス
  *  顧客へのレポート送付関連
  */
-namespace Papi\Tool\Controllers;
+namespace Treasure\Tool\Controllers;
 
-use \Papi\Models\ApiConnector;
-use \Papi\Models\Model\ReportSegment;
-use \Papi\Models\Model\ReportPublishList;
-use \Papi\Models\Model\ConversionReport;
-use \Papi\Models\Model\Customer;
-use \Papi\Models\Model\Product;
-use \Papi\Models\Model\ProductConversion;
-use \Papi\Models\Model\ProductLottery;
-use \Papi\Models\Model\ProductAchievement;
-use \Papi\Models\Model\UProductReview;
-use \Papi\Models\Model\MessageCollection;
+use \Treasure\Models\ApiConnector;
+use \Treasure\Models\Model\ReportSegment;
+use \Treasure\Models\Model\ReportPublishList;
+use \Treasure\Models\Model\ConversionReport;
+use \Treasure\Models\Model\Customer;
+use \Treasure\Models\Model\Product;
+use \Treasure\Models\Model\ProductConversion;
+use \Treasure\Models\Model\ProductLottery;
+use \Treasure\Models\Model\ProductAchievement;
+use \Treasure\Models\Model\UProductReview;
+use \Treasure\Models\Model\MessageCollection;
 
 use \Api\Models\Tool\Label;
 use \Api\Models\Validator;
@@ -23,7 +23,7 @@ use \Api\Models\Paginator;
 use \Phalcon\Mvc\View;
 use \Gcl\Util\GDate;
 
-class ReportController extends \Papi\Tool\Controllers\AbstractController
+class ReportController extends \Treasure\Tool\Controllers\AbstractController
 {
     protected $customerActions = ['detail' => 1,]; // 顧客
     protected $employeeActions = ['list' => 1, 'edit' => 1, 'detail' => 1,]; // 社内バイト

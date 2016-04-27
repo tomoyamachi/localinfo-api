@@ -1,8 +1,8 @@
 <?php
 /**
- * Papi\Utils
+ * Treasure\Utils
  */
-namespace Papi\Utils;
+namespace Treasure\Utils;
 
 use Gcl\Util\GArray;
 

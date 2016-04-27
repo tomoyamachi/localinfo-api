@@ -1,13 +1,13 @@
 <?php
 /**
- * Papi\Models\Model
+ * Treasure\Models\Model
  */
-namespace Papi\Models\Model;
+namespace Treasure\Models\Model;
 
 /**
  * ShipManagement
  */
-class ShipManagement extends \Papi\Models\Model\UProductAbstract
+class ShipManagement extends \Treasure\Models\Model\UProductAbstract
 {
     protected $productIdCache = false;
 
@@ -24,7 +24,7 @@ class ShipManagement extends \Papi\Models\Model\UProductAbstract
         $this->productIdCache = null;
 
         // 対象のモデルから指定されたIDで検索
-        $namespace = '\\Papi\\Models\\Model\\Product'.ucwords($this->reference_type);
+        $namespace = '\\Treasure\\Models\\Model\\Product'.ucwords($this->reference_type);
         $conditions = ['id' => $this->reference_id];
         $result = $namespace::findFirstByParams(['conditions' => $conditions]);
 

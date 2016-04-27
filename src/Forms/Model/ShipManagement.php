@@ -1,13 +1,13 @@
 <?php
 /**
- * Papi\Forms\Model
+ * Treasure\Forms\Model
  */
-namespace Papi\Forms\Model;
+namespace Treasure\Forms\Model;
 
 /**
  * ShipManagement
  */
-class ShipManagement extends \Papi\Forms\Model\Base\ShipManagement
+class ShipManagement extends \Treasure\Forms\Model\Base\ShipManagement
 {
 
     /**

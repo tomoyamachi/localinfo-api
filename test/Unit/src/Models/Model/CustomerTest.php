@@ -4,7 +4,7 @@
  */
 namespace Test\Unit\src\Models\Model;
 
-use Papi\Models\Model\Customer;
+use Treasure\Models\Model\Customer;
 
 /**
  * CustomerTest
@@ -15,6 +15,6 @@ class CustomerTest extends \Test\Unit\TestCase
     public function testConstruct()
     {
         $model = new Customer();
-        $this->assertInstanceOf('Papi\Models\Model\Customer', $model);
+        $this->assertInstanceOf('Treasure\Models\Model\Customer', $model);
     }
 }

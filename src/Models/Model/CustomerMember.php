@@ -1,15 +1,15 @@
 <?php
 /**
- * Papi\Models\Model
+ * Treasure\Models\Model
  */
-namespace Papi\Models\Model;
+namespace Treasure\Models\Model;
 
 use \Api\Models\Tool\Label;
 
 /**
  * CustomerMember
  */
-class CustomerMember extends \Papi\Models\Model\UserAbstract
+class CustomerMember extends \Treasure\Models\Model\UserAbstract
 {
     const AUTHORITY_ADMIN = 'admin'; //管理者
     const AUTHORITY_CUSTOMER = 'customer'; //顧客

@@ -1,19 +1,19 @@
 <?php
-namespace Papi\Tool\Controllers;
+namespace Treasure\Tool\Controllers;
 
-use \Papi\Models\ApiConnector;
-use \Papi\Models\Model\Customer;
-use \Papi\Models\Model\CustomerMember;
-use \Papi\Models\Model\Product;
-use \Papi\Models\Model\ProductConversion;
-use \Papi\Models\Model\ProductLottery;
-use \Papi\Models\Model\ProductAchievement;
-use \Papi\Models\Model\SalesHistory;
+use \Treasure\Models\ApiConnector;
+use \Treasure\Models\Model\Customer;
+use \Treasure\Models\Model\CustomerMember;
+use \Treasure\Models\Model\Product;
+use \Treasure\Models\Model\ProductConversion;
+use \Treasure\Models\Model\ProductLottery;
+use \Treasure\Models\Model\ProductAchievement;
+use \Treasure\Models\Model\SalesHistory;
 use \Api\Models\Validator;
 use \Api\Paginator;
 use \Api\Models\Tool\Label;
 
-class CustomerController extends \Papi\Tool\Controllers\AbstractController
+class CustomerController extends \Treasure\Tool\Controllers\AbstractController
 {
     protected $customerActions = ['index' => 1, 'edit' => 1, 'products' => 1, 'checkProducts' => 1,]; // 顧客
     protected $employeeActions = ['index' => 1, 'edit' => 1, 'products' => 1, 'checkProducts' => 1,]; // 社内バイト
@@ -130,7 +130,7 @@ class CustomerController extends \Papi\Tool\Controllers\AbstractController
         $this->view->hiddenColumn = ['id'];
         $this->view->unnecessaryColumn = ['created_at', 'updated_at'];
         $this->view->errorMessages = $errorMessages;
-        $this->view->form = new \Papi\Forms\Model\Customer();
+        $this->view->form = new \Treasure\Forms\Model\Customer();
     }
 
     /**
@@ -167,7 +167,7 @@ class CustomerController extends \Papi\Tool\Controllers\AbstractController
         $productId = $req->get('product_id');
         $product = Product::findFirst($productId);
 
-        $namespace = '\\Papi\\Models\\Model\\Product'.\Gcl\Util\Inflector::upperCamel($reference);
+        $namespace = '\\Treasure\\Models\\Model\\Product'.\Gcl\Util\Inflector::upperCamel($reference);
 
         $model = $namespace::query();
         $query = 'product_id = '.$productId;

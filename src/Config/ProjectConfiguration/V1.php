@@ -1,8 +1,8 @@
 <?php
 /**
- * Papi\Config\ProjectConfiguration
+ * Treasure\Config\ProjectConfiguration
  */
-namespace Papi\Config\ProjectConfiguration;
+namespace Treasure\Config\ProjectConfiguration;
 
 use Gpl\Config\ProjectConfiguration\Base;
 

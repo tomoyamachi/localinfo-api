@@ -2,7 +2,7 @@
 
 return [
     'all' => [
-        'src'  => 'Papi',
+        'src'  => 'Treasure',
         'test'  => 'Test'
     ]
 ];

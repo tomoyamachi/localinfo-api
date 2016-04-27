@@ -4,7 +4,7 @@
  */
 namespace Test\Unit\src\Models\Model;
 
-use Papi\Models\Model\ProductLottery;
+use Treasure\Models\Model\ProductLottery;
 
 /**
  * ProductLotteryTest
@@ -15,6 +15,6 @@ class ProductLotteryTest extends \Test\Unit\TestCase
     public function testConstruct()
     {
         $model = new ProductLottery();
-        $this->assertInstanceOf('Papi\Models\Model\ProductLottery', $model);
+        $this->assertInstanceOf('Treasure\Models\Model\ProductLottery', $model);
     }
 }

@@ -4,7 +4,7 @@
  */
 namespace Test\Unit\src\Models\Model;
 
-use Papi\Models\Model\ProductAchievement;
+use Treasure\Models\Model\ProductAchievement;
 
 /**
  * ProductAchievementTest
@@ -15,6 +15,6 @@ class ProductAchievementTest extends \Test\Unit\TestCase
     public function testConstruct()
     {
         $model = new ProductAchievement();
-        $this->assertInstanceOf('Papi\Models\Model\ProductAchievement', $model);
+        $this->assertInstanceOf('Treasure\Models\Model\ProductAchievement', $model);
     }
 }

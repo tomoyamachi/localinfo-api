@@ -4,7 +4,7 @@
  */
 namespace Test\Unit\src\Forms;
 
-use Papi\Forms\Model\ShipManagement;
+use Treasure\Forms\Model\ShipManagement;
 
 /**
  * ShipManagementTest
@@ -15,6 +15,6 @@ class ShipManagementTest extends \Test\Unit\TestCase
     public function testConstruct()
     {
         $form = new ShipManagement();
-        $this->assertInstanceOf('Papi\Forms\Model\ShipManagement', $form);
+        $this->assertInstanceOf('Treasure\Forms\Model\ShipManagement', $form);
     }
 }

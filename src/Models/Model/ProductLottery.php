@@ -1,18 +1,18 @@
 <?php
 /**
- * Papi\Models\Model
+ * Treasure\Models\Model
  */
-namespace Papi\Models\Model;
+namespace Treasure\Models\Model;
 
-use \Papi\Models\Model\Product;
-use \Papi\Models\Model\ULottery;
-use \Papi\Response\Lottery as RLottery;
+use \Treasure\Models\Model\Product;
+use \Treasure\Models\Model\ULottery;
+use \Treasure\Response\Lottery as RLottery;
 use \Gcl\Util\Lot;
 
 /**
  * ProductLottery
  */
-class ProductLottery extends \Papi\Models\Model\ProductReferenceAbstract
+class ProductLottery extends \Treasure\Models\Model\ProductReferenceAbstract
 {
     const LOT_SUCCESS_PERCENTAGE = 30;
 

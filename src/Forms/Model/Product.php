@@ -1,15 +1,15 @@
 <?php
 /**
- * Papi\Forms\Model
+ * Treasure\Forms\Model
  */
-namespace Papi\Forms\Model;
+namespace Treasure\Forms\Model;
 
-use \Papi\Models\Model\Product as MProduct;
+use \Treasure\Models\Model\Product as MProduct;
 
 /**
  * Product
  */
-class Product extends \Papi\Forms\Model\Base\Product
+class Product extends \Treasure\Forms\Model\Base\Product
 {
     /**
      * configureStatus

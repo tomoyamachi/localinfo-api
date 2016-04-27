@@ -1,17 +1,17 @@
 <?php
 /**
- * Papi\Models\Model
+ * Treasure\Models\Model
  */
-namespace Papi\Models\Model;
+namespace Treasure\Models\Model;
 
-use \Papi\Models\Model\ProductAchievement;
+use \Treasure\Models\Model\ProductAchievement;
 
 /**
  * UAchievement
  *
  * @SuppressWarnings(PHPMD)
  */
-class UAchievement extends \Papi\Models\Model\UProductAbstract
+class UAchievement extends \Treasure\Models\Model\UProductAbstract
 {
 
     const STATUS_INIT = 'init';

@@ -3,16 +3,16 @@
  *  MessageControllerクラス
  *  画面に表示するテキストの管理
  */
-namespace Papi\Tool\Controllers;
+namespace Treasure\Tool\Controllers;
 
-use \Papi\Models\Model\MessageCollection;
+use \Treasure\Models\Model\MessageCollection;
 use \Api\Models\Tool\Label;
 use \Api\Models\Validator;
 use \Api\Models\Paginator;
 use \Phalcon\Mvc\View;
 use \Gcl\Util\GDate;
 
-class MessageController extends \Papi\Tool\Controllers\AbstractController
+class MessageController extends \Treasure\Tool\Controllers\AbstractController
 {
     /**
      * メッセージ一覧
@@ -49,7 +49,7 @@ class MessageController extends \Papi\Tool\Controllers\AbstractController
             }
         }
         $this->view->editModel = $message;
-        $this->view->form = new \Papi\Forms\Model\MessageCollection();
+        $this->view->form = new \Treasure\Forms\Model\MessageCollection();
         $this->view->modelName = 'message_collection';
         $this->view->hiddenColumn = ['id','label','sub_key'];
         $this->view->unnecessaryColumn = [];

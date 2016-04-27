@@ -4,7 +4,7 @@
  */
 namespace Test\Unit\src\Forms;
 
-use Papi\Forms\Model\SalesHistory;
+use Treasure\Forms\Model\SalesHistory;
 
 /**
  * SalesHistoryTest
@@ -15,6 +15,6 @@ class SalesHistoryTest extends \Test\Unit\TestCase
     public function testConstruct()
     {
         $form = new SalesHistory();
-        $this->assertInstanceOf('Papi\Forms\Model\SalesHistory', $form);
+        $this->assertInstanceOf('Treasure\Forms\Model\SalesHistory', $form);
     }
 }

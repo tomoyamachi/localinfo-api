@@ -1,11 +1,11 @@
 <?php
-namespace Papi\V1\Controllers;
+namespace Treasure\V1\Controllers;
 
-use \Papi\Models\Model\UProductReview as Review;
-use \Papi\Response\Review as RReview;
+use \Treasure\Models\Model\UProductReview as Review;
+use \Treasure\Response\Review as RReview;
 use \Api\Models\Validator;
 
-class ReviewController extends \Papi\V1\Controllers\GetUserController
+class ReviewController extends \Treasure\V1\Controllers\GetUserController
 {
     /**
      * 全データを返却

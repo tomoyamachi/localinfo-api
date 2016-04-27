@@ -1,15 +1,15 @@
 <?php
-namespace Papi\Tool\Controllers;
+namespace Treasure\Tool\Controllers;
 
-use \Papi\Models\ApiConnector;
-use \Papi\Models\Model\Customer;
-use \Papi\Models\Model\CustomerMember;
-use \Papi\Models\Model\SalesHistory;
+use \Treasure\Models\ApiConnector;
+use \Treasure\Models\Model\Customer;
+use \Treasure\Models\Model\CustomerMember;
+use \Treasure\Models\Model\SalesHistory;
 use \Api\Paginator;
 use \Api\Models\Tool\Label;
 use \Gcl\Util\GDate;
 
-class CallController extends \Papi\Tool\Controllers\AbstractController
+class CallController extends \Treasure\Tool\Controllers\AbstractController
 {
     protected $customerActions = []; // 顧客
     protected $employeeActions = ['index' => 1]; // 社内バイト

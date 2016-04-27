@@ -1,11 +1,11 @@
 <?php
 /**
- * Papi\Models\Model
+ * Treasure\Models\Model
  */
-namespace Papi\Models\Model;
+namespace Treasure\Models\Model;
 
-use \Papi\Models\Model\ProductReferenceAbstract;
-use \Papi\Models\Model\ConversionReport;
+use \Treasure\Models\Model\ProductReferenceAbstract;
+use \Treasure\Models\Model\ConversionReport;
 
 /**
  * ProductConversion

@@ -1,13 +1,13 @@
 <?php
 /**
- * Papi\Forms\Model
+ * Treasure\Forms\Model
  */
-namespace Papi\Forms\Model;
+namespace Treasure\Forms\Model;
 
 /**
  * UPoint
  */
-class UPoint extends \Papi\Forms\Model\Base\UPoint
+class UPoint extends \Treasure\Forms\Model\Base\UPoint
 {
 
     /**

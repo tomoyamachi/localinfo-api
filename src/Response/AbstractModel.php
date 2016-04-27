@@ -1,5 +1,5 @@
 <?php
-namespace Papi\Response;
+namespace Treasure\Response;
 
 /**
  * Productの情報を配列にして返す

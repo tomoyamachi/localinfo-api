@@ -1,7 +1,7 @@
 <?php
-namespace Papi\V1\Controllers;
+namespace Treasure\V1\Controllers;
 
-use \Papi\Models\ApiConnector;
+use \Treasure\Models\ApiConnector;
 
 class LoginController extends \Api\Controllers\Api\AbstractController
 {

@@ -1,13 +1,13 @@
 <?php
 /**
- * Papi\Models\Model
+ * Treasure\Models\Model
  */
-namespace Papi\Models\Model;
+namespace Treasure\Models\Model;
 
 /**
  * ConversionReport
  */
-class ConversionReport extends \Papi\Models\Model\UserAbstract
+class ConversionReport extends \Treasure\Models\Model\UserAbstract
 {
     protected static $defaultData = ['id' => null,
                                      'current_value' => 0

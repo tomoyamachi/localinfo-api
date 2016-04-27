@@ -1,13 +1,13 @@
 <?php
 /**
- * Papi\Forms\Model
+ * Treasure\Forms\Model
  */
-namespace Papi\Forms\Model;
+namespace Treasure\Forms\Model;
 
 /**
  * UProductReview
  */
-class UProductReview extends \Papi\Forms\Model\Base\UProductReview
+class UProductReview extends \Treasure\Forms\Model\Base\UProductReview
 {
 
     /**

@@ -4,7 +4,7 @@
  */
 namespace Test\Unit\src\Models\Model;
 
-use Papi\Models\Model\ProductConversion;
+use Treasure\Models\Model\ProductConversion;
 
 /**
  * ProductConversionTest
@@ -15,6 +15,6 @@ class ProductConversionTest extends \Test\Unit\TestCase
     public function testConstruct()
     {
         $model = new ProductConversion();
-        $this->assertInstanceOf('Papi\Models\Model\ProductConversion', $model);
+        $this->assertInstanceOf('Treasure\Models\Model\ProductConversion', $model);
     }
 }

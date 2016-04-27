@@ -1,13 +1,13 @@
 <?php
 /**
- * Papi\Forms\Model
+ * Treasure\Forms\Model
  */
-namespace Papi\Forms\Model;
+namespace Treasure\Forms\Model;
 
 /**
  * ReportPublishList
  */
-class ReportPublishList extends \Papi\Forms\Model\Base\ReportPublishList
+class ReportPublishList extends \Treasure\Forms\Model\Base\ReportPublishList
 {
 
     /**

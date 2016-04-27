@@ -1,13 +1,13 @@
 <?php
 /**
- * Papi\Forms\Model
+ * Treasure\Forms\Model
  */
-namespace Papi\Forms\Model;
+namespace Treasure\Forms\Model;
 
 /**
  * MessageCollection
  */
-class MessageCollection extends \Papi\Forms\Model\Base\MessageCollection
+class MessageCollection extends \Treasure\Forms\Model\Base\MessageCollection
 {
 
     /**

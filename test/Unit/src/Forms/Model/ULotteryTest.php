@@ -4,7 +4,7 @@
  */
 namespace Test\Unit\src\Forms;
 
-use Papi\Forms\Model\ULottery;
+use Treasure\Forms\Model\ULottery;
 
 /**
  * ULotteryTest
@@ -15,6 +15,6 @@ class ULotteryTest extends \Test\Unit\TestCase
     public function testConstruct()
     {
         $form = new ULottery();
-        $this->assertInstanceOf('Papi\Forms\Model\ULottery', $form);
+        $this->assertInstanceOf('Treasure\Forms\Model\ULottery', $form);
     }
 }

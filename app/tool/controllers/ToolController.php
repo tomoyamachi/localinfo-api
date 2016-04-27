@@ -1,7 +1,7 @@
 <?php
-namespace Papi\Tool\Controllers;
+namespace Treasure\Tool\Controllers;
 
-class ToolController extends \Papi\Tool\Controllers\AbstractController
+class ToolController extends \Treasure\Tool\Controllers\AbstractController
 {
     public function indexAction()
     {
@@ -41,7 +41,7 @@ class ToolController extends \Papi\Tool\Controllers\AbstractController
         $req = $this->request;
         $table = $req->get('table');
 
-        $namespace = '\\Papi\\Models\\Model\\'.\Gcl\Util\Inflector::upperCamel($table);
+        $namespace = '\\Treasure\\Models\\Model\\'.\Gcl\Util\Inflector::upperCamel($table);
         $model = $namespace::query();
         $config = new \Api\Models\Tool\Config($table);
 

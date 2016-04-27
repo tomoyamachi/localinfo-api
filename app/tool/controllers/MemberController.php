@@ -1,13 +1,13 @@
 <?php
-namespace Papi\Tool\Controllers;
+namespace Treasure\Tool\Controllers;
 
-use \Papi\Models\Model\Customer;
+use \Treasure\Models\Model\Customer;
 use \Api\Models\Validator;
-use \Papi\Models\Model\CustomerMember;
+use \Treasure\Models\Model\CustomerMember;
 use \Api\Models\Tool\Label;
 
 // 管理ツールからAPIで確認ができるように
-class MemberController extends \Papi\Tool\Controllers\AbstractController
+class MemberController extends \Treasure\Tool\Controllers\AbstractController
 {
     protected $strangerActions = ['index' => 1, 'login' => 1, ];
     protected $customerActions = ['logout' => 1, 'edit' => 1,]; // 顧客
@@ -105,7 +105,7 @@ class MemberController extends \Papi\Tool\Controllers\AbstractController
         }
 
         $this->view->editModel = $customerMember;
-        $this->view->form = new \Papi\Forms\Model\CustomerMember();
+        $this->view->form = new \Treasure\Forms\Model\CustomerMember();
         $this->view->hiddenColumn = ['id','customer_id'];
         $this->view->unnecessaryColumn = ['created_at', 'updated_at'];
         $this->view->config = $config;

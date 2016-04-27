@@ -1,8 +1,8 @@
 <?php
 /**
- * Papi\Config\ProjectConfiguration
+ * Treasure\Config\ProjectConfiguration
  */
-namespace Papi\Config\ProjectConfiguration;
+namespace Treasure\Config\ProjectConfiguration;
 
 use Gpl\Config\ProjectConfiguration\Base;
 
@@ -30,6 +30,6 @@ class Tool extends Base
     protected function initialize()
     {
         $this->di->set('tag', new \Api\Helper\AppTag());
-        //$this->di->set('tag', new \Papi\Helper\AppTag());
+        //$this->di->set('tag', new \Treasure\Helper\AppTag());
     }
 }

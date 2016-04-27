@@ -1,13 +1,13 @@
 <?php
 /**
- * Papi\Forms\Model
+ * Treasure\Forms\Model
  */
-namespace Papi\Forms\Model;
+namespace Treasure\Forms\Model;
 
 /**
  * UAchievement
  */
-class UAchievement extends \Papi\Forms\Model\Base\UAchievement
+class UAchievement extends \Treasure\Forms\Model\Base\UAchievement
 {
 
     /**

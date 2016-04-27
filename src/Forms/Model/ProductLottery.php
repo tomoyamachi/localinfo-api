@@ -1,15 +1,15 @@
 <?php
 /**
- * Papi\Forms\Model
+ * Treasure\Forms\Model
  */
-namespace Papi\Forms\Model;
+namespace Treasure\Forms\Model;
 
-use \Papi\Models\Model\ProductReferenceAbstract as Reference;
+use \Treasure\Models\Model\ProductReferenceAbstract as Reference;
 
 /**
  * ProductLottery
  */
-class ProductLottery extends \Papi\Forms\Model\Base\ProductLottery
+class ProductLottery extends \Treasure\Forms\Model\Base\ProductLottery
 {
     /**
      * configureStatus

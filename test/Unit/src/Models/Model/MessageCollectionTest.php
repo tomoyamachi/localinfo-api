@@ -4,7 +4,7 @@
  */
 namespace Test\Unit\src\Models\Model;
 
-use Papi\Models\Model\MessageCollection;
+use Treasure\Models\Model\MessageCollection;
 
 /**
  * MessageCollectionTest
@@ -15,6 +15,6 @@ class MessageCollectionTest extends \Test\Unit\TestCase
     public function testConstruct()
     {
         $model = new MessageCollection();
-        $this->assertInstanceOf('Papi\Models\Model\MessageCollection', $model);
+        $this->assertInstanceOf('Treasure\Models\Model\MessageCollection', $model);
     }
 }

@@ -4,7 +4,7 @@
  */
 namespace Test\Unit\src\Forms;
 
-use Papi\Forms\Model\ProductDeliveryRate;
+use Treasure\Forms\Model\ProductDeliveryRate;
 
 /**
  * ProductDeliveryRateTest
@@ -15,6 +15,6 @@ class ProductDeliveryRateTest extends \Test\Unit\TestCase
     public function testConstruct()
     {
         $form = new ProductDeliveryRate();
-        $this->assertInstanceOf('Papi\Forms\Model\ProductDeliveryRate', $form);
+        $this->assertInstanceOf('Treasure\Forms\Model\ProductDeliveryRate', $form);
     }
 }

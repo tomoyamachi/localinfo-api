@@ -4,7 +4,7 @@
  */
 namespace Test\Unit\src\Models\Model;
 
-use Papi\Models\Model\ProductDeliveryRate;
+use Treasure\Models\Model\ProductDeliveryRate;
 
 /**
  * ProductDeliveryRateTest
@@ -15,6 +15,6 @@ class ProductDeliveryRateTest extends \Test\Unit\TestCase
     public function testConstruct()
     {
         $model = new ProductDeliveryRate();
-        $this->assertInstanceOf('Papi\Models\Model\ProductDeliveryRate', $model);
+        $this->assertInstanceOf('Treasure\Models\Model\ProductDeliveryRate', $model);
     }
 }

@@ -1,15 +1,15 @@
 <?php
-namespace Papi\Tool\Controllers;
+namespace Treasure\Tool\Controllers;
 
-use \Papi\Models\Model\Customer;
-use \Papi\Models\Model\Product;
-use \Papi\Models\Model\ProductConversion;
-use \Papi\Models\Model\SalesHistory;
+use \Treasure\Models\Model\Customer;
+use \Treasure\Models\Model\Product;
+use \Treasure\Models\Model\ProductConversion;
+use \Treasure\Models\Model\SalesHistory;
 use \Api\Paginator;
 use \Api\Models\Tool\Label;
 use \Gcl\Util\Inflector;
 
-class SalesController extends \Papi\Tool\Controllers\AbstractController
+class SalesController extends \Treasure\Tool\Controllers\AbstractController
 {
     protected $customerActions = []; // 顧客
     protected $employeeActions = ['index' => 1]; // 社内バイト
@@ -76,7 +76,7 @@ class SalesController extends \Papi\Tool\Controllers\AbstractController
         $httpParam = [];
 
         $this->returnPaginatorByModel($model, $req);
-        $this->view->form = new \Papi\Forms\Model\Product();
+        $this->view->form = new \Treasure\Forms\Model\Product();
         $this->view->paginator = $this->returnPaginatorByModel($model, $req, $httpParam, 50);
         $this->view->columns = $this->columns;
         $this->view->searchColumns =$this->searchColumns;
@@ -119,7 +119,7 @@ class SalesController extends \Papi\Tool\Controllers\AbstractController
      */
     private function getOtherModelsWhere($modelName, $searchHash)
     {
-        $namespace = '\\Papi\\Models\\Model\\'.Inflector::upperCamel($modelName);
+        $namespace = '\\Treasure\\Models\\Model\\'.Inflector::upperCamel($modelName);
         $model = $namespace::query();
 
         $model = $this->setModelToWhere($model, $searchHash[$modelName]);

@@ -1,16 +1,16 @@
 <?php
 /**
- * Papi\Models\Model
+ * Treasure\Models\Model
  */
-namespace Papi\Models\Model;
+namespace Treasure\Models\Model;
 
-use \Papi\Models\Model\Product;
-use \Papi\Models\Model\ShipManagement;
+use \Treasure\Models\Model\Product;
+use \Treasure\Models\Model\ShipManagement;
 
 /**
  * 各アカウントの商品情報の抽象クラス
  */
-class UProductAbstract extends \Papi\Models\Model\UserAbstract
+class UProductAbstract extends \Treasure\Models\Model\UserAbstract
 {
     protected $productIdCache = false;
 
@@ -27,7 +27,7 @@ class UProductAbstract extends \Papi\Models\Model\UserAbstract
         $this->productIdCache = null;
 
         // 対象のモデルから指定されたIDで検索
-        $namespace = '\\Papi\\Models\\Model\\Product'.ucwords($this->reference_type);
+        $namespace = '\\Treasure\\Models\\Model\\Product'.ucwords($this->reference_type);
         $column = 'product_'.$this->reference_type.'_id';
         $conditions = ['id' => $this->$column];
         $result = $namespace::findFirstByParams(['conditions' => $conditions]);

@@ -1,11 +1,11 @@
 <?php
-namespace Papi\V1\Controllers;
+namespace Treasure\V1\Controllers;
 
-use \Papi\Models\Model\Product;
-use \Papi\Models\Model\ProductAchievement as Achievement;
-use \Papi\Response\Achievement as RAchievement;
+use \Treasure\Models\Model\Product;
+use \Treasure\Models\Model\ProductAchievement as Achievement;
+use \Treasure\Response\Achievement as RAchievement;
 
-class AchievementController extends \Papi\V1\Controllers\GetUserController
+class AchievementController extends \Treasure\V1\Controllers\GetUserController
 {
     /**
      * 全データを返却

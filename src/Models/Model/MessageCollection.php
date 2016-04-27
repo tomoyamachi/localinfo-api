@@ -1,8 +1,8 @@
 <?php
 /**
- * Papi\Models\Model
+ * Treasure\Models\Model
  */
-namespace Papi\Models\Model;
+namespace Treasure\Models\Model;
 
 use \Gcl\Util\GArray;
 use \Api\Models\Tool\Label;
@@ -10,7 +10,7 @@ use \Api\Models\Tool\Label;
 /**
  * MessageCollection
  */
-class MessageCollection extends \Papi\Models\Model\UserAbstract
+class MessageCollection extends \Treasure\Models\Model\UserAbstract
 {
     const BEFORE_SEND = 'before_send';
     const AFTER_SEND = 'after_send';

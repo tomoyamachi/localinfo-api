@@ -4,7 +4,7 @@
  */
 namespace Test\Unit\src\Forms;
 
-use Papi\Forms\Model\ConversionReport;
+use Treasure\Forms\Model\ConversionReport;
 
 /**
  * ConversionReportTest
@@ -15,6 +15,6 @@ class ConversionReportTest extends \Test\Unit\TestCase
     public function testConstruct()
     {
         $form = new ConversionReport();
-        $this->assertInstanceOf('Papi\Forms\Model\ConversionReport', $form);
+        $this->assertInstanceOf('Treasure\Forms\Model\ConversionReport', $form);
     }
 }

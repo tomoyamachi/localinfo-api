@@ -2,20 +2,20 @@
 /**
  *  ProductControllerクラス
  */
-namespace Papi\Tool\Controllers;
+namespace Treasure\Tool\Controllers;
 
-use \Papi\Models\ApiConnector;
-use \Papi\Models\Model\Customer;
-use \Papi\Models\Model\Product;
-use \Papi\Models\Model\ProductReferenceAbstract;
-use \Papi\Models\Model\ProductConversion;
-use \Papi\Models\Model\ProductLottery;
-use \Papi\Models\Model\ProductAchievement;
+use \Treasure\Models\ApiConnector;
+use \Treasure\Models\Model\Customer;
+use \Treasure\Models\Model\Product;
+use \Treasure\Models\Model\ProductReferenceAbstract;
+use \Treasure\Models\Model\ProductConversion;
+use \Treasure\Models\Model\ProductLottery;
+use \Treasure\Models\Model\ProductAchievement;
 use \Api\Models\Validator;
 use \Api\Models\Paginator;
 use \Api\Models\Tool\Label;
 
-class ProductController extends \Papi\Tool\Controllers\AbstractController
+class ProductController extends \Treasure\Tool\Controllers\AbstractController
 {
     protected $customerActions = ['edit' => 1, 'editReference' => 1,]; // 顧客
     protected $employeeActions = ['index' => 1, 'edit' => 1, 'editReference' => 1,]; // 社内バイト
@@ -82,7 +82,7 @@ class ProductController extends \Papi\Tool\Controllers\AbstractController
             $this->view->edit_create_label = Label::CREATE;
         }
         $this->view->editModel = $product;
-        $form = new \Papi\Forms\Model\Product();
+        $form = new \Treasure\Forms\Model\Product();
         if ($this->member->isAdmin()) {
             $form->add($form->configureStatus(Product::$statusLabel));
         }
@@ -105,7 +105,7 @@ class ProductController extends \Papi\Tool\Controllers\AbstractController
         $product = Product::findFirst($productId);
         $this->view->productConfig = new \Api\Models\Tool\Config('product');
         $this->view->product = $product;
-        $namespace = '\\Papi\\Models\\Model\\Product'.\Gcl\Util\Inflector::upperCamel($reference);
+        $namespace = '\\Treasure\\Models\\Model\\Product'.\Gcl\Util\Inflector::upperCamel($reference);
         $config = new \Api\Models\Tool\Config('product_'.$reference);
         $errorMessages = []; // POST時のエラーメッセージがあれば保存
 
@@ -131,7 +131,7 @@ class ProductController extends \Papi\Tool\Controllers\AbstractController
         $this->view->apps = $mApplications;
         $this->view->appDeliveryRate = $referenceModel->getDeliveryRateData();
         // 新データ用のForm
-        $formNamespace = '\\Papi\\Forms\\Model\\Product'.
+        $formNamespace = '\\Treasure\\Forms\\Model\\Product'.
             \Gcl\Util\Inflector::upperCamel($reference);
         $form = new $formNamespace();
         if ($this->member->isAdmin()) {

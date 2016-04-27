@@ -5,7 +5,7 @@
 namespace Test\Functional;
 
 use \Gpl\Mvc\Application\Launcher;
-use \Papi\Config\ProjectConfiguration\V1;
+use \Treasure\Config\ProjectConfiguration\V1;
 
 /**
  * TestCase

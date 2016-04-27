@@ -1,15 +1,15 @@
 <?php
 /**
- * Papi\Forms\Model
+ * Treasure\Forms\Model
  */
-namespace Papi\Forms\Model;
+namespace Treasure\Forms\Model;
 
-use \Papi\Models\Model\Customer as MCustomer;
+use \Treasure\Models\Model\Customer as MCustomer;
 
 /**
  * Customer
  */
-class Customer extends \Papi\Forms\Model\Base\Customer
+class Customer extends \Treasure\Forms\Model\Base\Customer
 {
 
     public function configureDocsMailDate()

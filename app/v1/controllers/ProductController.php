@@ -1,8 +1,8 @@
 <?php
-namespace Papi\V1\Controllers;
+namespace Treasure\V1\Controllers;
 
-use \Papi\Models\Model\Product;
-use \Papi\Response\Product as RProduct;
+use \Treasure\Models\Model\Product;
+use \Treasure\Response\Product as RProduct;
 
 class ProductController extends \Api\Controllers\Api\AbstractController
 {

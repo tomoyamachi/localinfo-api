@@ -1,13 +1,13 @@
 <?php
 /**
- * Papi\Forms\Model
+ * Treasure\Forms\Model
  */
-namespace Papi\Forms\Model;
+namespace Treasure\Forms\Model;
 
 /**
  * CustomerMember
  */
-class CustomerMember extends \Papi\Forms\Model\Base\CustomerMember
+class CustomerMember extends \Treasure\Forms\Model\Base\CustomerMember
 {
 
     public function configureAuthority()

@@ -1,7 +1,7 @@
 <?php
-namespace Papi\V1\Controllers;
+namespace Treasure\V1\Controllers;
 
-use \Papi\Response\Error;
+use \Treasure\Response\Error;
 
 class ErrorController extends \Api\Controllers\Api\ErrorController
 {

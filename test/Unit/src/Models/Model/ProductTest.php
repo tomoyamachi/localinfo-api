@@ -4,7 +4,7 @@
  */
 namespace Test\Unit\src\Models\Model;
 
-use Papi\Models\Model\Product;
+use Treasure\Models\Model\Product;
 
 /**
  * ProductTest
@@ -15,6 +15,6 @@ class ProductTest extends \Test\Unit\TestCase
     public function testConstruct()
     {
         $model = new Product();
-        $this->assertInstanceOf('Papi\Models\Model\Product', $model);
+        $this->assertInstanceOf('Treasure\Models\Model\Product', $model);
     }
 }

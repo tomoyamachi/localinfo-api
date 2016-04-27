@@ -1,13 +1,13 @@
 <?php
 /**
- * Papi\Forms\Model
+ * Treasure\Forms\Model
  */
-namespace Papi\Forms\Model;
+namespace Treasure\Forms\Model;
 
 /**
  * ProductCategory
  */
-class ProductCategory extends \Papi\Forms\Model\Base\ProductCategory
+class ProductCategory extends \Treasure\Forms\Model\Base\ProductCategory
 {
 
     /**

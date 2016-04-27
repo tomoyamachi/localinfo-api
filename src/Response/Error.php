@@ -1,8 +1,8 @@
 <?php
 /**
- * Papi\Response
+ * Treasure\Response
  */
-namespace Papi\Response;
+namespace Treasure\Response;
 
 /**
  * Error

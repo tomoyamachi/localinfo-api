@@ -1,10 +1,10 @@
 <?php
 /**
- * Papi\Models\Model
+ * Treasure\Models\Model
  */
-namespace Papi\Models\Model;
+namespace Treasure\Models\Model;
 
-class ReportPublishList extends \Papi\Models\Model\UserAbstract
+class ReportPublishList extends \Treasure\Models\Model\UserAbstract
 {
 
     /**

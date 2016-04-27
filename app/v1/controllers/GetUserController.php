@@ -1,5 +1,5 @@
 <?php
-namespace Papi\V1\Controllers;
+namespace Treasure\V1\Controllers;
 
 class GetUserController extends \Api\Controllers\Api\AbstractController
 {

@@ -1,7 +1,7 @@
 <?php
-namespace Papi\Tool\Controllers;
+namespace Treasure\Tool\Controllers;
 
-use \Papi\Models\Model\CustomerMember;
+use \Treasure\Models\Model\CustomerMember;
 
 class AbstractController extends \Phalcon\Mvc\Controller
 {

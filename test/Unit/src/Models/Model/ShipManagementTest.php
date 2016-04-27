@@ -4,7 +4,7 @@
  */
 namespace Test\Unit\src\Models\Model;
 
-use Papi\Models\Model\ShipManagement;
+use Treasure\Models\Model\ShipManagement;
 
 /**
  * ShipManagementTest
@@ -15,6 +15,6 @@ class ShipManagementTest extends \Test\Unit\TestCase
     public function testConstruct()
     {
         $model = new ShipManagement();
-        $this->assertInstanceOf('Papi\Models\Model\ShipManagement', $model);
+        $this->assertInstanceOf('Treasure\Models\Model\ShipManagement', $model);
     }
 }

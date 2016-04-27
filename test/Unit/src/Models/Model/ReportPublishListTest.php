@@ -4,7 +4,7 @@
  */
 namespace Test\Unit\src\Models\Model;
 
-use Papi\Models\Model\ReportPublishList;
+use Treasure\Models\Model\ReportPublishList;
 
 /**
  * ReportPublishListTest
@@ -15,6 +15,6 @@ class ReportPublishListTest extends \Test\Unit\TestCase
     public function testConstruct()
     {
         $model = new ReportPublishList();
-        $this->assertInstanceOf('Papi\Models\Model\ReportPublishList', $model);
+        $this->assertInstanceOf('Treasure\Models\Model\ReportPublishList', $model);
     }
 }

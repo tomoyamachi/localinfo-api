@@ -1,9 +1,9 @@
 <?php
-namespace Papi\Models\Model;
+namespace Treasure\Models\Model;
 
-use \Papi\Models\Model\Product;
-use \Papi\Models\Model\ProductDeliveryRate;
-use \Papi\Models\ApiConnector;
+use \Treasure\Models\Model\Product;
+use \Treasure\Models\Model\ProductDeliveryRate;
+use \Treasure\Models\ApiConnector;
 use \Gcl\Util\GArray;
 use \Gcl\Util\GDate;
 use \Api\Models\Tool\Label;
@@ -11,7 +11,7 @@ use \Api\Models\Tool\Label;
 /**
  * 商品関連テーブルの共通処理部分
  */
-abstract class ProductReferenceAbstract extends \Papi\Models\Model\UserAbstract
+abstract class ProductReferenceAbstract extends \Treasure\Models\Model\UserAbstract
 {
     const STATUS_VALID_NEW = 'valid_new';
     const STATUS_VALID_COMEBACK = 'valid_comeback';
@@ -69,7 +69,7 @@ abstract class ProductReferenceAbstract extends \Papi\Models\Model\UserAbstract
     {
         $namespaces = [];
         foreach (array_keys(self::$tableLabels) as $relation) {
-            $namespace = '\\Papi\\Models\\Model\\Product'.ucwords($relation);
+            $namespace = '\\Treasure\\Models\\Model\\Product'.ucwords($relation);
             $namespaces[$relation] = $namespace;
         }
         return $namespaces;

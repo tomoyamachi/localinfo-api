@@ -4,7 +4,7 @@
  */
 namespace Test\Unit\src\Models\Model;
 
-use Papi\Models\Model\ReportSegment;
+use Treasure\Models\Model\ReportSegment;
 
 /**
  * ReportSegmentTest
@@ -15,6 +15,6 @@ class ReportSegmentTest extends \Test\Unit\TestCase
     public function testConstruct()
     {
         $model = new ReportSegment();
-        $this->assertInstanceOf('Papi\Models\Model\ReportSegment', $model);
+        $this->assertInstanceOf('Treasure\Models\Model\ReportSegment', $model);
     }
 }

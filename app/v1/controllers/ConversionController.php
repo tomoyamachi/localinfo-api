@@ -1,9 +1,9 @@
 <?php
-namespace Papi\V1\Controllers;
+namespace Treasure\V1\Controllers;
 
-use \Papi\Models\Model\Product;
-use \Papi\Models\Model\ProductConversion as Conversion;
-use \Papi\Response\Conversion as RConversion;
+use \Treasure\Models\Model\Product;
+use \Treasure\Models\Model\ProductConversion as Conversion;
+use \Treasure\Response\Conversion as RConversion;
 
 class ConversionController extends \Api\Controllers\Api\AbstractController
 {

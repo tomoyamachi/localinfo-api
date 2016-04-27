@@ -1,18 +1,18 @@
 <?php
 /**
- * Papi\Models\Model
+ * Treasure\Models\Model
  */
-namespace Papi\Models\Model;
+namespace Treasure\Models\Model;
 
-use \Papi\Models\Model\Product;
-use \Papi\Models\Model\SalesHistory;
+use \Treasure\Models\Model\Product;
+use \Treasure\Models\Model\SalesHistory;
 use \Api\Models\Tool\Label;
 use Gcl\Util\GDate;
 
 /**
  * Customer
  */
-class Customer extends \Papi\Models\Model\UserAbstract
+class Customer extends \Treasure\Models\Model\UserAbstract
 {
     const STATUS_INIT = 'init'; // 新規
     const STATUS_CONTINUE = 'continue'; // 継続

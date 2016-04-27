@@ -4,7 +4,7 @@
  */
 namespace Test\Unit\src\Response;
 
-use Papi\Response\Account;
+use Treasure\Response\Account;
 
 /**
  * AccountTest

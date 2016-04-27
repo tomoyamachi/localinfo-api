@@ -1,16 +1,16 @@
 <?php
 /**
- * Papi\Models\Model
+ * Treasure\Models\Model
  */
-namespace Papi\Models\Model;
+namespace Treasure\Models\Model;
 
-use \Papi\Models\Model\CustomerMember;
+use \Treasure\Models\Model\CustomerMember;
 use \Gcl\Util\GDate;
 
 /**
  * SalesHistory
  */
-class SalesHistory extends \Papi\Models\Model\UserAbstract
+class SalesHistory extends \Treasure\Models\Model\UserAbstract
 {
 
     const RECALL_STATUS_INIT = 'init';

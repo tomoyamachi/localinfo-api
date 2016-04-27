@@ -1,17 +1,17 @@
 <?php
 /**
- * Papi\Models\Model
+ * Treasure\Models\Model
  */
-namespace Papi\Models\Model;
+namespace Treasure\Models\Model;
 
-use \Papi\Models\Model\ProductLottery;
+use \Treasure\Models\Model\ProductLottery;
 
 /**
  * ULottery
  *
  * @SuppressWarnings(PHPMD)
  */
-class ULottery extends \Papi\Models\Model\UProductAbstract
+class ULottery extends \Treasure\Models\Model\UProductAbstract
 {
     const STATUS_INIT = 'init';
     const STATUS_VALID = 'valid';

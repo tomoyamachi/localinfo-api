@@ -1,13 +1,13 @@
 <?php
 /**
- * Papi\Forms\Model
+ * Treasure\Forms\Model
  */
-namespace Papi\Forms\Model;
+namespace Treasure\Forms\Model;
 
 /**
  * SalesHistory
  */
-class SalesHistory extends \Papi\Forms\Model\Base\SalesHistory
+class SalesHistory extends \Treasure\Forms\Model\Base\SalesHistory
 {
     /**
      * initialize

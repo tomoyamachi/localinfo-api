@@ -1,8 +1,8 @@
 <?php
 /**
- * Papi\Models\Model
+ * Treasure\Models\Model
  */
-namespace Papi\Models\Model;
+namespace Treasure\Models\Model;
 
 use \Gcl\Util\GDate;
 use \Api\Models\Tool\Label;
@@ -10,7 +10,7 @@ use \Api\Models\Tool\Label;
 /**
  * ReportSegment
  */
-class ReportSegment extends \Papi\Models\Model\UserAbstract
+class ReportSegment extends \Treasure\Models\Model\UserAbstract
 {
     private $productId;
     private $productName;
@@ -45,7 +45,7 @@ class ReportSegment extends \Papi\Models\Model\UserAbstract
 
     /**
      * 商品に紐づくキャンペーンがレポートの集計期間中かを確認
-     * @param \Papi\Models\Model\ProductXxxx $model
+     * @param \Treasure\Models\Model\ProductXxxx $model
      * @return bool
      */
     public function filterReferenceModel($model)
@@ -63,7 +63,7 @@ class ReportSegment extends \Papi\Models\Model\UserAbstract
 
     /**
      * 発送状況を保存する場所
-     * @param \Papi\Models\Model\ProductXxxxx $model
+     * @param \Treasure\Models\Model\ProductXxxxx $model
      * @return void
      */
     public function setShipmentData($model)

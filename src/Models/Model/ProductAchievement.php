@@ -1,16 +1,16 @@
 <?php
 /**
- * Papi\Models\Model
+ * Treasure\Models\Model
  */
-namespace Papi\Models\Model;
+namespace Treasure\Models\Model;
 
-use \Papi\Models\Model\UAchievement;
-use \Papi\Models\ApiConnector;
+use \Treasure\Models\Model\UAchievement;
+use \Treasure\Models\ApiConnector;
 
 /**
  * ProductAchievement
  */
-class ProductAchievement extends \Papi\Models\Model\ProductReferenceAbstract
+class ProductAchievement extends \Treasure\Models\Model\ProductReferenceAbstract
 {
     protected $referenceLabel = 'achievement';
     protected static $defaultData = ['id' => null,

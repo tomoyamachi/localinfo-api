@@ -1,15 +1,15 @@
 <?php
 /**
- * Papi\Models\Model
+ * Treasure\Models\Model
  */
-namespace Papi\Models\Model;
+namespace Treasure\Models\Model;
 
-use \Papi\Models\ApiConnector;
+use \Treasure\Models\ApiConnector;
 
 /**
  * UProductReview
  */
-class UProductReview extends \Papi\Models\Model\UserAbstract
+class UProductReview extends \Treasure\Models\Model\UserAbstract
 {
     /**
      * 作成時のほげほげ

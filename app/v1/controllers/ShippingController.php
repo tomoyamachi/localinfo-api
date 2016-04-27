@@ -1,11 +1,11 @@
 <?php
-namespace Papi\V1\Controllers;
+namespace Treasure\V1\Controllers;
 
-use \Papi\Models\Model\Product;
-use \Papi\Models\Model\ShipManagement;
-use \Papi\Response\ShipManagement as RShipManagement;
+use \Treasure\Models\Model\Product;
+use \Treasure\Models\Model\ShipManagement;
+use \Treasure\Response\ShipManagement as RShipManagement;
 
-class ShippingController extends \Papi\V1\Controllers\GetUserController
+class ShippingController extends \Treasure\V1\Controllers\GetUserController
 {
     /**
      * 商品管理一覧を取得

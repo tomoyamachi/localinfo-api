@@ -1,18 +1,18 @@
 <?php
 /**
- * Papi\Models\Model
+ * Treasure\Models\Model
  */
-namespace Papi\Models\Model;
+namespace Treasure\Models\Model;
 
-use \Papi\Models\Model\ProductConversion;
-use \Papi\Models\Model\ProductLottery;
-use \Papi\Models\Model\ProductAchievement;
+use \Treasure\Models\Model\ProductConversion;
+use \Treasure\Models\Model\ProductLottery;
+use \Treasure\Models\Model\ProductAchievement;
 use \Api\Models\Tool\Label;
 
 /**
  * Product
  */
-class Product extends \Papi\Models\Model\UserAbstract
+class Product extends \Treasure\Models\Model\UserAbstract
 {
     const THUMBNAIL_FOLDER = '100x100';
 
