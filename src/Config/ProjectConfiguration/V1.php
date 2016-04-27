@@ -25,114 +25,16 @@ class V1 extends Base
                                            'action' => 'logout'],
                                  ],
 
-              '/v1/products' => [
-                                 'Get' => ['controller' => 'product',
+              '/v1/treasures' => [
+                                 'Get' => ['controller' => 'treasure',
                                            'action' => 'get'],
                                  ],
-              '/v1/products/{id}' => [
-                                      'Get' => ['controller' => 'product',
+              '/v1/treasures/{id}' => [
+                                      'Get' => ['controller' => 'treasure',
                                                 'action' => 'getTarget',
-                                                'product_id' => 1],
+                                                'treasure_id' => 1],
                                       ],
 
-              '/v1/lotteries' => [
-                                  'Get' => ['controller' => 'lottery',
-                                            'action' => 'get'],
-                                  'Post' => ['controller' => 'lottery',
-                                             'action' => 'lot'],
-                                  ],
-              '/v1/lotteries/{id}' => [
-                                       'Get' => ['controller' => 'lottery',
-                                                 'action' => 'getTarget',
-                                                 'lottery_id' => 1],
-                                       ],
-
-              '/v1/conversions' => [
-                                  'Get' => ['controller' => 'conversion',
-                                            'action' => 'get'],
-                                  ],
-              '/v1/conversions/{id}' => [
-                                       'Get' => ['controller' => 'conversion',
-                                                 'action' => 'getTarget',
-                                                 'conversion_id' => 1],
-                                       ],
-              '/v1/conversions/{id}/tags/:action' => [
-                                       'Put' => ['controller' => 'conversion',
-                                                 'action' => 'reach',
-                                                 'conversion_id' => 1,
-                                                 'tag' => 2],
-                                       ],
-
-              '/v1/accounts/{id}/reviews' => [
-                                           'Get' => ['controller' => 'review',
-                                                     'action' => 'getTargetUsers',
-                                                     'account_id' => 1
-                                                     ],
-                                           ],
-              '/v1/products/{id}/reviews' => [
-                                              'Get' => ['controller' => 'review',
-                                                        'action' => 'get',
-                                                        'product_id' => 1
-                                                        ],
-                                              'Post' => ['controller' => 'review',
-                                                         'action' => 'create',
-                                                         'product_id' => 1
-                                                         ],
-                                              ],
-              '/v1/products/{id}/reviews/{id}' => [
-                                                   'Get' => ['controller' => 'review',
-                                                             'action' => 'getTarget',
-                                                             'product_id' => 1,
-                                                             'review_id' => 2
-                                                             ],
-                                                   'Put' => ['controller' => 'review',
-                                                             'action' => 'update',
-                                                             'product_id' => 1,
-                                                             'review_id' => 2
-                                                             ],
-                                                   'Delete' => ['controller' => 'review',
-                                                                'action' => 'delete',
-                                                                'product_id' => 1,
-                                                                'review_id' => 2
-                                                                ],
-                                                   ],
-
-              '/v1/achievements' => [
-                                  'Get' => ['controller' => 'achievement',
-                                            'action' => 'get'],
-                                  ],
-              '/v1/achievements/{id}' => [
-                                       'Get' => ['controller' => 'achievement',
-                                                 'action' => 'getTarget',
-                                                 'achievement_id' => 1],
-                                       'Post' => ['controller' => 'achievement',
-                                                 'action' => 'regist',
-                                                 'achievement_id' => 1],
-                                       ],
-
-
-              '/v1/accounts/{id}/achievements' => [
-                                  'Get' => ['controller' => 'account',
-                                            'action' => 'getAchievements',
-                                            'account_id' => 1],
-                                  ],
-              '/v1/accounts/{id}/lotteries' => [
-                                  'Get' => ['controller' => 'account',
-                                            'action' => 'getLotteries',
-                                            'account_id' => 1],
-                                  ],
-
-              '/v1/accounts/{id}/shippings' => [
-                                  'Get' => ['controller' => 'shipping',
-                                            'action' => 'get',
-                                            'account_id' => 1],
-                                  ],
-              '/v1/accounts/{id}/shippings/{id}' => [
-                                  'Get' => ['controller' => 'shipping',
-                                            'action' => 'getTarget',
-                                            'account_id' => 1,
-                                            'shipping_id' => 2],
-                                  ],
               ];
 
     /**

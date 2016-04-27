@@ -101,3 +101,22 @@ Given /^I am logged in as "(.*)"$/ do |email|
               :Cookie => 'PHPSESSID='+$current_session,
   }
 end
+
+
+# 配列で入ってくる要素の子要素が対象のフォーマットになっているか確認
+Then(/^the JSON response element should follow "(.+?)"$/) do |schema|
+    element_response = @response.get "$[0]"
+    # puts element_response.to_json
+    file_path = %-#{Dir.pwd}/#{schema}-
+    if File.file? file_path
+      begin
+        JSON::Validator.validate!(file_path, element_response.to_json)
+      rescue JSON::Schema::ValidationError => e
+        raise JSON::Schema::ValidationError.new(%/#{$!.message}\n#{element_response.to_json}/,
+                                                $!.fragments, $!.failed_attribute, $!.schema)
+      end
+    else
+      puts %/WARNING: missing schema '#{file_path}'/
+      pending
+    end
+end
