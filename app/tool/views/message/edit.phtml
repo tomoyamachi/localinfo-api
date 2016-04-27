@@ -1,0 +1,10 @@
+<h2>文章の編集</h2>
+<?php
+echo $this->tag->form('');
+// すでにつくられているデータからとってくる箇所
+
+echo '<h3>'.$editModel->tool_label.' > '.$editModel->tool_subkey.'</h3>';
+$this->partial('common/_editform');
+?>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

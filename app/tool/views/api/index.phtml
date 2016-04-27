@@ -1,0 +1,59 @@
+<h1><a href="/api">API Console</a></h1>
+
+<div class="container">
+    <div style="float:left; width:50%;">
+        <div class="form">
+            <form enctype="multipart/form-data" action="/api/index" method="post" onchange="submit(this.form)">
+                <div class="field">action:</div>
+                <div class="tag">
+                    <select id="action" name="action">
+                    <? while($route = each($router)) { ?>
+                        <option type="text" size="60" name="action" value="<?= $route[0]; ?>" <?= ($route[0] === $action) ? ' selected' : ''; ?>><?= $route[0]; ?></option>
+                    <? } ?>
+                    </select>
+                </div>
+            </form>
+            <form enctype="multipart/form-data" action="/api/send" method="post">
+                <input type="hidden" name="action" value="<?= $action; ?>">
+                <div class="field">host:</div>
+                <div class="tag">
+                    <input type="text" size="60" name="host" value="<?= $host; ?>" />
+                </div>
+
+                <div class="field">query:</div>
+                <div class="tag">
+                  　<textarea cols="60" rows="8" wrap="hard" name="params"><?= $params; ?></textarea>
+                </div>
+                <div class="field">os:</div>
+                <div class="tag">
+                    <input name="os" type="radio" value="ios" <?= ($os == 'ios') ? ' checked' : ''; ?>>iOS
+                    <input name="os" type="radio" value="android" <?= ($os == 'android') ? ' checked' : ''; ?>>Android
+                    <input name="os" type="radio" value="other" <?= ($os == 'other') ? ' checked' : ''; ?>>Other
+                </div>
+                <div class="field">method:</div>
+                <div class="tag">
+                    <input name="method" type="radio" value="GET" <?= ($method == 'GET')? 'checked' : ''; ?>>GET
+                    <input name="method" type="radio" value="POST" <?= ($method == 'POST')? 'checked' : ''; ?>>POST
+                </div>
+                <div class="tag">
+                    <input type="submit" class="button" value="Send" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div style="float:right; width:50%;">
+        <div>情報表示エリア</div>
+        <?php if ($isSubmit ): ?>
+        <div>url
+            <textarea style="width:750px; height:100px; margin:10px; background-color:#eee; font-size: 15px;"><?= $url; ?></textarea>
+        </div>
+        <div>request
+            <textarea style="width:750px; height:100px; margin:10px; background-color:#eee; font-size: 15px;"><?php print_r($requestData); ?></textarea>
+        </div>
+        <div>response
+            <textarea style="width:750px; height:400px; margin:10px; background-color:#eee; font-size: 15px;"><?php print_r($responseData); ?></textarea>
+        </div>
+        <?php endif; ?>
+    </div>
+</div>

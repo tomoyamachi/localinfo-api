@@ -1,0 +1,31 @@
+<form action="" method="post" class="form-horizontal">
+
+<input type="hidden" name="report_id" value="<?= $report->id ?>">
+<input type="hidden" name="product_id" value="<?= $product->id ?>">
+
+<div class="span10" id="content">
+     <?= $this->partial('report/_reportPanels'); ?>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">公開準備</button>
+<?= $footerButton ?>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">公開の確認</h4>
+      </div>
+      <div class="modal-body">
+        レポート結果を公開します
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+        <button type="submit" class="btn btn-primary">公開する</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</form>

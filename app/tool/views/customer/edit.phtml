@@ -1,0 +1,24 @@
+<h2><?= $customer->name ?> <?= $customer->id ? $customer->getToolGoToReportButton() : ''; ?>
+ <?= $isAdmin ? $customer->getToolDeleteButton() : ''; ?>
+</h2>
+<?= $this->tag->form(''); ?>
+<div class="row">
+  <div class="col-md-6">
+<table class="table table-bordered">
+<?= $this->partial('common/_editform'); ?>
+<button type="submit" class="btn btn-primary"><?= $edit_create_label ?></button>
+</table>
+</div>
+
+<div class="col-md-6">
+    <span style="font-weight:bold;">担当者一覧</span>
+     <?= $customer->tool_member_list ?>
+    <div class="spacer20"></div>
+    <span style="font-weight:bold;">商品一覧</span>
+     <?= $customer->tool_product_count ?>
+    <div class="spacer20"></div>
+    <span style="font-weight:bold;">コール管理</span>
+     <?= $customer->tool_sales_history?>
+</div>
+</div>
+</form>

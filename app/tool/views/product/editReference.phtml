@@ -1,0 +1,42 @@
+<h2><?= $product->name ?>の<?= $editModel->tool_table_label ?></h2>
+
+<table class="table table-hover table-striped table-bordered">
+<?php
+    foreach ($productConfig->fields as $column => $value ) {
+    echo '<tr>';
+    echo sprintf('<td>%s</td><td>%s</td>',$value['label'],$product->$column);
+    echo '</tr>';
+
+    }
+?>
+</table>
+
+
+<h2><?= $editModel->tool_table_label ?>の<?= $edit_create_label ?></h2>
+<?php
+if (isset($flash)) {
+    echo ' <div class="alert alert-success">'.$flash.'</div>';
+}
+
+    echo $this->tag->form($editModel->tool_edit_data_url);
+    // すでにつくられているデータからとってくる箇所
+    echo $this->partial('common/_editform');
+
+    // 配信比率を設定
+    echo sprintf('<fieldset class="%s">','form-group');
+    echo sprintf('<div class="col-xs-5"><label>%s</label></div>','配信比率');
+    echo '<div class="col-xs-21">';
+
+foreach ($appDeliveryRate as $deliveryRateId => $app) {
+    echo '<div class="col-xs-1">';
+    echo sprintf('%s<input class="form-control" type="number" name="product_delivery[%d]" value="%d">',
+                 $app['name'],$deliveryRateId,$app['weight']);
+    echo '</div>';
+}
+    echo '</div>';
+    echo '</fieldset>';
+
+
+?>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

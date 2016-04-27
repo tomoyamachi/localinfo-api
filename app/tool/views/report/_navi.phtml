@@ -1,0 +1,13 @@
+  <div class="navbar">
+    <div class="navbar-inner">
+      <ul class="breadcrumb">
+        <li>
+          <a href="/customer?search[id]=<?= $product->customer_id ?>">店舗</a> <span class="divider" />
+        </li>
+        <li>
+          <a href="/report/list?product_id=<?= $product->id ?>"><?= $product->name; ?></a> <span class="divider" />
+        </li>
+        <li class="active">レポート</li>
+      </ul>
+    </div>
+  </div>

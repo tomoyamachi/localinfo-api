@@ -1,0 +1,39 @@
+<table class="table table-striped table-bordered">
+<?php
+foreach ($config->fields as $field => $data ) {
+    if (in_array($field,$unnecessaryColumn)) {
+        continue;
+    }
+    // hiddenカラムを出力
+    if (in_array($field,$hiddenColumn)) {
+        echo sprintf('<input id="%s_%s" type="hidden" value="%s" name="%s_%s">',
+                     $modelName, $field, $editModel->$field, $modelName, $field);
+        continue;
+    }
+
+    if (isset($errorMessages[$field])) {
+        echo '<tr class="danger">';
+    } else {
+        echo '<tr>';
+    }
+
+    if (strpos($field, 'date') === false) {
+        $placeholder = isset($config->placeholder[$field]) ? $config->placeholder[$field] : '';
+        $formHtml =  $form->render($field,['class' => 'form-control','value' => $editModel->$field, 'placeholder' => $placeholder
+                                           ]);
+    } else {
+        if ($editModel->$field) {
+            $date = new \Gcl\Util\GDate($editModel->$field);
+            $formName = sprintf('%s_%s', $modelName, $field);
+            $formHtml = $date->d2selectForm($formName, 0, 3, ['hour', 'minute']);
+        }
+    }
+        // バリデーションエラーがあれば表示
+        if (isset($errorMessages[$field])) {
+            $formHtml .= sprintf('<br/><label>※%s</label>',$errorMessages[$field]);
+        }
+    echo sprintf('<td>%s</td><td>%s</td>',$data['label'],$formHtml);
+    echo '</tr>';
+}
+?>
+</table>

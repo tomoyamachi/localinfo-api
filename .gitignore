@@ -1,0 +1,9 @@
+*.sw*
+*-e
+/.php-version
+/var
+/nbproject
+/node_modules
+GTAGS
+GPATH
+GRTAGS

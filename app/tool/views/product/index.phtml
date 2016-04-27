@@ -1,0 +1,21 @@
+<h2>新規商品の<?= $edit_create_label ?></h2>
+  <?= $this->tag->form(''); ?>
+<table class="table table-striped table-bordered">
+<?php
+    echo '<tr>';
+    $field = 'customer_id';
+    $formName = sprintf('%s_%s', $modelName, $field);
+    $formHtml = sprintf('<select class="form-control" name="%s">', $formName);
+    foreach ($customerNames as $customerId => $customerName) {
+        $selected = ($customerId == $pageCustomerId) ? 'selected' : '';
+        $formHtml .=  sprintf('<option value="%s" %s>%s</option>', $customerId, $selected, $customerName);
+    }
+    $formHtml .= '</select>';
+    echo sprintf('<td>%s</td><td>%s</td>','顧客情報',$formHtml);
+    echo '</tr>';
+?>
+</table>
+
+  <?= $this->partial('common/_editform'); ?>
+  <button type="submit" class="btn btn-primary">送信する</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= sprintf("<input type=\"button\" value=\"%s\" onClick=\"location.href='%s'\" class=\"btn btn-default\">", \Api\Models\Tool\Label::TO_CREATE, '/product/index') ?>
+</form>

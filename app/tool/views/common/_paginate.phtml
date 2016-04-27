@@ -1,0 +1,43 @@
+<?php /* ページネーション */ ?>
+<div class="text-center">
+  <ul class="pagination">
+    <?php if ( $paginator->isFirst() ): ?>
+<li class="disabled"><a>最初へ</a></li>
+<li class="disabled"><a>&laquo;</a></li>
+    <?php else: ?>
+    <li>
+      <a href="<?= $paginator->getUrl( array( 'page' => 1 ) ); ?>" aria-label="Previous">
+        <span aria-hidden="true">最初へ</span>
+      </a>
+    </li>
+    <li>
+      <a href="<?= $paginator->getPreviousUrl(); ?>" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <?php endif; ?>
+
+    <?php foreach ( $paginator->getLinks( 5 ) as $page => $link ): ?>
+        <?php if ( $page == $paginator->getPage() ): ?>
+        <li class="disabled"><a><?= $page; ?></a></li>
+        <?php else: ?>
+        <li><a href="<?= $link ; ?>"><?= $page; ?></a></li>
+        <?php endif; ?>
+    <?php endforeach; ?>
+
+    <?php if ( $paginator->isLast() ): ?>
+<li class="disabled"><a>&raquo;</a></li>
+<li class="disabled"><a>最後へ</a></li>
+    <?php else: ?>
+         <li>
+      <a href="<?= $paginator->getNextUrl(); ?>" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+        </li>
+        <li>
+        <a href="<?=  $paginator->getUrl( array( 'page' => $paginator->getLastPage() ) ); ?>" aria-label="Last">最後へ</a>
+         </li>
+    <?php endif; ?>
+
+  </ul>
+</div>

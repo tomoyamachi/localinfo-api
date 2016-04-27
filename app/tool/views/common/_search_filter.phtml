@@ -1,0 +1,25 @@
+<div class="form-horizontal">
+<?php
+     echo $this->tag->form('?'.http_build_query($httpParam));
+
+foreach ($searchFilter as $field => $label ) :
+?>
+    <div class="form-group">
+    <div class="col-xs-5"><label><?= $label; ?></label></div>
+    <div class="col-xs-2">
+    <input type="text" class="form-control" name="search[<?= $field ?>]" id="search[<?= $field ?>]"></input>
+    </div>
+    </div>
+<?php
+    endforeach;
+?>
+    <div class="form-group">
+    <div class="col-xs-5"></div>
+    <div class="col-xs-2">
+    <button type="submit" class="btn btn-primary">検索</button>
+    </div>
+    </div>
+</form>
+</div>
+
+<div class="spacer20"/>

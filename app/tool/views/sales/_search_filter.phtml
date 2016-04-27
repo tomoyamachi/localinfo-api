@@ -1,0 +1,54 @@
+<!-- Modal -->
+<?= $this->tag->form(''); ?>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header"><h4 class="modal-title" id="myModalLabel">検索条件</h4>     <button type="button" class="btn" data-toggle="modal" data-target="#what">高度な検索方法</button>
+</div>
+      <div class="modal-body">
+        <div class="form-horizontal">
+<?php
+     foreach ($searchColumns as $column => $methods ) :
+     $searchTag = $methods['model'].'-'.$methods['column'];
+?>
+            <div class="form-group">
+            <div class="col-xs-5"><label><?= $column; ?></label></div>
+            <div class="col-xs-5">
+     <input type="text" class="form-control" name="search[<?= $searchTag ?>]" value="<?= (isset($searchDatas) && isset($searchDatas[$searchTag])) ? $searchDatas[$searchTag] : ''; ?>" ></input>
+            </div>
+            </div>
+        <? endforeach; ?>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+        <button type="submit" class="btn btn-primary">検索</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+
+
+
+<div class="modal fade" id="what" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header"><h4 class="modal-title" id="myModalLabel">高度な検索方法</h4>
+    </div>
+      <div class="modal-body">
+     <h4>通常検索</h4>
+     フォームに入れた数値/テキストは、部分一致検索になります。
+     <h4>完全一致検索</h4>
+     フォームに「= XXX」と記載すると、完全一致で検索します。<br/>
+     テキストの場合「= "XXX"」のように記載してください。
+     <h4>範囲検索</h4>
+     フォームに「> XXX」あるいは「< XXX」と記載すると、完全一致で検索します。<br/>
+     日付検索の場合「> "2016-04-01 00:00"」のように記載してください。
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>

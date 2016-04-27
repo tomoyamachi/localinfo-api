@@ -1,0 +1,12 @@
+<?php
+
+return array(
+    'all' => array(
+        'api' => array(
+            'host' => ''
+        ),
+        'domains' => array(
+            'sugoroku' => ''
+        )
+    ),
+);

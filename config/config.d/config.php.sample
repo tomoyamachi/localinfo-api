@@ -1,0 +1,24 @@
+<?php
+
+return [
+    'all' => [
+    ],
+    'test' => [
+        'sendmail' => [
+            'enabled' => false,
+            'no-replay@gochipon.co.jp' => [
+                'FromName' => '',
+            ]
+        ],
+        'smtp' => [
+            'enabled' => false,
+            'no-replay@gochipon.co.jp' => [
+                'FromName' => '',
+                'Host' => '',
+                'Username' => '',
+                'Password' => '',
+                'Port' => ''
+            ]
+        ]
+    ]
+];

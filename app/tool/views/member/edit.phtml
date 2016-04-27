@@ -1,0 +1,12 @@
+<h2><?= $customer->name ?> : メンバーの<?= $edit_create_label ?></h2>
+<?php
+if (isset($flash)) {
+    echo ' <div class="alert alert-success">'.$flash.'</div>';
+}
+
+echo $this->tag->form('');
+?>
+  <?= $this->partial('common/_editform'); ?>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

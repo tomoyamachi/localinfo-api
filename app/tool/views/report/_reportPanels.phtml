@@ -1,0 +1,29 @@
+<?php
+echo $this->partial('report/_navi');
+
+// 会社名 / 商品名 / 集計期間 / 商品閲覧 / 商品獲得などを表示
+foreach ($panelStatSets as $statSet) {
+    if ($statSet) {
+        echo  $this->partial('common/_panelset', ['panelHeadline' => $statSet['headline'],
+                                                  'panelBody' => $statSet['body']]);
+    }
+}
+
+// 配送先情報を表示
+foreach ($panelSendSets as $reference => $sendSet) {
+    if ($sendSet) {
+        echo  $this->partial('common/_sendset', ['panelHeadline' => '当選者一覧',
+                                                 'list' => $sendSet,
+                                                 'fields' => $accountFields,
+                                                 'publishData' => $publishData,
+                                                 'checkBoxLabel' => $reference.'_check']);
+    }
+}
+
+// レビューなどを表示
+echo  $this->partial('common/_sendset', ['panelHeadline' => 'ご当選者様の感想',
+                                         'list' => $reviewSet,
+                                         'fields' => $reviewFields,
+                                         'publishData' => $publishData,
+                                         'checkBoxLabel' => 'review']);
+?>

@@ -1,0 +1,25 @@
+<h2>管理ツール内で利用するメッセージ一覧</h2>
+
+<table class="table table-striped table-bordered">
+<thead class="thead-inverse"><tr>
+<?php
+ foreach ($fields as $label ) {
+     echo sprintf('<th>%s</th>',$label);
+ }
+?>
+</tr></thread>
+<?php
+if ( $paginator->getTotal() == 0 ) {
+    echo '<tr><td>データがありません</td></tr>';
+} else {
+    foreach ( $paginator->getResult() as $row ) {
+        echo '<tr>';
+        foreach ($fields as $column => $no_use_value ) {
+            echo sprintf('<td>%s</td>',$row->$column);
+        }
+        echo '</tr>';
+    }
+}
+?>
+</table>
+ <?= $this->partial('common/_paginate'); ?>

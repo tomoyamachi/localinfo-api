@@ -1,0 +1,10 @@
+<?php
+
+return [
+        'prod' => [
+                   'account_domain' => 'http://aapi.amachi.rznapp.com/v2/'
+                   ],
+        'test' => [
+                   'account_domain' => 'http://localhost:8080/v2/'
+                   ],
+];

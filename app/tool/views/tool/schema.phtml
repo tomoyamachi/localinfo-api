@@ -1,0 +1,15 @@
+<h2><?= $config->title ?>のテーブル情報</h2>
+<table class="table table-hover table-striped">
+<tr>
+     <th>カラム名</th><th>役割</th><th>バリデーション</th>
+</tr>
+
+<?php
+
+foreach ($config->fields as $column => $value ) {
+
+     echo sprintf('<tr><td>%s</td><td>%s</td><td><pre>%s</pre></td></tr>',
+                  $column,$value['label'],json_encode($value['validation']));
+}
+?>
+</table>

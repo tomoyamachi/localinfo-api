@@ -1,0 +1,30 @@
+<h2><?= $config->title ?>のテーブル情報<?= $customer->getToolEditButton() ?>
+<!-- Button trigger modal -->
+     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">検索</button>
+</h2>
+
+     <?= $this->partial('common/_search_filter_modal'); ?>
+
+<table class="table table-striped table-bordered">
+<thead class="thead-inverse"><tr>
+<?php
+ foreach ($fields as $label ) {
+     echo sprintf('<th>%s</th>',$label);
+ }
+?>
+</tr></thread>
+<?php
+if ( $paginator->getTotal() == 0 ) {
+    echo '<tr><td>データがありません</td></tr>';
+} else {
+    foreach ( $paginator->getResult() as $row ) {
+        echo '<tr>';
+        foreach ($fields as $column => $no_use_value ) {
+            echo sprintf('<td>%s</td>',$row->$column);
+        }
+        echo '</tr>';
+    }
+}
+?>
+</table>
+ <?= $this->partial('common/_paginate'); ?>

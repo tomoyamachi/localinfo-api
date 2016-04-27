@@ -1,0 +1,28 @@
+<?php
+
+return [
+    'all' => [
+        'adapter'     => 'Mysql',
+        'host'        => 'localhost',
+        'username'    => 'root',
+        'password'    => '',
+        'dbname'      => 'product_api',
+        'charset' => 'utf8',
+        'options' => [
+                      PDO::ATTR_EMULATE_PREPARES => false,
+                      PDO::ATTR_STRINGIFY_FETCHES => false,
+                      ]
+    ],
+    'test' => [
+        'adapter'     => 'Mysql',
+        'host'        => 'localhost',
+        'username'    => 'root',
+        'password'    => '',
+        'dbname'      => 'product_api_test',
+        'charset' => 'utf8',
+        'options' => [
+                      PDO::ATTR_EMULATE_PREPARES => false,
+                      PDO::ATTR_STRINGIFY_FETCHES => false,
+                      ]
+    ]
+];

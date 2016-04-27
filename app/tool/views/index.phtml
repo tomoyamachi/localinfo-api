@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>ごちぽんAPI</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="noindex">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+  </head>
+  <body>
+<div class="container">
+     <div class="bg-primary" style="padding:10px;">
+     <h1><a href="/" style="color:#fff;">賞品/企業管理ページ</a></h1>
+     </div>
+<ul class="nav nav-tabs">
+
+<?php
+
+$toolPages = ['member' => 'ログイン',
+              //'api' => 'APIテスト',
+              'customer' => '協賛企業一覧',
+              //'report' => '商品レポート',
+              'sales' => '提携賞品',
+              'call' => 'コール管理',
+              'product' => '賞品追加',
+              'pending' => '審査待ち',
+              'message' => 'テキスト管理',
+              'tool' => '生データ',
+              'member/logout' => 'ログアウト',
+              ];
+
+$explodedRequestURI = explode( '/', $_SERVER['REQUEST_URI'] );
+$page = $explodedRequestURI[1];
+if (! isset($toolPages[$page])) {
+    $page = 'customer';
+}
+
+function active($page,$val) {
+    if ( $page == $val ) {
+        return 'active';
+    }
+}
+
+foreach ($toolPages as $controller => $pageLabel) {
+    echo sprintf('<li role="presentation" class="%s"><a href="/%s">%s</a></li>',
+                 active($page,$controller),
+                 $controller,
+                 $pageLabel);
+}
+?>
+
+</ul>
+<div class="spacer10"></div>
+<input type="button" value="前のページに戻る" onClick="history.back()" class="btn btn-info">
+<div class="spacer10"></div>
+<?php if (isset($error) && $error !== null) : ?>
+<div class="alert alert-danger" role="alert">
+  Error: <?= $error ?>
+</div>
+<div class="spacer20" />
+<?php endif; ?>
+<?php if (isset($flash) && $flash !== null) : ?>
+<div class="alert alert-success" role="success">
+  Notice: <?= $flash ?>
+</div>
+<div class="spacer20" />
+<?php endif; ?>
+
+<?php
+
+ echo $this->getContent();
+?>
+</div>
+  </body>
+</html>

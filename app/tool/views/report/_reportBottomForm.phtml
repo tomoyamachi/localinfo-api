@@ -1,0 +1,125 @@
+<!-- block -->
+<div class="block">
+  <div class="navbar navbar-inner block-header">
+    <div class="muted pull-left">ご当選者様&nbsp;&nbsp;&nbsp;<?= date('Y-m-d', strtotime($entry->started_at)); ?> ~ <?= date('Y-m-d', strtotime($entry->ended_at)); ?></div>
+  </div>
+  <div class="block-content collapse in">
+    <div class="span12">
+
+      <? $value = json_decode($report['m_entry_goods']['value'], true); ?>
+      <h5>商品名：<?= $report['m_entry_goods']['name']; ?></h5><h5>内容量：<?= $value['content']; ?></h5>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>チェック</th>
+            <th>ID</th>
+            <th>名前</th>
+            <th>電話番号</th>
+            <th>郵便番号</th>
+            <th>住所1</th>
+            <th>住所2</th>
+          </tr>
+        </thead>
+        <tbody>
+        <?
+          $mail_number = [];
+          $address = [];
+          $ignore_mail_number = [];
+          $ignore_address = [];
+          foreach ($report['u_entry_accounts'] as $account) {
+
+              if (in_array($account['mail_number'], $mail_number)) {
+                  if (!in_array($account['mail_number'], $ignore_mail_number)) {
+                      $ignore_mail_number[] = $account['mail_number'];
+                  }
+              }
+
+              if (in_array($account['address'], $address)) {
+                  if (!in_array($account['address'], $ignore_address)) {
+                      $ignore_address[] = $account['address'];
+                  }
+              }
+
+              $mail_number[] = $account['mail_number'];
+              $address[] = $account['address'];
+          }
+        ?>
+        <? foreach ($report['u_entry_accounts'] as $account) { ?>
+          <?
+            $class = '';
+            if (in_array($account['mail_number'], $ignore_mail_number)) {
+                $class = 'warning';
+            }
+            if (in_array($account['address'], $ignore_address)) {
+                $class = 'error';
+            }
+          ?>
+          <tr class="<?= $class; ?>">
+            <td class="span2"><input type="checkbox" name="entry_account<?= $account['id']; ?>" value="<?= $account['id']; ?>" checked /></td>
+            <td><?= $account['id']; ?></td>
+            <td><?= $account['name']; ?></td>
+            <td><?= $account['phone_number']; ?></td>
+            <td><?= $account['mail_number']; ?></td>
+            <td><?= $account['address']; ?></td>
+            <td><?= $account['house_number']; ?></td>
+          </tr>
+        <? } ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- /block -->
+
+<!-- block -->
+<div class="block">
+  <div class="navbar navbar-inner block-header">
+    <div class="muted pull-left">ご当選者様感想</div>
+  </div>
+  <div class="block-content collapse in">
+    <div class="span12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>チェック <p class="btn" onclick="$('.success input').attr('checked',true);">緑</p></th>
+            <th>感想</th>
+          </tr>
+        </thead>
+        <tbody>
+        <? foreach ($report['u_collection_impressions'] as $value) { ?>
+          <? if (\Grepo\Models\Impression::findFirstByUCollectionImpressionId($value['id'])) { ?>
+          <tr class="success">
+            <td class="span2"><input type="checkbox" name="impression<?= $value['id']; ?>" value="<?= $value['id']; ?>" /></td>
+            <td><?= $value['body']; ?></td>
+          </tr>
+          <? } else { ?>
+          <tr>
+            <td class="span2"><input type="checkbox" name="impression<?= $value['id']; ?>" value="<?= $value['id']; ?>" /></td>
+            <td><?= $value['body']; ?></td>
+          </tr>
+          <? } ?>
+        <? } ?>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="span12">
+      <p>※機種依存文字（絵文字など）が文字化けをしている場合がございます。ご了承ください。</p>
+    </div>
+  </div>
+</div>
+<!-- /block -->
+
+
+<script>
+    $(function(){
+        $("input").on("keydown", function(e) {
+            if ((e.which && e.which === 13) || (e.keyCode && e.keyCode === 13)) {
+                return false;
+            } else {
+                return true;
+            }
+        });
+    });
+</script>

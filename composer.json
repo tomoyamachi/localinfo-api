@@ -1,0 +1,45 @@
+{
+    "name": "product",
+    "description": "product",
+    "version": "v1",
+    "type": "project",
+    "keywords": ["php5", "phalcon"],
+    "license": "proprietary",
+    "repositories": [
+        {"type": "vcs", "url": "git@github.com:gochipon/php-common.git"},
+        {"type": "vcs", "url": "git@github.com:gochipon/php-phalcon.git"},
+        {"type": "vcs", "url": "git@github.com:tomoya-amachi/api-phalcon.git"}
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "ext-phalcon": ">=2.0",
+        "phalcon/incubator": "dev-master",
+        "gochipon/php-common": "dev-master",
+        "gochipon/php-phalcon": "dev-master",
+        "tomoya-amachi/api-phalcon": "dev-master",
+        "PHPMailer/PHPMailer": "dev-master"
+    },
+    "require-dev": {
+        "phalcon/devtools": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Papi\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Test\\": "test",
+            "Gcl\\": "../php-common/src",
+            "Gpl\\": "../php-phalcon/src",
+            "Api\\": "../api-phalcon/src"
+        }
+
+    },
+    "config": {
+        "bin-dir": "bin",
+        "vendor-dir": "var/composer/vendor"
+    },
+
+    "minimum-stability": "dev"
+}

@@ -1,0 +1,8 @@
+<div class="span10" id="content">
+
+     <?= $this->partial('report/_reportPanels'); ?>
+
+<?= $this->partial('common/_panelset', ['panelHeadline' => 'お客様への連絡', 'panelBody' => $mailSendBody]); ?>
+
+<?= $footerButton ?>
+</div>

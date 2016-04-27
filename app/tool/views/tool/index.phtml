@@ -1,0 +1,17 @@
+<table class="table table-hover table-striped">
+<tr>
+     <th>テーブル名</th><th>説明</th>
+     <th>スキーマ情報</th><th>実データ</th>
+</tr>
+
+<?php
+foreach ($tables as $tableName => $config ) {
+
+     $link = '<a href="/tool/%s?table=%s">移動する</a>';
+     $schema = sprintf($link,'schema',$tableName);
+     $list = sprintf($link,'list',$tableName);
+     echo sprintf('<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>',
+                  $tableName,$config->title,$schema,$list);
+}
+?>
+</table>
