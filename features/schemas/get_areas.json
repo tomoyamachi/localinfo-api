@@ -1,0 +1,23 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "total": {"type": "integer"},
+        "count": {"type": "integer"},
+        "page": {"type": "integer"},
+        "offset": {"type": "integer"},
+        "result" : {
+            "type" : "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {"type": "integer"},
+                    "prefecture_id": {"type": "integer"},
+                    "name": {"type": "string"},
+                },
+                "required": ["id", "prefecture_id","name"]
+            }
+        }
+    },
+    "required": ["total", "count", "page", "offset", "result"]
+}

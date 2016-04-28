@@ -1,0 +1,33 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "total": {"type": "integer"},
+        "count": {"type": "integer"},
+        "page": {"type": "integer"},
+        "offset": {"type": "integer"},
+        "result" : {
+            "type" : "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {"type": "integer"},
+                    "name": {"type": "string"},
+                    "posted_id": {"type": "integer"},
+                    "posted_name": {"type": "string"},
+                    "prefecture_id": {"type": "integer"},
+                    "area_id": {"type": "integer"},
+                    "prefecture_name": {"type": "string"},
+                    "area_name": {"type": "string"},
+                    "comment": {"type": "string"},
+                    "image_url": {"type": "string"},
+                    "created_at": {"type": "string"},
+                    "updated_at": {"type": "string"}
+                },
+                "required": ["id", "posted_id", "posted_name","name", "prefecture_id", "area_id",
+                             "prefecture_name", "area_name","comment", "image_url", "created_at", "updated_at"]
+            }
+        }
+    },
+    "required": ["total", "count", "page", "offset", "result"]
+}

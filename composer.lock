@@ -1,0 +1,388 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "41cd3563ab969459ea0409f5703d644d",
+    "content-hash": "ec85eb7a18558383d7b77055e7ccbc73",
+    "packages": [
+        {
+            "name": "gochipon/php-common",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:gochipon/php-common.git",
+                "reference": "97e3375af2ef386569a52073e78261c166c4c76f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gochipon/php-common/zipball/97e3375af2ef386569a52073e78261c166c4c76f",
+                "reference": "97e3375af2ef386569a52073e78261c166c4c76f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gcl\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Test\\": "test"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "description": "Gochipon Common Library",
+            "keywords": [
+                "php5"
+            ],
+            "time": "2016-03-17 20:20:53"
+        },
+        {
+            "name": "gochipon/php-phalcon",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:gochipon/php-phalcon.git",
+                "reference": "684ee769b079c9011a7568d5e08c819359006d31"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gochipon/php-phalcon/zipball/684ee769b079c9011a7568d5e08c819359006d31",
+                "reference": "684ee769b079c9011a7568d5e08c819359006d31",
+                "shasum": ""
+            },
+            "require": {
+                "ext-phalcon": ">=2.0",
+                "gochipon/php-common": "dev-master",
+                "phalcon/incubator": "dev-master",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phalcon/devtools": "dev-master"
+            },
+            "bin": [
+                "bin/.init.php",
+                "bin/gpl-task"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gpl\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Test\\": "test",
+                    "TestProject\\": "test/fixture/project/src"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "description": "Gochipon Phalcon Library",
+            "keywords": [
+                "phalcon",
+                "php5"
+            ],
+            "time": "2016-03-31 07:48:28"
+        },
+        {
+            "name": "phalcon/incubator",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phalcon/incubator.git",
+                "reference": "1fbe3750e2710f6dffb936b04e22e2d4f885b76d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phalcon/incubator/zipball/1fbe3750e2710f6dffb936b04e22e2d4f885b76d",
+                "reference": "1fbe3750e2710f6dffb936b04e22e2d4f885b76d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-phalcon": ">=2.0.4",
+                "php": ">=5.4",
+                "swiftmailer/swiftmailer": "~5.2"
+            },
+            "require-dev": {
+                "codeception/aerospike-module": "^0.1",
+                "codeception/codeception": "^2.1",
+                "codeception/mockery-module": "^0.2",
+                "squizlabs/php_codesniffer": "^2.5"
+            },
+            "suggest": {
+                "duncan3dc/fork-helper": "To use extended class to access the beanstalk queue service",
+                "ext-aerospike": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Phalcon\\": "Library/Phalcon/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Phalcon Team",
+                    "email": "team@phalconphp.com"
+                }
+            ],
+            "description": "Adapters, prototypes or functionality that can be potentially incorporated to the C-framework.",
+            "homepage": "http://phalconphp.com",
+            "keywords": [
+                "framework",
+                "incubator",
+                "phalcon"
+            ],
+            "time": "2016-02-05 19:41:35"
+        },
+        {
+            "name": "phpmailer/phpmailer",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPMailer/PHPMailer.git",
+                "reference": "b04ab34d77e59082a22f893b7b720613b172d5fe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/b04ab34d77e59082a22f893b7b720613b172d5fe",
+                "reference": "b04ab34d77e59082a22f893b7b720613b172d5fe",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0.0"
+            },
+            "require-dev": {
+                "phpdocumentor/phpdocumentor": "*",
+                "phpunit/phpunit": "4.7.*"
+            },
+            "suggest": {
+                "league/oauth2-google": "Needed for Google XOAUTH2 authentication"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "class.phpmailer.php",
+                    "class.phpmaileroauth.php",
+                    "class.phpmaileroauthgoogle.php",
+                    "class.smtp.php",
+                    "class.pop3.php",
+                    "extras/EasyPeasyICS.php",
+                    "extras/ntlm_sasl_client.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1"
+            ],
+            "authors": [
+                {
+                    "name": "Jim Jagielski",
+                    "email": "jimjag@gmail.com"
+                },
+                {
+                    "name": "Marcus Bointon",
+                    "email": "phpmailer@synchromedia.co.uk"
+                },
+                {
+                    "name": "Andy Prevost",
+                    "email": "codeworxtech@users.sourceforge.net"
+                },
+                {
+                    "name": "Brent R. Matzelle"
+                }
+            ],
+            "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
+            "time": "2016-04-25 09:01:04"
+        },
+        {
+            "name": "swiftmailer/swiftmailer",
+            "version": "5.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swiftmailer/swiftmailer.git",
+                "reference": "fffbc0e2a7e376dbb0a4b5f2ff6847330f20ccf9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/fffbc0e2a7e376dbb0a4b5f2ff6847330f20ccf9",
+                "reference": "fffbc0e2a7e376dbb0a4b5f2ff6847330f20ccf9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9.1,<0.9.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.4-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "lib/swift_required.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Corbyn"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Swiftmailer, free feature-rich PHP mailer",
+            "homepage": "http://swiftmailer.org",
+            "keywords": [
+                "email",
+                "mail",
+                "mailer"
+            ],
+            "time": "2016-01-03 15:42:47"
+        },
+        {
+            "name": "tomoya-amachi/api-phalcon",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:tomoya-amachi/api-phalcon.git",
+                "reference": "88309f0ca85abb83d31564e7a6101236f4885f91"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tomoya-amachi/api-phalcon/zipball/88309f0ca85abb83d31564e7a6101236f4885f91",
+                "reference": "88309f0ca85abb83d31564e7a6101236f4885f91",
+                "shasum": ""
+            },
+            "require": {
+                "ext-phalcon": ">=2.0",
+                "gochipon/php-common": "dev-master",
+                "phalcon/incubator": "dev-master",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phalcon/devtools": "dev-master"
+            },
+            "bin": [
+                "bin/.init.php",
+                "bin/gpl-task"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Api\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Test\\": "test",
+                    "TestProject\\": "test/fixture/project/src"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "description": "Gochipon API-Phalcon Library",
+            "keywords": [
+                "phalcon",
+                "php5"
+            ],
+            "time": "2016-04-08 05:58:54"
+        }
+    ],
+    "packages-dev": [
+        {
+            "name": "phalcon/devtools",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phalcon/phalcon-devtools.git",
+                "reference": "54bc21bb262ad40b4a07ff148691a895279eeac0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phalcon/phalcon-devtools/zipball/54bc21bb262ad40b4a07ff148691a895279eeac0",
+                "reference": "54bc21bb262ad40b4a07ff148691a895279eeac0",
+                "shasum": ""
+            },
+            "require": {
+                "ext-phalcon": "~2.0",
+                "php": ">=5.3.9"
+            },
+            "require-dev": {
+                "kherge/box": "^2.5"
+            },
+            "bin": [
+                "phalcon.php"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Phalcon\\": "scripts/Phalcon/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Phalcon Team",
+                    "email": "team@phalconphp.com"
+                }
+            ],
+            "description": "This tools provide you useful scripts to generate code helping to develop faster and easy applications that use with Phalcon framework.",
+            "homepage": "http://phalconphp.com",
+            "keywords": [
+                "Devtools",
+                "framework",
+                "phalcon",
+                "phar",
+                "webtools"
+            ],
+            "time": "2016-02-05 07:08:56"
+        }
+    ],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "phalcon/incubator": 20,
+        "gochipon/php-common": 20,
+        "gochipon/php-phalcon": 20,
+        "tomoya-amachi/api-phalcon": 20,
+        "phpmailer/phpmailer": 20,
+        "phalcon/devtools": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=5.5.0",
+        "ext-phalcon": ">=2.0"
+    },
+    "platform-dev": []
+}

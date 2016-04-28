@@ -1,0 +1,14 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "id": {"type": "integer"},
+        "treasure_id": {"type": "integer"},
+        "posted_id": {"type": "integer"},
+        "posted_name": {"type": "string"},
+        "comment": {"type": "string"},
+        "created_at": {"type": "string"},
+        "updated_at": {"type": "string"}
+    },
+    "required": ["id", "treasure_id", "posted_id", "comment", "created_at", "updated_at"]
+}
