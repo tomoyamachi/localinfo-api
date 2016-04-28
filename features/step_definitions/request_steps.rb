@@ -70,7 +70,7 @@ Then(/^"(.*?)" should be equal "(.*?)"$/) do |key, value|
 end
 
 # 指定したセッションにユーザー情報を保存
-Given /^I am logged in as "(.*)"$/ do |email|
+Given /^I am logged in as "(.*)"$/ do |token|
   if $current_session.nil?
     $current_session = (0...8).map { (65 + rand(26)).chr }.join
   end
@@ -82,8 +82,8 @@ Given /^I am logged in as "(.*)"$/ do |email|
   }
 
   @body = {
-    :login_token => 'valid_token',
-    :app_code => 'gcpn',
+    :login_token => token,
+    :app_code => 'treasure',
   }
 
   request_url = $BASEURL+'login'

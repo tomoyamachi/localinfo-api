@@ -14,7 +14,9 @@ class TreasureController extends \Api\Controllers\Api\AbstractController
         }
 
         // 引数に問題がなければ検索
-        $result = [['id' => 1, 'name' => 'hoge']];
+        $data = ['id' => 1, 'name' => 'hoge', 'posted_id' => 1, 'posted_name' => 'fuga', 'prefecture_id' => 1, 'prefecture_name' => 'ほげ', 'area_id' => 1, 'area_name' => 'fuga', 'comment' => 'jojojo', 'image_url' => 'http://image', 'created_at' => '20', 'updated_at' => '2093'];
+        $result = ['count' => 10,'page' => 1, 'offset' => 10,
+                   'result' => [$data]];
         /* $treasures = Treasure::find($params); */
         /* $result = RTreasure::getMultipleContent($treasures); */
         return $this->responseValidStatus($result);
@@ -30,7 +32,8 @@ class TreasureController extends \Api\Controllers\Api\AbstractController
         if ($response !== true) {
             return;
         }
-        $result = ['id' => 1, 'name' => 'hoge'];
+
+        $result = ['id' => 1, 'name' => 'hoge', 'posted_id' => 1, 'posted_name' => 'fuga', 'prefecture_id' => 1, 'prefecture_name' => 'ほげ', 'area_id' => 1, 'area_name' => 'fuga', 'comment' => 'jojojo', 'image_url' => 'http://image', 'created_at' => '20', 'updated_at' => '2093'];
 
         /* try { */
         /*     $treasure = Treasure::findFirst($treasureId); */
