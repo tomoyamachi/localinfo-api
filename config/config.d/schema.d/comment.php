@@ -9,6 +9,7 @@ return Table::getDefinition('comment', [
     Column::getVarchar('account_id', ['notNull' => true]),
     Column::getVarchar('treasure_id', ['notNull' => true]),
     Column::getInteger('comment'),
+    Column::getVarchar('status'),
     Column::getDateTime('created_at'),
     Column::getDateTime('updated_at'),
                       ],

@@ -17,6 +17,11 @@ return array (
       ),
       'label' => 'トークン',
     ),
+    'status' =>    array (
+      'validation' =>      array (
+      ),
+      'label' => '状態',
+    ),
     'created_at' =>    array (
       'validation' =>      array (
       ),

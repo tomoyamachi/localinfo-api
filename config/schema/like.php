@@ -19,6 +19,11 @@ return array (
       ),
       'label' => 'お宝',
     ),
+    'status' =>    array (
+      'validation' =>      array (
+      ),
+      'label' => '状態',
+    ),
     'created_at' =>    array (
       'validation' =>      array (
       ),

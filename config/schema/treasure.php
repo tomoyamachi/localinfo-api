@@ -22,15 +22,20 @@ return array (
       ),
       'label' => NULL,
     ),
-    'm_prefecture_id' =>    array (
+    'prefecture_id' =>    array (
       'validation' =>      array (
       ),
       'label' => NULL,
     ),
-    'm_area_id' =>    array (
+    'area_id' =>    array (
       'validation' =>      array (
       ),
       'label' => NULL,
+    ),
+    'status' =>    array (
+      'validation' =>      array (
+      ),
+      'label' => '状態',
     ),
     'created_at' =>    array (
       'validation' =>      array (
@@ -49,8 +54,8 @@ return array (
     'account_id' => NULL,
     'image' => NULL,
     'comment' => NULL,
-    'm_prefecture_id' => NULL,
-    'm_area_id' => NULL,
+    'prefecture_id' => NULL,
+    'area_id' => NULL,
     'created_at' => NULL,
     'updated_at' => NULL,
   ),

@@ -8,6 +8,7 @@ return Table::getDefinition('like', [
     Column::getPrimaryKey('id'),
     Column::getInteger('account_id', ['notNull' => true]),
     Column::getInteger('treasure_id', ['notNull' => true]),
+    Column::getVarchar('status'),
     Column::getDateTime('created_at'),
     Column::getDateTime('updated_at'),
                       ],

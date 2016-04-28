@@ -8,6 +8,7 @@ return Table::getDefinition('account', [
     Column::getPrimaryKey('id'),
     Column::getVarchar('nickname'),
     Column::getText('login_token'),
+    Column::getVarchar('status'),
     Column::getDateTime('created_at'),
     Column::getDateTime('updated_at'),
                       ],
