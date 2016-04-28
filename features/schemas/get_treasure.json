@@ -4,8 +4,8 @@
     "properties": {
         "id": {"type": "integer"},
         "name": {"type": "string"},
-        "posted_id": {"type": "integer"},
-        "posted_name": {"type": "string"},
+        "account_id": {"type": "integer"},
+        "account_name": {"type": "string"},
         "prefecture_id": {"type": "integer"},
         "area_id": {"type": "integer"},
         "prefecture_name": {"type": "string"},
