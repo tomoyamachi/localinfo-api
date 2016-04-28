@@ -12,6 +12,11 @@ return array (
       ),
       'label' => NULL,
     ),
+    'title' =>    array (
+      'validation' =>      array (
+      ),
+      'label' => 'お宝名',
+    ),
     'image' =>    array (
       'validation' =>      array (
       ),

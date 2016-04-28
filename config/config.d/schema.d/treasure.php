@@ -7,6 +7,7 @@ return Table::getDefinition('treasure', [
         'columns' => [
     Column::getPrimaryKey('id'),
     Column::getInteger('account_id'),
+    Column::getVarchar('title'),
     Column::getVarchar('image'),
     Column::getText('comment'),
     Column::getInteger('prefecture_id'),

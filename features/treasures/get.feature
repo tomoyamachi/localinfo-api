@@ -1,6 +1,6 @@
 @treasure
 Feature: お宝一覧の取得とお宝詳細の取得をする
-  @success
+  @success @tmp
   Scenario: Get some treasures info
       When I send and accept JSON
       And I set form request body to:

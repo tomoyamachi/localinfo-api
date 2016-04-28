@@ -3,7 +3,7 @@
     "type": "object",
     "properties": {
         "id": {"type": "integer"},
-        "name": {"type": "string"},
+        "title": {"type": "string"},
         "account_id": {"type": "integer"},
         "account_name": {"type": "string"},
         "prefecture_id": {"type": "integer"},
@@ -15,6 +15,6 @@
         "created_at": {"type": "string"},
         "updated_at": {"type": "string"}
     },
-    "required": ["id", "posted_id", "posted_name","name", "prefecture_id", "area_id",
-                 "prefecture_name", "area_name","comment", "image_url", "created_at", "updated_at"]
+    "required": ["id", "account_id", "title", "prefecture_id", "area_id",
+                 "comment", "image_url", "created_at", "updated_at"]
 }

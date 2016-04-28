@@ -1,6 +1,9 @@
 <?php
 namespace Treasure\V1\Controllers;
 
+use \Treasure\Models\Model\Treasure;
+use \Treasure\Response\Treasure as RTreasure;
+
 class TreasureController extends \Api\Controllers\Api\AbstractController
 {
     /**
@@ -14,12 +17,15 @@ class TreasureController extends \Api\Controllers\Api\AbstractController
         }
 
         // 引数に問題がなければ検索
-        $data = ['id' => 1, 'name' => 'hoge', 'posted_id' => 1, 'posted_name' => 'fuga', 'prefecture_id' => 1, 'prefecture_name' => 'ほげ', 'area_id' => 1, 'area_name' => 'fuga', 'comment' => 'jojojo', 'image_url' => 'http://image', 'created_at' => '20', 'updated_at' => '2093'];
-        $result = ['count' => 10,'page' => 1, 'offset' => 10,
-                   'result' => [$data]];
-        /* $treasures = Treasure::find($params); */
-        /* $result = RTreasure::getMultipleContent($treasures); */
-        return $this->responseValidStatus($result);
+        //TODO : 状態がvalidのものを検索できるように
+        $treasures = Treasure::find($params);
+        $total = 100;
+
+        $result = RTreasure::getMultipleContent($treasures);
+        $params['result'] = $result;
+        $params['count'] = count($treasures);
+        $params['total'] = $total;
+        return $this->responseValidStatus($params);
     }
 
     /**
@@ -33,14 +39,13 @@ class TreasureController extends \Api\Controllers\Api\AbstractController
             return;
         }
 
-        $result = ['id' => 1, 'name' => 'hoge', 'posted_id' => 1, 'posted_name' => 'fuga', 'prefecture_id' => 1, 'prefecture_name' => 'ほげ', 'area_id' => 1, 'area_name' => 'fuga', 'comment' => 'jojojo', 'image_url' => 'http://image', 'created_at' => '20', 'updated_at' => '2093'];
 
-        /* try { */
-        /*     $treasure = Treasure::findFirst($treasureId); */
-        /*     $result = RTreasure::getContent($treasure); */
-        /* } catch (\Exception $e) { */
-        /*     return $this->responseExceptionError($e); */
-        /* } */
+        try {
+            $treasure = Treasure::findFirst($treasureId);
+            $result = RTreasure::getContent($treasure);
+        } catch (\Exception $e) {
+            return $this->responseExceptionError($e);
+        }
 
         return $this->responseValidStatus($result);
     }
