@@ -88,6 +88,46 @@ class V1 extends Base
                                                      'account_id' => 1
                                                      ],
                                            ],
+
+
+              '/v1/treasures/{id}/likes' => [
+                                 'Get' => ['controller' => 'like',
+                                           'action' => 'get',
+                                           'treasure_id' => 1],
+                                 'Post' => ['controller' => 'like',
+                                            'action' => 'create',
+                                            'treasure_id' => 1,
+                                            ],
+                                 ],
+
+
+              '/v1/treasures/{id}/likes/{id}' => [
+                                 'Get' => ['controller' => 'like',
+                                           'action' => 'getTarget',
+                                           'treasure_id' => 1,
+                                           'like_id' => 2,
+                                           ],
+                                 'Put' => ['controller' => 'like',
+                                           'action' => 'update',
+                                           'treasure_id' => 1,
+                                           'like_id' => 2,
+                                           ],
+                                 'Delete' => ['controller' => 'like',
+                                            'action' => 'delete',
+                                            'treasure_id' => 1,
+                                            'like_id' => 2,
+                                            ],
+                                 ],
+
+
+              '/v1/accounts/{id}/likes' => [
+                                           'Get' => ['controller' => 'like',
+                                                     'action' => 'getTargetUsers',
+                                                     'account_id' => 1
+                                                     ],
+                                           ],
+
+
               '/v1/prefectures' => [
                                  'Get' => ['controller' => 'prefecture',
                                            'action' => 'get'],

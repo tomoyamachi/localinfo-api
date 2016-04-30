@@ -4,7 +4,7 @@
     "properties": {
         "total": {"type": "integer"},
         "count": {"type": "integer"},
-        "page": {"type": "integer"},
+        "limit": {"type": "integer"},
         "offset": {"type": "integer"},
         "result" : {
             "type" : "array",
@@ -13,13 +13,13 @@
                 "properties": {
                     "id": {"type": "integer"},
                     "treasure_id": {"type": "integer"},
-                    "posted_id": {"type": "integer"},
-                    "posted_name": {"type": "string"},
-                    "created_at": {"type": "string"},
+                    "account_id": {"type": "integer"},
+                    "account_name": {"type": "string"},
+                    "created_at": {"type": "string"}
                 },
-                "required": ["id", "treasure_id", "posted_id", "comment", "created_at"]
+                "required": ["id", "treasure_id", "account_id", "created_at"]
             }
         }
     },
-    "required": ["total", "count", "page", "offset", "result"]
+    "required": ["count", "limit", "offset", "result"]
 }
