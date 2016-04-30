@@ -25,6 +25,28 @@ class Treasure extends \Treasure\Models\Model\UserAbstract
     const STATUS_INVALID = 'invalid';
     public static $statusLabel = [self::STATUS_VALID => '有効',
                                   self::STATUS_INVALID => '無効',];
+    protected static $instance = null;
+
+    // {{{ public static function getInstance()
+    /**
+     * 呼び出し元のinstanceを返却
+     */
+    public static function getInstance()
+    {
+        if (is_null(self::$instance)) {
+            self::$instance = new static();
+        }
+        return self::$instance;
+    }
+    // }}}
+
+
+    // キャッシュがあればキャッシュから取得
+    public function findFirstById($id)
+    {
+        $conditions = ['id' => $id];
+        return $this->findOrCreateCache($conditions);
+    }
 
 
     public function initializeByFirst($accountId)
@@ -37,6 +59,43 @@ class Treasure extends \Treasure\Models\Model\UserAbstract
             $this->set($column, $default);
         }
     }
+
+
+    /**
+     * 指定されたパラメータの中のconditionにstatus = validを追加
+     * @param array $params
+     * @return array
+     */
+    private function getConditionWithStatusValid($params)
+    {
+        $condition = isset($params['conditions']) ? $params['conditions'] : [];
+        $condition['status'] = self::STATUS_VALID;
+        return $condition;
+    }
+
+    /**
+     * 有効なもののみ取得
+     * @param array $params
+     * @return resultset
+     */
+    public function findStatusValid($params)
+    {
+        $params['conditions'] = $this->getConditionWithStatusValid($params);
+        return self::find($params);
+    }
+
+    /**
+     * 指定した検索条件で有効な件数を表示
+     * @param array $params
+     * @return int
+     */
+    public function getTotalStatusValid($params)
+    {
+        $condition = $this->getConditionWithStatusValid($params);
+        return self::count($condition);
+    }
+
+
 
     /**
      * 投稿者名を取得

@@ -29,5 +29,5 @@
             }
         }
     },
-    "required": ["total", "count", "limit", "offset", "result"]
+    "required": ["count", "limit", "offset", "result"]
 }

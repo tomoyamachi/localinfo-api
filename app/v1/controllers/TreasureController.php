@@ -17,14 +17,20 @@ class TreasureController extends \Api\Controllers\Api\AbstractController
         }
 
         // 引数に問題がなければ検索
-        //TODO : 状態がvalidのものを検索できるように
-        $treasures = Treasure::find($params);
-        $total = 100;
+        $treasureModel = Treasure::getInstance();
+        $treasures = $treasureModel->findStatusValid($params);
+
 
         $result = RTreasure::getMultipleContent($treasures);
         $params['result'] = $result;
         $params['count'] = count($treasures);
-        $params['total'] = $total;
+
+        // 総件数まで必要ならtotalを付加
+        $withTotal = $this->request->getQuery('total');
+        if ($withTotal == '1') {
+            $params['total'] = $treasureModel->getTotalStatusValid($params);
+        }
+
         return $this->responseValidStatus($params);
     }
 
@@ -41,7 +47,8 @@ class TreasureController extends \Api\Controllers\Api\AbstractController
 
 
         try {
-            $treasure = Treasure::findFirst($treasureId);
+            $treasureModel = Treasure::getInstance();
+            $treasure = $treasureModel->findFirstById($treasureId);
             $result = RTreasure::getContent($treasure);
         } catch (\Exception $e) {
             return $this->responseExceptionError($e);

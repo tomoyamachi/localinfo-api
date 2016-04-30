@@ -3,15 +3,20 @@ Feature: お宝一覧の取得とお宝詳細の取得をする
   @success @tmp
   Scenario: Get some treasures info
       When I send and accept JSON
-      And I set form request body to:
-      | limit    | 50  |
-      | offset   | 1   |
-      And I send a GET request to "treasures"
+      And I send a GET request to "treasures?limit=10&offset=0"
       Then the response status should be "200"
       And the JSON response should follow "features/schemas/get_treasures.json"
       When I grab "$['result'][0]['id']" as "treasure_id"
       And I send a GET request to "treasures/{treasure_id}"
       And the JSON response should follow "features/schemas/get_treasure.json"
+
+  @success @tmp
+  Scenario: Get some treasures info with total count
+      When I send and accept JSON
+      And I send a GET request to "treasures?limit=10&offset=0&total=1"
+      Then the response status should be "200"
+      And the JSON response should follow "features/schemas/get_treasures.json"
+      And the JSON response should have required key "total" of type numeric
 
 
   @failure
@@ -25,7 +30,6 @@ Feature: お宝一覧の取得とお宝詳細の取得をする
       |     0 |      1 |    400 |
       |     1 |      1 |    200 |
       |    50 |     -1 |    400 |
-      |       |      0 |    400 |
       |    -1 |     -1 |    400 |
       |    １ |      1 |    400 |
       |     1 |     １ |    400 |
