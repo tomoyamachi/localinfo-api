@@ -52,7 +52,42 @@ class V1 extends Base
                                            ],
 
 
+              '/v1/treasures/{id}/comments' => [
+                                 'Get' => ['controller' => 'comment',
+                                           'action' => 'get',
+                                           'treasure_id' => 1],
+                                 'Post' => ['controller' => 'comment',
+                                            'action' => 'create',
+                                            'treasure_id' => 1,
+                                            ],
+                                 ],
 
+
+              '/v1/treasures/{id}/comments/{id}' => [
+                                 'Get' => ['controller' => 'comment',
+                                           'action' => 'getTarget',
+                                           'treasure_id' => 1,
+                                           'comment_id' => 2,
+                                           ],
+                                 'Put' => ['controller' => 'comment',
+                                           'action' => 'update',
+                                           'treasure_id' => 1,
+                                           'comment_id' => 2,
+                                           ],
+                                 'Delete' => ['controller' => 'comment',
+                                            'action' => 'delete',
+                                            'treasure_id' => 1,
+                                            'comment_id' => 2,
+                                            ],
+                                 ],
+
+
+              '/v1/accounts/{id}/comments' => [
+                                           'Get' => ['controller' => 'comment',
+                                                     'action' => 'getTargetUsers',
+                                                     'account_id' => 1
+                                                     ],
+                                           ],
               '/v1/prefectures' => [
                                  'Get' => ['controller' => 'prefecture',
                                            'action' => 'get'],
@@ -91,6 +126,8 @@ class V1 extends Base
                                            'area_id' => 2,
                                            ],
                                  ],
+
+
               ];
 
     /**

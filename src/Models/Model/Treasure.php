@@ -126,7 +126,7 @@ class Treasure extends \Treasure\Models\Model\UserAbstract
      */
     protected function getAccountName()
     {
-        return 'ほげ';
+        return 'HOGESampleName';
     }
 
 
@@ -136,7 +136,7 @@ class Treasure extends \Treasure\Models\Model\UserAbstract
      */
     protected function getPrefectureName()
     {
-        return 'はげ県';
+        return 'HOGEPREFEC';
     }
 
     /**
@@ -145,7 +145,7 @@ class Treasure extends \Treasure\Models\Model\UserAbstract
      */
     protected function getAreaName()
     {
-        return 'でぶ区';
+        return 'HOGEAREA';
     }
 
     /**
@@ -154,6 +154,6 @@ class Treasure extends \Treasure\Models\Model\UserAbstract
      */
     protected function getImageUrl()
     {
-        return 'http://image.test.com/hoge.png';
+        return 'http://sample.image.test.com/hoge.png';
     }
 }

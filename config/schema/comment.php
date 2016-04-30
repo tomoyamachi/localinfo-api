@@ -46,6 +46,7 @@ return array (
     'account_id' => '投稿者',
     'treasure_id' => 'お宝',
     'comment' => 'コメント内容',
+    'status' => '状態',
     'created_at' => '作成日',
     'updated_at' => '更新日',
   ),
