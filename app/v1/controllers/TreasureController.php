@@ -8,7 +8,7 @@ use \Api\Models\Validator;
 class TreasureController extends \Treasure\V1\Controllers\GetUserController
 {
 
-    protected $withoutAccountActions = ['get' => 1, 'getTarget' => 1, 'getTargetUsers' => 1];
+    protected $withoutAccountActions = ['get' => 1, 'getTarget' => 1, 'getTargetUsers' => 1, 'getTargetPrefectures' => 1, 'getTargetAreas' => 1];
 
     /**
      * 全データを返却
@@ -66,21 +66,52 @@ class TreasureController extends \Treasure\V1\Controllers\GetUserController
      */
     public function getTargetUsersAction()
     {
+
+        return $this->getTargetAttributes('account');
+    }
+
+
+    /**
+     * 対象の県のレビューを取得
+     */
+    public function getTargetPrefecturesAction()
+    {
+        return $this->getTargetAttributes('prefecture');
+    }
+
+
+    /**
+     * 対象の県のレビューを取得
+     */
+    public function getTargetAreasAction()
+    {
+        return $this->getTargetAttributes('area');
+    }
+
+
+    /**
+     * フィルタリング
+     * @param  $attribute
+     * @return Response
+     */
+    private function getTargetAttributes($attribute)
+    {
+
         $params = $this->checkLimitOffsetParameter();
         if ($params instanceof \Gpl\Http\Response) {
             return;
         }
 
         // IDに問題がないか確認
-        $accountId = $this->dispatcher->getParam('account_id');
-        $response = $this->checkPositiveInteger($accountId);
+        $attributeId = $this->dispatcher->getParam($attribute.'_id');
+        $response = $this->checkPositiveInteger($attributeId);
         if ($response !== true) {
             return $response;
         }
 
         // 引数に問題がなければ検索
         $treasureModel = Treasure::getInstance();
-        $params['conditions'] = ['account_id' => $accountId];
+        $params['conditions'] = [$attribute.'_id' => $attributeId];
         $treasures = $treasureModel->findStatusValid($params);
 
         $result = RTreasure::getMultipleContent($treasures);
@@ -95,6 +126,9 @@ class TreasureController extends \Treasure\V1\Controllers\GetUserController
 
         return $this->responseValidStatus($params);
     }
+
+
+
 
     /**
      * レビューを作成

@@ -4,7 +4,7 @@
     "properties": {
         "total": {"type": "integer"},
         "count": {"type": "integer"},
-        "page": {"type": "integer"},
+        "limit": {"type": "integer"},
         "offset": {"type": "integer"},
         "result" : {
             "type" : "array",
@@ -13,11 +13,11 @@
                 "properties": {
                     "id": {"type": "integer"},
                     "prefecture_id": {"type": "integer"},
-                    "name": {"type": "string"},
+                    "name": {"type": "string"}
                 },
                 "required": ["id", "prefecture_id","name"]
             }
         }
     },
-    "required": ["total", "count", "page", "offset", "result"]
+    "required": ["count", "limit", "offset", "result"]
 }

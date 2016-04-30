@@ -32,6 +32,7 @@ class V1 extends Base
                                             'action' => 'create'
                                             ]
                                  ],
+
               '/v1/treasures/{id}' => [
                                       'Get' => ['controller' => 'treasure',
                                                 'action' => 'getTarget',
@@ -50,6 +51,46 @@ class V1 extends Base
                                                      ],
                                            ],
 
+
+
+              '/v1/prefectures' => [
+                                 'Get' => ['controller' => 'prefecture',
+                                           'action' => 'get'],
+                                 ],
+              '/v1/prefectures/{id}' => [
+                                 'Get' => ['controller' => 'prefecture',
+                                           'action' => 'getTarget',
+                                           'prefecture_id' => 1
+                                           ],
+                                 ],
+              '/v1/prefectures/{id}/treasures' => [
+                                 'Get' => ['controller' => 'treasure',
+                                           'action' => 'getTargetPrefectures',
+                                           'prefecture_id' => 1
+                                           ],
+                                 ],
+
+
+              '/v1/prefectures/{id}/areas' => [
+                                 'Get' => ['controller' => 'area',
+                                           'action' => 'get',
+                                           'prefecture_id' => 1
+                                           ],
+                                 ],
+              '/v1/prefectures/{id}/areas/{id}' => [
+                                 'Get' => ['controller' => 'area',
+                                           'action' => 'getTarget',
+                                           'prefecture_id' => 1,
+                                           'area_id' => 2,
+                                           ],
+                                 ],
+              '/v1/prefectures/{id}/areas/{id}/treasures' => [
+                                 'Get' => ['controller' => 'treasure',
+                                           'action' => 'getTargetAreas',
+                                           'prefecture_id' => 1,
+                                           'area_id' => 2,
+                                           ],
+                                 ],
               ];
 
     /**

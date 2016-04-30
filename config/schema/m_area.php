@@ -7,7 +7,7 @@ return array (
       ),
       'label' => 'ID',
     ),
-    'm_prefecture_id' =>    array (
+    'prefecture_id' =>    array (
       'validation' =>      array (
       ),
       'label' => '都道府県ID',

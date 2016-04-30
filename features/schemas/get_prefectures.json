@@ -4,7 +4,7 @@
     "properties": {
         "total": {"type": "integer"},
         "count": {"type": "integer"},
-        "page": {"type": "integer"},
+        "limit": {"type": "integer"},
         "offset": {"type": "integer"},
         "result" : {
             "type" : "array",
@@ -12,11 +12,11 @@
                 "type": "object",
                 "properties": {
                     "id": {"type": "integer"},
-                    "name": {"type": "string"},
+                    "name": {"type": "string"}
                 },
                 "required": ["id", "name"]
             }
         }
     },
-    "required": ["total", "count", "page", "offset", "result"]
+    "required": ["count", "limit", "offset", "result"]
 }

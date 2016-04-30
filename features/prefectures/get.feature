@@ -11,6 +11,15 @@ Feature: 県一覧と県個別情報の取得
       And the JSON response should follow "features/schemas/get_prefecture.json"
 
   @success
+  Scenario: Get some prefectures info with total count
+      When I send and accept JSON
+      And I send a GET request to "prefectures?limit=10&offset=0&total=1"
+      Then the response status should be "200"
+      And the JSON response should follow "features/schemas/get_prefectures.json"
+      And the JSON response should have required key "total" of type numeric
+
+
+  @success
   Scenario: Get some areas info
       When I send and accept JSON
       And I send a GET request to "prefectures"
@@ -37,9 +46,9 @@ Feature: 県一覧と県個別情報の取得
       |             0 |    400 |
       |             1 |    200 |
       |           100 |    400 |
-      |           １ |    400 |
-      |               |    400 |
-      |         limit |    400 |
+      |            １ |    404  |
+      |               |    404  |
+      |         limit |    404  |
 
   @failure
   Scenario Outline: Invalid area id
@@ -52,5 +61,5 @@ Feature: 県一覧と県個別情報の取得
       |             1 |         -1 |    400 |
       |             1 |          0 |    400 |
       |             1 | 9999999999 |    400 |
-      |             1 |       hoge |    400 |
-      |             1 |         １ |    400 |
+      |             1 |       hoge |    404  |
+      |             1 |         １ |    404  |
