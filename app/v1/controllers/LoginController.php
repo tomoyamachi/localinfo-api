@@ -14,6 +14,7 @@ class LoginController extends \Api\Controllers\Api\AbstractController
         $loginToken = $req->getPost('login_token');
         $appCode = $req->getPost('app_code');
         $auth = ApiConnector::authenticate($loginToken, $appCode);
+
         if ($auth === false) {
             return $this->responseParameterError('No exist user');
         }

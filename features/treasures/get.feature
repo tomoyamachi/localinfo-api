@@ -1,6 +1,6 @@
-@treasure
+@treasure @get
 Feature: お宝一覧の取得とお宝詳細の取得をする
-  @success @tmp
+  @success
   Scenario: Get some treasures info
       When I send and accept JSON
       And I send a GET request to "treasures?limit=10&offset=0"
@@ -10,7 +10,7 @@ Feature: お宝一覧の取得とお宝詳細の取得をする
       And I send a GET request to "treasures/{treasure_id}"
       And the JSON response should follow "features/schemas/get_treasure.json"
 
-  @success @tmp
+  @success
   Scenario: Get some treasures info with total count
       When I send and accept JSON
       And I send a GET request to "treasures?limit=10&offset=0&total=1"
@@ -30,9 +30,9 @@ Feature: お宝一覧の取得とお宝詳細の取得をする
       |     0 |      1 |    400 |
       |     1 |      1 |    200 |
       |    50 |     -1 |    400 |
-      |    -1 |     -1 |    400 |
       |    １ |      1 |    400 |
       |     1 |     １ |    400 |
+      |    -1 |     -1 |    400 |
       | limit | offset |    400 |
       |     0 |      0 |    400 |
 
@@ -46,7 +46,6 @@ Feature: お宝一覧の取得とお宝詳細の取得をする
       | PUT    |    405 | treasures                   |
       | DELETE |    405 | treasures                   |
       | POST   |    405 | treasures/1                 |
-      | DELETE |    405 | treasures/1                 |
       | GET    |    404 | treasures/１                |
       | GET    |    404 | treasures/sampleId          |
       | GET    |    400 | treasures/-1                |
@@ -62,4 +61,4 @@ Feature: お宝一覧の取得とお宝詳細の取得をする
       | treasure_id | status |
       |          -1 |    400 |
       |           0 |    400 |
-      |      100000 |    200 |
+      |      100000 |    400 |

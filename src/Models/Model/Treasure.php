@@ -4,6 +4,8 @@
  */
 namespace Treasure\Models\Model;
 
+use Treasure\Models\Validator as OwnValidator;
+
 /**
  * Treasure
  */
@@ -49,9 +51,8 @@ class Treasure extends \Treasure\Models\Model\UserAbstract
     }
 
 
-    public function initializeByFirst($accountId)
+    public function initializeByFirst()
     {
-        $this->set('posted_account_id', $accountId);
         foreach (static::$defaultData as $column => $default) {
             if ($default === 'now') {
                 $default = date('Y-m-d h:i:s');
@@ -60,6 +61,28 @@ class Treasure extends \Treasure\Models\Model\UserAbstract
         }
     }
 
+    /**
+     * 作成時のほげほげ
+     * @param  array $postData
+     * @param array $config
+     * @return boolean 成功/失敗
+     */
+    public function addFirstData($postData, $config)
+    {
+        $from = false;
+        // prefecture_id, area_id以外の情報をチェック && postdataから各種IDを設定
+        \Api\Models\Validator::setAndValidatePostData($this, $postData, $config, $from);
+
+        // prefecture_idをチェック
+        $condition = ['field' => 'prefecture_id'];
+        $this->checkValidate(new OwnValidator\PrefectureIdValidator($condition));
+
+        // area_idをチェック
+        $condition = ['field' => 'area_id'];
+        $this->checkValidate(new OwnValidator\AreaIdValidator($condition));
+
+        return $this->validationHasFailed() ? false : true;
+    }
 
     /**
      * 指定されたパラメータの中のconditionにstatus = validを追加
@@ -81,7 +104,7 @@ class Treasure extends \Treasure\Models\Model\UserAbstract
     public function findStatusValid($params)
     {
         $params['conditions'] = $this->getConditionWithStatusValid($params);
-        return self::find($params);
+        return self::findByParams($params);
     }
 
     /**
@@ -92,7 +115,7 @@ class Treasure extends \Treasure\Models\Model\UserAbstract
     public function getTotalStatusValid($params)
     {
         $condition = $this->getConditionWithStatusValid($params);
-        return self::count($condition);
+        return self::countByParams(['conditions' => $condition]);
     }
 
 

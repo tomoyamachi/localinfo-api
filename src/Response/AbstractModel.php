@@ -40,7 +40,14 @@ class AbstractModel
         foreach ($params as $param) {
             // TODO : property_existsでは、magick methodを感知できない
             // 一旦、存在しないpropertyも取得する
-            $response[$param] = $model->$param;
+
+            // create直後はモデルのデータなのでint型になっていない。
+            // 無理やりint型に変換。
+            if (($param === 'id' || strpos($param, '_id') > 0) && ctype_digit($model->$param)) {
+                $response[$param] = (int)$model->$param;
+            } else {
+                $response[$param] = $model->$param;
+            }
         }
         return $response;
     }

@@ -1,6 +1,6 @@
 @treasure @login
 Feature: ログインが必要な操作
-  @success
+  @success @delete
   Scenario: 自分が投稿したお宝情報を削除
     When I am logged in as "treasure_valid_token"
     And I send a GET request to "accounts/{account_id}/treasures"
@@ -11,19 +11,19 @@ Feature: ログインが必要な操作
     When I grab "$['success']" as "success"
     Then "success" should be equal "true"
 
-  @failure
+  @failure @delete
   Scenario: ログインしていない場合は削除できない
     When I send and accept JSON
     And I send a DELETE request to "treasures/1"
-    Then the response status should be "302"
+    Then the response status should be "403"
 
-  @failure
+  @failure @delete
   Scenario: 自分のものでなければ削除できない
     When I am logged in as "treasure_valid_token"
-    And I send a DELETE request to "treasures/3"
-    Then the response status should be "302"
+    And I send a DELETE request to "treasures/1"
+    Then the response status should be "403"
 
-  @success
+  @success @put
   Scenario Outline: PUTの挙動を確認
     When I am logged in as "treasure_valid_token"
     And I send a GET request to "accounts/{account_id}/treasures"
@@ -54,4 +54,4 @@ Feature: ログインが必要な操作
     And I set form request body to:
       | comment | ログインしてないね。 |
     And I send a PUT request to "treasures/{treasure_id}"
-    Then the response status should be "302"
+    Then the response status should be "403"

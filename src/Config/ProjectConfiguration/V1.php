@@ -28,12 +28,27 @@ class V1 extends Base
               '/v1/treasures' => [
                                  'Get' => ['controller' => 'treasure',
                                            'action' => 'get'],
+                                 'Post' => ['controller' => 'treasure',
+                                            'action' => 'create'
+                                            ]
                                  ],
               '/v1/treasures/{id}' => [
                                       'Get' => ['controller' => 'treasure',
                                                 'action' => 'getTarget',
                                                 'treasure_id' => 1],
+                                      'Put' => ['controller' => 'treasure',
+                                                'action' => 'update',
+                                                'treasure_id' => 1],
+                                      'Delete' => ['controller' => 'treasure',
+                                                'action' => 'delete',
+                                                'treasure_id' => 1],
                                       ],
+              '/v1/accounts/{id}/treasures' => [
+                                           'Get' => ['controller' => 'treasure',
+                                                     'action' => 'getTargetUsers',
+                                                     'account_id' => 1
+                                                     ],
+                                           ],
 
               ];
 
