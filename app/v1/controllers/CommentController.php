@@ -2,6 +2,7 @@
 namespace Treasure\V1\Controllers;
 
 use \Treasure\Models\Model\Comment as Comment;
+use \Treasure\Models\Model\Treasure;
 use \Treasure\Response\Comment as RComment;
 use \Api\Models\Validator;
 
@@ -107,14 +108,30 @@ class CommentController extends \Treasure\V1\Controllers\GetUserController
         $this->checkRequired($required);
 
         /* レビューデータを作成 */
+        $this->db->begin();
+
         $comment = new Comment();
         $treasureId = $this->dispatcher->getParam('treasure_id');
         $comment->initializeByFirst($treasureId);
         $postCommentData = $this->request->getPost('comment');
         $result = $this->getCreateResult($comment, $postCommentData);
         if ($result instanceof \Gpl\Http\Response) {
+            $this->db->rollback();
             return;
         }
+
+        // お宝に紐づくコメント数を増やす
+        $treasureModel = Treasure::getInstance();
+        $treasure = $treasureModel->findFirstById($treasureId);
+        if ($treasure instanceof Treasure) {
+            $treasure->addCommentCount();
+            if ($treasure->update() == false) {
+                $this->db->rollback();
+                return;
+            }
+        }
+
+        $this->db->commit();
 
         return $this->responseValidStatus($result);
     }
@@ -203,8 +220,23 @@ class CommentController extends \Treasure\V1\Controllers\GetUserController
             return $this->responseAuthorizeError();
         }
 
+        $this->db->begin();
+
         if ($comment->delete()) {
+
+            // お宝に紐づくコメント数を減らす
+            $treasureModel = Treasure::getInstance();
+            $treasure = $treasureModel->findFirstById($treasureId);
+            if ($treasure instanceof Treasure) {
+                $treasure->removeCommentCount();
+                if ($treasure->update() == false) {
+                    $this->db->rollback();
+                    return;
+                }
+            }
+
             $result['success'] = true;
+            $this->db->commit();
         } else {
             $result['success'] = false;
         }

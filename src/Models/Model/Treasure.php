@@ -17,6 +17,8 @@ class Treasure extends \Treasure\Models\Model\UserAbstract
                                      'account_id' => null,
                                      'prefecture_id' => null,
                                      'area_id' => null,
+                                     'comment_count' => 0,
+                                     'like_count' => 0,
                                      'comment' => null,
                                      'image' => null,
                                      'status' => 'valid',
@@ -118,6 +120,61 @@ class Treasure extends \Treasure\Models\Model\UserAbstract
         return self::countByParams(['conditions' => $condition]);
     }
 
+    /**
+     * コメント数を追加
+     * @param int $addNum
+     * @return bool
+     */
+    public function addCommentCount($addNum = 1)
+    {
+        if ($addNum < 1) {
+            return false;
+        }
+        $this->comment_count += $addNum;
+        return true;
+    }
+
+    /**
+     * コメント数を追加
+     * @param int $addNum
+     * @return bool
+     */
+    public function removeCommentCount($removeNum = 1)
+    {
+        if ($removeNum < 1 || $removeNum > $this->comment_count) {
+            return false;
+        }
+        $this->comment_count -= $removeNum;
+        return true;
+    }
+
+    /**
+     * いいね数を追加
+     * @param int $addNum
+     * @return bool
+     */
+    public function addLikeCount($addNum = 1)
+    {
+        if ($addNum < 1) {
+            return false;
+        }
+        $this->like_count += $addNum;
+        return true;
+    }
+
+    /**
+     * いいね数を追加
+     * @param int $addNum
+     * @return bool
+     */
+    public function removeLikeCount($removeNum = 1)
+    {
+        if ($removeNum < 1 || $removeNum > $this->like_count) {
+            return false;
+        }
+        $this->like_count -= $removeNum;
+        return true;
+    }
 
 
     /**

@@ -4,6 +4,7 @@ namespace Treasure\V1\Controllers;
 use \Treasure\Models\Model\Like as Like;
 use \Treasure\Response\Like as RLike;
 use \Api\Models\Validator;
+use \Treasure\Models\Model\Treasure;
 
 class LikeController extends \Treasure\V1\Controllers\GetUserController
 {
@@ -104,13 +105,29 @@ class LikeController extends \Treasure\V1\Controllers\GetUserController
     public function createAction()
     {
         /* レビューデータを作成 */
+        $this->db->begin();
+
         $like = new Like();
         $treasureId = $this->dispatcher->getParam('treasure_id');
         $like->initializeByFirst($treasureId);
         $result = $this->getCreateResult($like);
         if ($result instanceof \Gpl\Http\Response) {
+            $this->db->rollback();
             return;
         }
+
+        // お宝に紐づくいいね数を増やす
+        $treasureModel = Treasure::getInstance();
+        $treasure = $treasureModel->findFirstById($treasureId);
+        if ($treasure instanceof Treasure) {
+            $treasure->addLikeCount();
+            if ($treasure->update() == false) {
+                $this->db->rollback();
+                return;
+            }
+        }
+
+        $this->db->commit();
 
         return $this->responseValidStatus($result);
     }
@@ -199,6 +216,17 @@ class LikeController extends \Treasure\V1\Controllers\GetUserController
         }
 
         if ($like->delete()) {
+            // お宝に紐づくいいね数を減らす
+            $treasureModel = Treasure::getInstance();
+            $treasure = $treasureModel->findFirstById($treasureId);
+            if ($treasure instanceof Treasure) {
+                $treasure->removeLikeCount();
+                if ($treasure->update() == false) {
+                    $this->db->rollback();
+                    return;
+                }
+            }
+
             $result['success'] = true;
         } else {
             $result['success'] = false;

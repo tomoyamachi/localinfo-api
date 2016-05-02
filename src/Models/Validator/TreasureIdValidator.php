@@ -46,6 +46,9 @@ class TreasureIdValidator extends Validator implements ValidatorInterface
     public function validTreasureId($parameter)
     {
         $treasure = Treasure::findFirst($parameter);
+        if ($treasure == null) {
+            return false;
+        }
 
         if ($treasure->id == $parameter) {
             return true;
