@@ -68,13 +68,4 @@ class Comment extends \Treasure\Models\Model\PostDataAbstract
         $this->checkValidate(new OwnValidator\TreasureIdValidator($condition));
         return $this->validationHasFailed() ? false : true;
     }
-
-    /**
-     * 投稿者名を取得
-     * @return string
-     */
-    protected function getAccountName()
-    {
-        return 'ほげ';
-    }
 }

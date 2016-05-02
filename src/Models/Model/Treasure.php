@@ -143,24 +143,17 @@ class Treasure extends \Treasure\Models\Model\PostDataAbstract
         return true;
     }
 
-
-    /**
-     * 投稿者名を取得
-     * @return string
-     */
-    protected function getAccountName()
-    {
-        return 'HOGESampleName';
-    }
-
-
     /**
      * 件名を取得
      * @return string
      */
     protected function getPrefectureName()
     {
-        return 'HOGEPREFEC';
+        $prefecture = MPrefecture::findFirst($this->prefecture_id);
+        if ($prefecture) {
+            return $prefecture->name;
+        }
+        return null;
     }
 
     /**
@@ -169,7 +162,11 @@ class Treasure extends \Treasure\Models\Model\PostDataAbstract
      */
     protected function getAreaName()
     {
-        return 'HOGEAREA';
+        $area = MArea::findFirst($this->area_id);
+        if ($area) {
+            return $area->name;
+        }
+        return null;
     }
 
     /**
