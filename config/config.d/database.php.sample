@@ -6,7 +6,7 @@ return [
         'host'        => 'localhost',
         'username'    => 'root',
         'password'    => '',
-        'dbname'      => 'product_api',
+        'dbname'      => 'treasure',
         'charset' => 'utf8',
         'options' => [
                       PDO::ATTR_EMULATE_PREPARES => false,
@@ -18,7 +18,7 @@ return [
         'host'        => 'localhost',
         'username'    => 'root',
         'password'    => '',
-        'dbname'      => 'product_api_test',
+        'dbname'      => 'treasure_test',
         'charset' => 'utf8',
         'options' => [
                       PDO::ATTR_EMULATE_PREPARES => false,

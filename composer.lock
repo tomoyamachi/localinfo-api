@@ -266,12 +266,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:tomoya-amachi/api-phalcon.git",
-                "reference": "88309f0ca85abb83d31564e7a6101236f4885f91"
+                "reference": "3fc8d53c4ce1bd0a8c0dc742b79f37d21c246442"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tomoya-amachi/api-phalcon/zipball/88309f0ca85abb83d31564e7a6101236f4885f91",
-                "reference": "88309f0ca85abb83d31564e7a6101236f4885f91",
+                "url": "https://api.github.com/repos/tomoya-amachi/api-phalcon/zipball/3fc8d53c4ce1bd0a8c0dc742b79f37d21c246442",
+                "reference": "3fc8d53c4ce1bd0a8c0dc742b79f37d21c246442",
                 "shasum": ""
             },
             "require": {
@@ -307,7 +307,7 @@
                 "phalcon",
                 "php5"
             ],
-            "time": "2016-04-08 05:58:54"
+            "time": "2016-05-02 09:01:47"
         }
     ],
     "packages-dev": [
