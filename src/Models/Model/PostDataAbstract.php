@@ -4,6 +4,8 @@
  */
 namespace Treasure\Models\Model;
 
+use \Treasure\Models\ApiConnector;
+
 // 投稿データの共通処理部分
 class PostDataAbstract extends \Treasure\Models\Model\UserAbstract
 {
@@ -59,6 +61,6 @@ class PostDataAbstract extends \Treasure\Models\Model\UserAbstract
         if ($account) {
             return $account['nickname'];
         }
-        return null;
+        return '';
     }
 }

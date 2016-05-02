@@ -153,7 +153,7 @@ class Treasure extends \Treasure\Models\Model\PostDataAbstract
         if ($prefecture) {
             return $prefecture->name;
         }
-        return null;
+        return '';
     }
 
     /**
@@ -166,7 +166,7 @@ class Treasure extends \Treasure\Models\Model\PostDataAbstract
         if ($area) {
             return $area->name;
         }
-        return null;
+        return '';
     }
 
     /**
