@@ -23,10 +23,8 @@ When(/^I send a (GET|POST|PATCH|PUT|DELETE) request to "(.*?)"$/) do |method, ur
   else
     request_url = URI.encode resolve(concatUrl.sub(/{account_id}/,@account_id.to_s))
   end
-  puts @body
 
-  puts request_url
-
+  # puts request_url
   # 同じURLでも認証状況によってレスポンスが変わるので、キャッシュ化しない
   # if 'GET' == %/#{method}/ and $cache.has_key? %/#{request_url}/
   #   @response = $cache[%/#{request_url}/]
