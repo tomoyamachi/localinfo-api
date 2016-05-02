@@ -10,7 +10,7 @@ return array (
     'account_id' =>    array (
       'validation' =>      array (
       ),
-      'label' => NULL,
+      'label' => 'アカウントID',
     ),
     'title' =>    array (
       'validation' =>      array (
@@ -40,17 +40,17 @@ return array (
     'comment' =>    array (
       'validation' =>      array (
       ),
-      'label' => NULL,
+      'label' => 'ひとこと',
     ),
     'prefecture_id' =>    array (
       'validation' =>      array (
       ),
-      'label' => NULL,
+      'label' => '県ID',
     ),
     'area_id' =>    array (
       'validation' =>      array (
       ),
-      'label' => NULL,
+      'label' => 'エリアID',
     ),
     'status' =>    array (
       'validation' =>      array (
@@ -60,24 +60,24 @@ return array (
     'created_at' =>    array (
       'validation' =>      array (
       ),
-      'label' => NULL,
+      'label' => '作成日',
     ),
     'updated_at' =>    array (
       'validation' =>      array (
       ),
-      'label' => NULL,
+      'label' => '更新日',
     ),
   ),
   'placeholder' =>  array (
   ),
   'search_filter' =>  array (
-    'account_id' => NULL,
+    'account_id' => 'アカウントID',
     'image' => '画像',
-    'comment' => NULL,
-    'prefecture_id' => NULL,
-    'area_id' => NULL,
-    'created_at' => NULL,
-    'updated_at' => NULL,
+    'comment' => 'ひとこと',
+    'prefecture_id' => '県ID',
+    'area_id' => 'エリアID',
+    'created_at' => '作成日',
+    'updated_at' => '更新日',
   ),
   'editform' =>  array (
   ),

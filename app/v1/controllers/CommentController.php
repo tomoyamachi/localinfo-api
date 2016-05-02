@@ -29,7 +29,8 @@ class CommentController extends \Treasure\V1\Controllers\GetUserController
 
         // 引数に問題がなければ検索
         $params['conditions'] = ['treasure_id' => $treasureId];
-        $comments = Comment::findByParams($params);
+        $commentModel = Comment::getInstance();
+        $comments = $commentModel->findStatusValid($params);
         $result = RComment::getMultipleContent($comments);
 
         $params['result'] = $result;
@@ -84,17 +85,19 @@ class CommentController extends \Treasure\V1\Controllers\GetUserController
 
         // 引数に問題がなければ検索
         $params['conditions'] = ['account_id' => $accountId];
-        $comments = Comment::findByParams($params);
-        $result = RComment::getMultipleContent($comments);
-
-        $params['result'] = $result;
-        $params['count'] = count($comments);
-
+        $commentModel = Comment::getInstance();
+        $comments = $commentModel->findStatusValid($params);
         // 総件数まで必要ならtotalを付加
         $withTotal = $this->request->getQuery('total');
         if ($withTotal == '1') {
             $params['total'] = $commentModel->getTotalStatusValid($params);
         }
+        $result = RComment::getMultipleContent($comments);
+
+        $params['result'] = $result;
+        $params['count'] = count($comments);
+
+
 
         return $this->responseValidStatus($params);
     }

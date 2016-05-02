@@ -9,7 +9,7 @@ use Treasure\Models\Validator as OwnValidator;
 /**
  * Comment
  */
-class Comment extends \Treasure\Models\Model\UserAbstract
+class Comment extends \Treasure\Models\Model\PostDataAbstract
 {
     protected static $defaultData = [
                                      'id' => null,
@@ -19,10 +19,6 @@ class Comment extends \Treasure\Models\Model\UserAbstract
                                      'status_limit_date' => 'now',
                                      'status_updated_at' => 'now'
                                      ];
-    const STATUS_VALID = 'valid';
-    const STATUS_INVALID = 'invalid';
-    public static $statusLabel = [self::STATUS_VALID => '有効',
-                                  self::STATUS_INVALID => '無効',];
     protected static $instance = null;
 
     // {{{ public static function getInstance()

@@ -7,7 +7,6 @@ namespace Treasure\Models\Model;
 /**
  * MArea
  */
-class MArea extends \Treasure\Models\Model
-
+class MArea extends \Treasure\Models\Model\MasterAbstract
 {
 }

@@ -9,7 +9,7 @@ use Treasure\Models\Validator as OwnValidator;
 /**
  * Like
  */
-class Like extends \Treasure\Models\Model\UserAbstract
+class Like extends \Treasure\Models\Model\PostDataAbstract
 {
     protected static $defaultData = [
                                      'id' => null,
@@ -18,10 +18,6 @@ class Like extends \Treasure\Models\Model\UserAbstract
                                      'status_limit_date' => 'now',
                                      'status_updated_at' => 'now'
                                      ];
-    const STATUS_VALID = 'valid';
-    const STATUS_INVALID = 'invalid';
-    public static $statusLabel = [self::STATUS_VALID => '有効',
-                                  self::STATUS_INVALID => '無効',];
     protected static $instance = null;
 
 
@@ -64,5 +60,4 @@ class Like extends \Treasure\Models\Model\UserAbstract
         $this->checkValidate(new OwnValidator\TreasureIdValidator($condition));
         return $this->validationHasFailed() ? false : true;
     }
-
 }

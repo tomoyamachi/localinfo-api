@@ -9,7 +9,7 @@ use Treasure\Models\Validator as OwnValidator;
 /**
  * Treasure
  */
-class Treasure extends \Treasure\Models\Model\UserAbstract
+class Treasure extends \Treasure\Models\Model\PostDataAbstract
 {
     protected static $defaultData = [
                                      'id' => null,
@@ -85,40 +85,6 @@ class Treasure extends \Treasure\Models\Model\UserAbstract
         $this->checkValidate(new OwnValidator\AreaIdValidator($condition));
 
         return $this->validationHasFailed() ? false : true;
-    }
-
-    /**
-     * 指定されたパラメータの中のconditionにstatus = validを追加
-     * @param array $params
-     * @return array
-     */
-    private function getConditionWithStatusValid($params)
-    {
-        $condition = isset($params['conditions']) ? $params['conditions'] : [];
-        $condition['status'] = self::STATUS_VALID;
-        return $condition;
-    }
-
-    /**
-     * 有効なもののみ取得
-     * @param array $params
-     * @return resultset
-     */
-    public function findStatusValid($params)
-    {
-        $params['conditions'] = $this->getConditionWithStatusValid($params);
-        return self::findByParams($params);
-    }
-
-    /**
-     * 指定した検索条件で有効な件数を表示
-     * @param array $params
-     * @return int
-     */
-    public function getTotalStatusValid($params)
-    {
-        $condition = $this->getConditionWithStatusValid($params);
-        return self::countByParams(['conditions' => $condition]);
     }
 
     /**

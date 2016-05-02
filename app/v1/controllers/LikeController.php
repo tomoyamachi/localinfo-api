@@ -29,7 +29,8 @@ class LikeController extends \Treasure\V1\Controllers\GetUserController
 
         // 引数に問題がなければ検索
         $params['conditions'] = ['treasure_id' => $treasureId];
-        $likes = Like::findByParams($params);
+        $likeModel = Like::getInstance();
+        $likes = $likeModel->findStatusValid($params);
         $result = RLike::getMultipleContent($likes);
 
         $params['result'] = $result;
@@ -84,7 +85,8 @@ class LikeController extends \Treasure\V1\Controllers\GetUserController
 
         // 引数に問題がなければ検索
         $params['conditions'] = ['account_id' => $accountId];
-        $likes = Like::findByParams($params);
+        $likeModel = Like::getInstance();
+        $likes = $likeModel->findStatusValid($params);
         $result = RLike::getMultipleContent($likes);
 
         $params['result'] = $result;
