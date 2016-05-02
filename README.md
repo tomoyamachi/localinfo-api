@@ -1,3 +1,3 @@
-#platform-api
+# yotsuya-tresure-site
 
-pull requestでcircleciが動くかテスト
+お宝情報のAPI/サイト
