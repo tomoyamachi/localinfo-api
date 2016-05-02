@@ -17,10 +17,25 @@ return array (
       ),
       'label' => 'お宝名',
     ),
+    'comment_count' =>    array (
+      'validation' =>      array (
+      ),
+      'label' => 'コメント数',
+    ),
+    'like_count' =>    array (
+      'validation' =>      array (
+      ),
+      'label' => 'いいね数',
+    ),
+    'thumbnail' =>    array (
+      'validation' =>      array (
+      ),
+      'label' => 'サムネ画像',
+    ),
     'image' =>    array (
       'validation' =>      array (
       ),
-      'label' => NULL,
+      'label' => '画像',
     ),
     'comment' =>    array (
       'validation' =>      array (
@@ -57,7 +72,7 @@ return array (
   ),
   'search_filter' =>  array (
     'account_id' => NULL,
-    'image' => NULL,
+    'image' => '画像',
     'comment' => NULL,
     'prefecture_id' => NULL,
     'area_id' => NULL,
