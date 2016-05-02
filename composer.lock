@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "41cd3563ab969459ea0409f5703d644d",
-    "content-hash": "ec85eb7a18558383d7b77055e7ccbc73",
+    "hash": "863546d6e0eed3628e7ccde3aeaae627",
+    "content-hash": "ad125425810ebd9de5112ca6b57ae8c8",
     "packages": [
         {
             "name": "gochipon/php-common",
@@ -153,12 +153,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPMailer/PHPMailer.git",
-                "reference": "b04ab34d77e59082a22f893b7b720613b172d5fe"
+                "reference": "703410e39fd35ae61ed88eb47481d93cab833dc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/b04ab34d77e59082a22f893b7b720613b172d5fe",
-                "reference": "b04ab34d77e59082a22f893b7b720613b172d5fe",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/703410e39fd35ae61ed88eb47481d93cab833dc6",
+                "reference": "703410e39fd35ae61ed88eb47481d93cab833dc6",
                 "shasum": ""
             },
             "require": {
@@ -205,7 +205,7 @@
                 }
             ],
             "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
-            "time": "2016-04-25 09:01:04"
+            "time": "2016-04-28 10:54:42"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -213,12 +213,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "fffbc0e2a7e376dbb0a4b5f2ff6847330f20ccf9"
+                "reference": "68f50da0fdd6cb0146d17d6bde20b76e0e57e7fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/fffbc0e2a7e376dbb0a4b5f2ff6847330f20ccf9",
-                "reference": "fffbc0e2a7e376dbb0a4b5f2ff6847330f20ccf9",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/68f50da0fdd6cb0146d17d6bde20b76e0e57e7fb",
+                "reference": "68f50da0fdd6cb0146d17d6bde20b76e0e57e7fb",
                 "shasum": ""
             },
             "require": {
@@ -258,7 +258,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2016-01-03 15:42:47"
+            "time": "2016-05-01 08:46:16"
         },
         {
             "name": "tomoya-amachi/api-phalcon",

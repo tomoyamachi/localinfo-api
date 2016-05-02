@@ -1,6 +1,6 @@
 {
-    "name": "product",
-    "description": "product",
+    "name": "treasure",
+    "description": "treasure-api",
     "version": "v1",
     "type": "project",
     "keywords": ["php5", "phalcon"],
