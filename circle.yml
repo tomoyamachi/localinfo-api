@@ -65,9 +65,9 @@ dependencies:
       gem install cucumber
       gem install cucumber-api
 
-    #product-api
+    #yotsuya-treasure-site
     - |
-      cd ~/product-api
+      cd ~/yotsuya-treasure-site
       cp -a config/config.d/config.php.sample config/config.d/config.php
       cp -a config/config.d/database.php.sample config/config.d/database.php
       cp -a app/v1/config/config.d/config.php.sample app/v1/config/config.d/config.php
@@ -77,7 +77,7 @@ dependencies:
     #nginx
     - |
       sudo rm /etc/nginx/nginx.conf
-      cd ~/product-api/circle && sudo cp nginx.conf /etc/nginx/nginx.conf
+      cd ~/yotsuya-treasure-site/circle && sudo cp nginx.conf /etc/nginx/nginx.conf
       sudo service nginx restart
 
     #php-fpm
@@ -85,6 +85,6 @@ dependencies:
 
 test:
   override:
-    - cd ~/product-api && make check
+    - cd ~/yotsuya-treasure-site && make check
     - sudo service memcached restart
     - make test && cucumber DOMAIN=http://localhost/v1/
