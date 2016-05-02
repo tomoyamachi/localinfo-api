@@ -37,6 +37,7 @@ When(/^I set form request body to:$/) do |params|
     p_value = File.new %-#{Dir.pwd}/#{p_value.sub 'file://', ''}- if %/#{p_value}/.start_with? "file://"
     @body[%/#{key}/] = p_value
   end
+
 end
 
 When(/^I set request body from "(.*?).(yml|json)"$/) do |filename, extension|

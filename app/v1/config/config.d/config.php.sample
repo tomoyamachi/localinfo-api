@@ -2,9 +2,11 @@
 
 return [
         'prod' => [
-                   'account_domain' => 'http://api.platform.prod.amachi.rznapp.com/v2/'
+                   'account_domain' => 'http://api.platform.prod.amachi.rznapp.com/v2/',
+                   'image_domain' => 'http://image.treasure.prod.amachi.rznapp.com/'
                    ],
         'test' => [
-                   'account_domain' => 'http://api.platform.test.amachi.rznapp.com/v2/'
+                   'account_domain' => 'http://api.platform.test.amachi.rznapp.com/v2/',
+                   'image_domain' => 'http://image.treasure.prod.amachi.rznapp.com/'
                    ],
 ];

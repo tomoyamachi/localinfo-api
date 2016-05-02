@@ -21,6 +21,7 @@ class Treasure extends \Treasure\Models\Model\UserAbstract
                                      'like_count' => 0,
                                      'comment' => null,
                                      'image' => null,
+                                     'thumbnail' => null,
                                      'status' => 'valid',
                                      'status_limit_date' => 'now',
                                      'status_updated_at' => 'now'
@@ -211,6 +212,25 @@ class Treasure extends \Treasure\Models\Model\UserAbstract
      */
     protected function getImageUrl()
     {
-        return 'http://sample.image.test.com/hoge.png';
+        if ($this->image) {
+            $config = require APP_DIR.'/v1/config/config.d/config.php';
+            $imageDomain = $config[APPLICATION_ENV]['image_domain'];
+            return $imageDomain.$this->image;
+        }
+        return '';
+    }
+
+    /**
+     * サムネURLを取得
+     * @return string
+     */
+    protected function getThumbnailUrl()
+    {
+        if ($this->image) {
+            $config = require APP_DIR.'/v1/config/config.d/config.php';
+            $imageDomain = $config[APPLICATION_ENV]['image_domain'];
+            return $imageDomain.$this->thumbnail;
+        }
+        return '';
     }
 }

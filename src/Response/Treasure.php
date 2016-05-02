@@ -7,5 +7,5 @@ class Treasure extends \Treasure\Response\AbstractModel
                                        'prefecture_id', 'prefecture_name',
                                        'comment_count', 'like_count',
                                        'area_id', 'area_name','status',
-                                       'comment', 'image_url', 'created_at', 'updated_at'];
+                                       'comment', 'image_url', 'thumbnail_url', 'created_at', 'updated_at'];
 }

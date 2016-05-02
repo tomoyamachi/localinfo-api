@@ -146,6 +146,24 @@ class TreasureController extends \Treasure\V1\Controllers\GetUserController
         foreach ($required as $key) {
             $params[$key] = $this->request->getPost($key);
         }
+
+        //アップロードされるファイルがあるか確認し、あれば適切な場所に移動。
+        if ($this->request->hasFiles() == true) {
+            $baseLocation = TOP_DIR.'/files/';
+            foreach ($this->request->getUploadedFiles() as $file){
+                $path = sprintf('%s/%s_%s_%s',
+                                $file->getKey(),
+                                $this->account['account_id'],
+                                time(),
+                                $file->getName());
+
+                if ($file->moveTo($baseLocation . $path)) {
+                    $params[$file->getKey()] = $path;
+                }
+            }
+        }
+
+
         $result = $this->getCreateResult($treasure, $params);
 
         return $this->responseValidStatus($result);

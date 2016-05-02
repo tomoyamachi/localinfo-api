@@ -1,6 +1,6 @@
 @treasure @login @post
 Feature: お宝を作成
-  @success
+  @success @tmp
   Scenario: お宝情報を作成
     When I am logged in as "treasure_valid_token"
     And I set form request body to:
@@ -9,11 +9,12 @@ Feature: お宝を作成
       | area_id       | 1                                   |
       | comment         | よいよい                            |
       | image           | file://features/support/sample.jpeg |
+      | thumbnail           | file://features/support/sample.jpeg |
     And I send a POST request to "treasures"
     Then the response status should be "200"
     And the JSON response should follow "features/schemas/get_treasure.json"
 
-  @failure @tmp
+  @failure
   Scenario: ログインしていない場合は作成できない
     When I send and accept JSON
     And I set form request body to:
