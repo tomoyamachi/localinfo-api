@@ -99,24 +99,26 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phalcon/incubator.git",
-                "reference": "1fbe3750e2710f6dffb936b04e22e2d4f885b76d"
+                "reference": "8b77b9fbe9ba08f9758520b6fc37d51ad211f5f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phalcon/incubator/zipball/1fbe3750e2710f6dffb936b04e22e2d4f885b76d",
-                "reference": "1fbe3750e2710f6dffb936b04e22e2d4f885b76d",
+                "url": "https://api.github.com/repos/phalcon/incubator/zipball/8b77b9fbe9ba08f9758520b6fc37d51ad211f5f8",
+                "reference": "8b77b9fbe9ba08f9758520b6fc37d51ad211f5f8",
                 "shasum": ""
             },
             "require": {
-                "ext-phalcon": ">=2.0.4",
+                "ext-phalcon": "^2.0",
                 "php": ">=5.4",
                 "swiftmailer/swiftmailer": "~5.2"
             },
             "require-dev": {
-                "codeception/aerospike-module": "^0.1",
-                "codeception/codeception": "^2.1",
-                "codeception/mockery-module": "^0.2",
-                "squizlabs/php_codesniffer": "^2.5"
+                "codeception/aerospike-module": "~0.1",
+                "codeception/codeception": "~2.1",
+                "codeception/mockery-module": "~0.2",
+                "codeception/specify": "~0.4",
+                "codeception/verify": "~0.3",
+                "squizlabs/php_codesniffer": "~2.5"
             },
             "suggest": {
                 "duncan3dc/fork-helper": "To use extended class to access the beanstalk queue service",
@@ -145,7 +147,7 @@
                 "incubator",
                 "phalcon"
             ],
-            "time": "2016-02-05 19:41:35"
+            "time": "2016-05-04 22:50:11"
         },
         {
             "name": "phpmailer/phpmailer",
@@ -153,12 +155,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPMailer/PHPMailer.git",
-                "reference": "703410e39fd35ae61ed88eb47481d93cab833dc6"
+                "reference": "1a7f3804579c1fbe2505d47e431e755b803f40cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/703410e39fd35ae61ed88eb47481d93cab833dc6",
-                "reference": "703410e39fd35ae61ed88eb47481d93cab833dc6",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/1a7f3804579c1fbe2505d47e431e755b803f40cb",
+                "reference": "1a7f3804579c1fbe2505d47e431e755b803f40cb",
                 "shasum": ""
             },
             "require": {
@@ -205,7 +207,7 @@
                 }
             ],
             "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
-            "time": "2016-04-28 10:54:42"
+            "time": "2016-05-09 09:36:15"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -266,12 +268,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:tomoya-amachi/api-phalcon.git",
-                "reference": "3fc8d53c4ce1bd0a8c0dc742b79f37d21c246442"
+                "reference": "db316ffe774641a80ab8f8ec3c3de73d964eb8a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tomoya-amachi/api-phalcon/zipball/3fc8d53c4ce1bd0a8c0dc742b79f37d21c246442",
-                "reference": "3fc8d53c4ce1bd0a8c0dc742b79f37d21c246442",
+                "url": "https://api.github.com/repos/tomoya-amachi/api-phalcon/zipball/db316ffe774641a80ab8f8ec3c3de73d964eb8a0",
+                "reference": "db316ffe774641a80ab8f8ec3c3de73d964eb8a0",
                 "shasum": ""
             },
             "require": {
@@ -307,7 +309,7 @@
                 "phalcon",
                 "php5"
             ],
-            "time": "2016-05-02 09:01:47"
+            "time": "2016-05-10 06:05:49"
         }
     ],
     "packages-dev": [
@@ -317,20 +319,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phalcon/phalcon-devtools.git",
-                "reference": "54bc21bb262ad40b4a07ff148691a895279eeac0"
+                "reference": "30b0933cafd28df6005436a5a7bc04e7b3bf0f70"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phalcon/phalcon-devtools/zipball/54bc21bb262ad40b4a07ff148691a895279eeac0",
-                "reference": "54bc21bb262ad40b4a07ff148691a895279eeac0",
+                "url": "https://api.github.com/repos/phalcon/phalcon-devtools/zipball/30b0933cafd28df6005436a5a7bc04e7b3bf0f70",
+                "reference": "30b0933cafd28df6005436a5a7bc04e7b3bf0f70",
                 "shasum": ""
             },
             "require": {
-                "ext-phalcon": "~2.0",
+                "ext-phalcon": "^2.0",
                 "php": ">=5.3.9"
             },
             "require-dev": {
-                "kherge/box": "^2.5"
+                "kherge/box": "^2.7"
             },
             "bin": [
                 "phalcon.php"
@@ -365,7 +367,7 @@
                 "phar",
                 "webtools"
             ],
-            "time": "2016-02-05 07:08:56"
+            "time": "2016-05-04 20:23:35"
         }
     ],
     "aliases": [],
