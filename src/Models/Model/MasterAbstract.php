@@ -63,5 +63,4 @@ class MasterAbstract extends \Api\Models\ModelAbstract
         // Return the result in the cache
         return self::$apcCache[$key];
     }
-
 }

@@ -6,7 +6,7 @@ return [
                    'image_domain' => 'http://image.treasure.prod.amachi.rznapp.com/'
                    ],
         'test' => [
-                   'account_domain' => 'http://localhost:8080/v2/',
+                   'account_domain' => 'http://api.platform.test.amachi.rznapp.com/v2/',
                    'image_domain' => 'http://image.treasure.prod.amachi.rznapp.com/'
                    ],
 ];

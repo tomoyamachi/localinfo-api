@@ -32,19 +32,6 @@ class Treasure extends \Treasure\Models\Model\PostDataAbstract
                                   self::STATUS_INVALID => '無効',];
     protected static $instance = null;
 
-    // {{{ public static function getInstance()
-    /**
-     * 呼び出し元のinstanceを返却
-     */
-    public static function getInstance()
-    {
-        if (is_null(self::$instance)) {
-            self::$instance = new static();
-        }
-        return self::$instance;
-    }
-    // }}}
-
     public function initializeByFirst()
     {
         foreach (static::$defaultData as $column => $default) {

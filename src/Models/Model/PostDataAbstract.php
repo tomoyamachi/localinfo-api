@@ -16,6 +16,19 @@ class PostDataAbstract extends \Treasure\Models\Model\UserAbstract
                                   self::STATUS_INVALID => '無効',];
 
 
+    // {{{ public static function getInstance()
+    /**
+     * 呼び出し元のinstanceを返却
+     */
+    public static function getInstance()
+    {
+        if (is_null(static::$instance)) {
+            static::$instance = new static();
+        }
+        return static::$instance;
+    }
+    // }}}
+
 
     // キャッシュがあればキャッシュから取得
     public function findFirstById($id)
