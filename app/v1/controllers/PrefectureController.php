@@ -20,7 +20,6 @@ class PrefectureController extends \Api\Controllers\Api\AbstractController
         // 引数に問題がなければ検索
         //$prefectureModel = Prefecture::getInstance();
         $prefectures = Prefecture::find($params);
-
         $result = RPrefecture::getMultipleContent($prefectures);
         $params['result'] = $result;
         $params['count'] = count($prefectures);
