@@ -1,61 +1,19 @@
 <?php
 namespace Treasure\Tool\Controllers;
 
-use \Treasure\Models\Model\CustomerMember;
-
 class AbstractController extends \Phalcon\Mvc\Controller
 {
-    protected $strangerActions = []; // ログインしていない人
-    protected $customerActions = []; // 顧客
-    protected $employeeActions = []; // 社内バイト
-    protected $member; // ログイン者情報
 
     /**
      * セッションにcustomer_memberが実装されていればOK
      */
     public function initialize()
     {
-        $this->view->error = $this->request->get('m');
-
-        if (! $this->session->has('customer_member_id')) {
-            if ($this->confirmAuthority('stranger') === false) {
-                return $this->response->redirect('/member?m=権限がありません');
-            }
-            return; // sessionがなければこれ以上の処理はしない
+        $this->view->error = $this->request->get('e');
+        $this->view->flash = $this->request->get('f');
+        if (! $this->session->has('login')) {
+            return $this->response->redirect('/member?e=権限がありません');
         }
-
-        $memberId = $this->session->get('customer_member_id');
-        $member = CustomerMember::findFirst($memberId);
-        if ($this->confirmAuthority($member->authority) === false) {
-            return $this->response->redirect('/customer?m=権限がありません');
-        }
-        $this->member = $member;
-    }
-
-    /**
-     * そのアクションにアクセスする権限があるか確認
-     * @param  $authority
-     * @return bool
-     */
-    private function confirmAuthority($authority)
-    {
-        // 管理者は全ページ見れる
-        if ($authority === CustomerMember::AUTHORITY_ADMIN) {
-            return true;
-        }
-
-        // それ以外は権限によって変わる
-        $validPropertyName = $authority.'Actions';
-        if (! isset($this->$validPropertyName)) {
-            return false;
-        }
-
-        $action = $this->router->getActionName();
-        $validActions = $this->$validPropertyName;
-        if (isset($validActions[$action])) {
-            return true;
-        }
-        return false;
     }
 
     public function getSearchHash($req)

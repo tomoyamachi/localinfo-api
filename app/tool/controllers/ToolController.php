@@ -14,6 +14,20 @@ class ToolController extends \Treasure\Tool\Controllers\AbstractController
         $this->view->tables = $tableDatas;
     }
 
+    /**
+     * APCの削除
+     */
+    public function apcdeleteAction()
+    {
+
+        $result = apc_clear_cache();
+        if ($result) {
+            return $this->response->redirect('/tool?f=apcキャッシュを削除しました');
+        }
+
+        return $this->response->redirect('/tool?e=apcキャッシュを削除できませんでした');
+    }
+
     // {{{ public function schemaAction( )
     /**
      * 記事の詳細ページ

@@ -10,13 +10,6 @@ class ApiController extends \Treasure\Tool\Controllers\AbstractController
     public static $postData = ['host', 'action', 'params', 'os', 'method'];
     public static $router = [];
 
-    public function initialize()
-    {
-        parent::initialize();
-        $router = require_once APP_DIR.'/v1/config/config.d/router.php';
-        self::$router = $router['all'];
-    }
-
     public function indexAction()
     {
         $req = $this->request;
@@ -28,12 +21,11 @@ class ApiController extends \Treasure\Tool\Controllers\AbstractController
         $this->view->action = $action;
         $this->view->params = $this->getParams($action);
         $this->view->os = 'ios';
-        $this->view->method = $route['method'];
+        $this->view->method = 'GET';
         $this->view->isSubmit = false;
         $this->view->url = '';
         $this->view->requestData = '';
         $this->view->responseData = '';
-        $this->view->router = self::$router;
     }
 
     // {{{ public function sendAction( )
@@ -72,7 +64,6 @@ class ApiController extends \Treasure\Tool\Controllers\AbstractController
 
         $message = \Gcl\Util\GJson::unserialize($response->body);
         $this->view->responseData = $message ? $message : $response->body;
-        $this->view->router = self::$router;
     }
     // }}}
 

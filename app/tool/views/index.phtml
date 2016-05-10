@@ -29,13 +29,7 @@
 
 $toolPages = ['member' => 'ログイン',
               //'api' => 'APIテスト',
-              'customer' => '協賛企業一覧',
-              //'report' => '商品レポート',
-              'sales' => '提携賞品',
-              'call' => 'コール管理',
-              'product' => '賞品追加',
-              'pending' => '審査待ち',
-              'message' => 'テキスト管理',
+              'import' => 'データ入稿',
               'tool' => '生データ',
               'member/logout' => 'ログアウト',
               ];
@@ -43,7 +37,7 @@ $toolPages = ['member' => 'ログイン',
 $explodedRequestURI = explode( '/', $_SERVER['REQUEST_URI'] );
 $page = $explodedRequestURI[1];
 if (! isset($toolPages[$page])) {
-    $page = 'customer';
+    $page = 'tool';
 }
 
 function active($page,$val) {
