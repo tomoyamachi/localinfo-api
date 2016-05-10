@@ -16,8 +16,8 @@ class Comment extends \Treasure\Models\Model\PostDataAbstract
                                      'account_id' => null,
                                      'comment' => null,
                                      'status' => 'valid',
-                                     'status_limit_date' => 'now',
-                                     'status_updated_at' => 'now'
+                                     'created_at' => 'now',
+                                     'updated_at' => 'now'
                                      ];
     protected static $instance = null;
 
@@ -33,14 +33,6 @@ class Comment extends \Treasure\Models\Model\PostDataAbstract
         return self::$instance;
     }
     // }}}
-
-
-    // キャッシュがあればキャッシュから取得
-    public function findFirstById($id)
-    {
-        $conditions = ['id' => $id];
-        return $this->findOrCreateCache($conditions);
-    }
 
     public function initializeByFirst($treasureId)
     {

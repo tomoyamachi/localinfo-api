@@ -15,8 +15,8 @@ class Like extends \Treasure\Models\Model\PostDataAbstract
                                      'id' => null,
                                      'account_id' => null,
                                      'status' => 'valid',
-                                     'status_limit_date' => 'now',
-                                     'status_updated_at' => 'now'
+                                     'created_at' => 'now',
+                                     'updated_at' => 'now'
                                      ];
     protected static $instance = null;
 

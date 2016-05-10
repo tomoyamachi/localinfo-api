@@ -23,7 +23,6 @@ class UserAbstract extends \Api\Models\ModelAbstract
         $this->updated_at = $date->now();
     }
 
-
     /**
      * Insert時の事前実行
      */

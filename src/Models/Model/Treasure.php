@@ -23,8 +23,8 @@ class Treasure extends \Treasure\Models\Model\PostDataAbstract
                                      'image' => null,
                                      'thumbnail' => null,
                                      'status' => 'valid',
-                                     'status_limit_date' => 'now',
-                                     'status_updated_at' => 'now'
+                                     'created_at' => 'now',
+                                     'updated_at' => 'now'
                                      ];
     const STATUS_VALID = 'valid';
     const STATUS_INVALID = 'invalid';
@@ -44,15 +44,6 @@ class Treasure extends \Treasure\Models\Model\PostDataAbstract
         return self::$instance;
     }
     // }}}
-
-
-    // キャッシュがあればキャッシュから取得
-    public function findFirstById($id)
-    {
-        $conditions = ['id' => $id];
-        return $this->findOrCreateCache($conditions);
-    }
-
 
     public function initializeByFirst()
     {

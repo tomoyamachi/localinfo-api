@@ -16,6 +16,14 @@ class PostDataAbstract extends \Treasure\Models\Model\UserAbstract
                                   self::STATUS_INVALID => '無効',];
 
 
+
+    // キャッシュがあればキャッシュから取得
+    public function findFirstById($id)
+    {
+        $conditions = ['id' => $id];
+        return $this->findOrCreateCache($conditions);
+    }
+
     /**
      * 指定されたパラメータの中のconditionにstatus = validを追加
      * @param array $params
@@ -62,5 +70,14 @@ class PostDataAbstract extends \Treasure\Models\Model\UserAbstract
             return $account['nickname'];
         }
         return '';
+    }
+
+    public function delete()
+    {
+        $this->status = self::STATUS_INVALID;
+        if ($this->update()) {
+            return true;
+        }
+        return false;
     }
 }

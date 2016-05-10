@@ -57,7 +57,7 @@ class CommentController extends \Treasure\V1\Controllers\GetUserController
         }
 
         try {
-            $comment = Comment::findFirst($commentId);
+            $comment = Comment::getInstance()->findFirstById($commentId);
             $result = RComment::getContent($comment);
         } catch (\Exception $e) {
             return $this->responseExceptionError($e);
@@ -149,8 +149,9 @@ class CommentController extends \Treasure\V1\Controllers\GetUserController
         if ($response !== true) {
             return;
         }
+
         $postCommentData = $this->request->getPut('comment');
-        $comment = Comment::findFirstByIdStrict($commentId);
+        $comment = Comment::getInstance()->findFirstById($commentId);
 
         if (! $comment instanceof Comment) {
             return $this->responseParameterError('指定されたコメントが見つかりません');
