@@ -17,6 +17,21 @@ return array (
       ),
       'label' => 'トークン',
     ),
+    'treasure_count' =>    array (
+      'validation' =>      array (
+      ),
+      'label' => '投稿お宝数',
+    ),
+    'comment_count' =>    array (
+      'validation' =>      array (
+      ),
+      'label' => 'コメント数',
+    ),
+    'like_count' =>    array (
+      'validation' =>      array (
+      ),
+      'label' => 'いいね数',
+    ),
     'status' =>    array (
       'validation' =>      array (
       ),
