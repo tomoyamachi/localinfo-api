@@ -45,18 +45,4 @@ class GetUserController extends \Api\Controllers\Api\AbstractController
         }
         return true;
     }
-
-
-    /**
-     * validation エラーを返す
-     *
-     * @SuppressWarnings(PHPMD)
-     */
-    protected function responseAuthorizeError()
-    {
-        $result = ['error' => ['code' => 403,'message' => 'Not authorize user']];
-        $this->response->setOnlyStatusCode(403);
-        $this->response->setOnlyJsonContent($result);
-        exit;
-    }
 }

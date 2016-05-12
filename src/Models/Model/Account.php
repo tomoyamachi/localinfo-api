@@ -9,4 +9,5 @@ namespace Treasure\Models\Model;
  */
 class Account extends \Treasure\Models\Model
 {
+
 }

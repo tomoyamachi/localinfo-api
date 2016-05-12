@@ -1,0 +1,37 @@
+<article class="article">
+
+  <div class="mqContainer">
+
+    <div class="event_section">
+
+      <div class="wdBoxInner">
+
+        <div class="wdBox_head mb-10">
+          <div class="head_wdBoxHead">投稿一覧</div>
+        </div>
+
+        <ul class="upload_list" id="html">
+        </ul>
+
+        <div id="loading_notice">
+          <div id="loading" style="text-align:center"></div>
+          <div id="load_navi" style="text-align:center">下にスクロールするとロードできるよ</div>
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</article>
+
+<script type="text/javascript" src="/js/jquery.bottom-1.0.js"></script>
+<script>
+var api_url = "<?= $apiURL ?>";
+var limit = <?= $limitPerConnect ?>;
+var offset = 0;
+var data_end_flag = false;
+</script>
+<script type="text/javascript" src="/js/treasure/index.js"></script>

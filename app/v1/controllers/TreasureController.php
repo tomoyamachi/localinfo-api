@@ -24,8 +24,14 @@ class TreasureController extends \Treasure\V1\Controllers\GetUserController
         $treasureModel = Treasure::getInstance();
         $treasures = $treasureModel->findStatusValid($params);
 
+        // 欲しいFieldを取得
+        $fields = [];
+        $fieldTexts = $this->request->get('fields');
+        if ($fieldTexts) {
+            $fields = explode(',', $fieldTexts);
+        }
 
-        $result = RTreasure::getMultipleContent($treasures);
+        $result = RTreasure::getMultipleContent($treasures, $fields);
         $params['result'] = $result;
         $params['count'] = count($treasures);
 

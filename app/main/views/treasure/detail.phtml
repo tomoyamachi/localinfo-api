@@ -1,0 +1,103 @@
+
+<article class="article">
+
+     <?= $this->tag->linkTo($loginURL, 'login', false); ?>
+  <div class="mqContainer">
+    <div class="event_section">
+      <div class="wdBoxInner">
+        <div class="wdBox_head mb-10">
+          <div class="head_wdBoxHead">投稿詳細</div>
+        </div>
+
+        <div class="upload_detailHead">
+          <div class="upload_detailTitle">
+            <h1><?= $treasure->title ?></h1>
+          </div>
+          <div><?=$treasure->prefecture_name?><?=$treasure->area_name?></div>
+          <img src="<?= $treasure->image_url ?>"/>
+        </div>
+
+        <div class="upload_like">
+          <div class="upload_likeBtn">
+            <? if ($checkVoteFlag) { ?>
+            <input type="checkbox" name="check_uploadLike" id="check_uploadLike" checked="checked">
+            <? } else { ?>
+            <input type="checkbox" name="check_uploadLike" id="check_uploadLike">
+            <? } ?>
+            <button type="button" id="btn_uploadLike">btn</button>
+          </div>
+          <div class="upload_likeCount">
+            いいね！<span id="upload_likeCountNum"><?= $treasure->like_count ?></span>件
+          </div>
+        </div>
+
+       　<!--削除ボタン-->
+       　<? if ($treasure->account_id == $user->id) { ?>
+       　  <a style="color:background; float:right;" class="click_once tap" onclick="exports.common.popup.on('削除確認ポップアップ')">
+       　    投稿削除
+       　  </a>
+       　  <a style="color:background; float:right;" class="click_once tap" href="編集ボタン">
+       　    投稿編集
+       　  </a>
+       　<? } ?>
+
+        <ul class="upload_commentList">
+          <li>
+            <div class="upload_commentDetail">
+              <div class="upload_commentName"></div>
+              <div class="upload_commentText"></div>
+            </div>
+          </li>
+        </ul>
+
+        <div class="upload_comment">
+          <div class="upload_detailTitle">
+            <h1><span class="icon_uploadComment"></span>コメント(<span id="upload_commentNum"><?= $treasure->comment_count ?></span>)</h1>
+          </div>
+
+          <div class="upload_commentForm">
+            <form id="form_uploadComment">
+              <textarea name="text_uploadComment" id="text_uploadComment"></textarea>
+              <div class="upload_commentBtn tap">
+                <button type="button" id="btn_uploadConfirm">コメントする</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="btnList">
+            <? if (!$checkBadFlag) { ?>
+            <div class="btn btn-success btn-col1 tap">
+              <a onclick="exports.common.popup.on('通報')">テーマに反する<br>投稿を報告</a>
+            </div>
+            <? } else { ?>
+            <div class="btn btn-disable btn-col1 tap">
+              <a>報告済み</a>
+            </div>
+            <? } ?>
+          </div>
+
+          <!--コメントしたものの表示-->
+          <ul class="upload_commentList" id="upload_commentList"></ul>
+          <!--過去にコメントしたものの表示-->
+          <ul class="upload_commentList" id="show_commentList"></ul>
+
+          <div class="upload_commentMore" id="watch_more">
+            <a class="upload_commentMore" onClick="showComment()">もっと見る</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</article>
+
+<script type="text/javascript" src="/js/jquery.bottom-1.0.js"></script>
+<script>
+var post_like_api_url = "<?= $postLikeApiURL ?>";
+var limit = <?= $limitPerConnect ?>;
+var offset = 0;
+var data_end_flag = false;
+</script>
+<script type="text/javascript" src="/js/treasure/detail.js"></script>
