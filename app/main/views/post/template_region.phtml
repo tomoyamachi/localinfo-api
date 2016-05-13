@@ -1,0 +1,14 @@
+<? $i = 0; ?>
+<? foreach ($_POST['val'] as $key => $value) { ?>
+  <? $value = $_POST['type'] === 'pref' ? $key : $value;?>
+  <li class="regionList_item">
+    <label class="region_label" for="<?=$_POST['type']?>-<?=$i+1?>">
+      <?=$value;?>
+      <input type="radio" name="radio_<?=$_POST['type']?>" id="<?=$_POST['type']?>-<?=$i+1?>" value="<?=$value;?>">
+      <svg role="image" class="region_arrow">
+        <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_arrow" />
+      </svg>
+    </label>
+  </li>
+  <? $i++; ?>
+<? } ?>

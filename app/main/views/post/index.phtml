@@ -1,0 +1,559 @@
+<header class="header">
+  <div class="header_close">
+    <a href="/">
+      <svg role="image" class="header_closeIcon">
+        <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_close" />
+      </svg>
+    </a>
+  </div>
+  <h1 class="header_title">記事の投稿</h1>
+</header>
+
+<script src="/js/vendor/drawer.min.js"></script>
+<script src="/js/vendor/jquery.validate.min.js"></script>
+<script>
+  $(function(){
+
+    var d = $(document);
+
+    // createObjectURLの有効確認
+    if (window.URL && window.URL.createObjectURL) {
+      var createObjectURL = function(file) {
+        return window.URL.createObjectURL(file);
+      }
+      var revokeObjectURL = function(url) {
+        return window.URL.revokeObjectURL(url);
+      }
+    } else if (window.webkitURL && window.webkitURL.createObjectURL) {
+      var createObjectURL = function(file) {
+        return window.webkitURL.createObjectURL(file);
+      }
+      var revokeObjectURL = function(url) {
+        return window.webkitURL.revokeObjectURL(url);
+      }
+    } else {
+      var createObjectURL = undefined;
+      var revokeObjectURL = undefined;
+    }
+
+    var url = null;
+
+    d.on('change', '.upload_file', function(e){
+      var previewArea = $(this).parent('li')
+      var id = $(this).attr('id');
+      if(createObjectURL == undefined){
+        return;
+      }
+
+      if(url) {
+        revokeObjectURL(url);
+      }
+
+      var file = e.target.files[0];
+      if(!file) {
+        return;
+      }
+
+      url = createObjectURL(file);
+      var preview = '<div class="upload_img" style="background-image:url('+url+')">';
+      $(preview).appendTo(previewArea);
+
+    });
+
+    //アップロード取消時はinput:fileをまるごとリプレイス
+    d.on('click', '.upload_img', function(){
+      var input = $(this).prev('input');
+      replaceFile(input);
+    });
+
+    function replaceFile(elem) {
+      var target = elem.closest('li');
+      var index = $('.upload_list li').index(target);
+      var preview = $(elem).next('.upload_img');
+      elem.remove();
+      preview.remove();
+      if (index == 0) {
+        removeRule();
+        $(target).append('<input type="file" name="upload_file[]" class="upload_file" id="upload_file-main" accept="image/gif,image/jpeg,image/png">');
+        addRule();
+      } else {
+        $(target).append('<input type="file" name="upload_file[]" class="upload_file" accept="image/gif,image/jpeg,image/png">');
+      }
+    }
+
+    $('#post_form').validate({
+      rules: {
+        input_title: {
+          required: true,
+          maxlength: 40
+        },
+        input_detail: {
+          required: true,
+          minlength: 20,
+          maxlength: 1000
+        }
+      },
+      messages: {
+        input_title: {
+          required: '※未入力です',
+          maxlength: '文字数が多すぎます'
+        },
+        input_detail: {
+          required: '※未入力です',
+          minlength: '文字数が少なすぎます',
+          maxlength: '文字数が多すぎます'
+        }
+      },
+      errorElement: 'div',
+      errorClass: 'form_error',
+      errorPlacement: function(error, element) {
+        error.appendTo(element.closest('.form_item'));
+      }
+    });
+
+    function addRule() {
+      $('#upload_file-main').rules('add',{
+        required: true,
+        messages: {
+          required: '※メイン画像をアップロードしてください'
+        }
+      });
+    }
+
+    function removeRule() {
+      $('#upload_file-main').rules('remove');
+    }
+
+    addRule();
+
+    //ドロワー閉じる
+    d.on('click', '.drawer_back', function(){
+      $(this).closest('.drawer').drawer('hide');
+      return false;
+    });
+
+    //市区町村データを取得
+    var city_json = <?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/json/dummy_city.json') ?>;
+
+    //地方・都道府県・市区町村を選択した時
+    d.on('click', '.region_label', function(e) {
+      var target = $(this).find('input');
+      var type, val;
+
+      if(target.attr('name') == 'radio_city' || target.attr('name') == 'radio_search'){
+        if(target.attr('name') == 'radio_city'){
+          //市区町村を選択した時
+          val = $('input[name="radio_pref"]:checked').val() + target.val();
+        } else {
+          val = target.val();
+        }
+        $('#input_region').val(val);
+        $('#text_region').text(val);
+        $('.drawer.open').drawer('hide');
+      } else {
+        //地方・都道府県を選択した時
+        if(target.attr('name') == 'radio_region') {
+          type = 'pref';
+          val = city_json[target.val()];
+        } else {
+          type = 'city';
+          var pref = $('input[name="radio_region"]:checked').val();
+          val = city_json[pref][target.val()];
+        }
+        $.ajax({
+          type: 'POST',
+          url: '/post/template_region.html',
+          data: {
+            type: type,
+            val: val
+          }
+        }).success(function(data){
+          $('#regionList-'+type).html(data);
+          $('#drawer_'+type).drawer('show');
+        })
+        .error(function(){
+          exports.common.ajaxModal.error();
+        });
+      }
+    });
+
+    //選択から戻る時
+    d.on('click', '[id^="drawer_back-"]', function(){
+      var type = $(this).attr('id').replace('drawer_back-', '');
+      //リスト初期化
+      $('#regionList-'+type).empty();
+        //ドロワー隠す
+      $('#drawer_'+type).drawer('hide');
+      if (type !== 'search') {
+        var list = type == 'pref' ? $('#regionList-region') : $('#regionList-pref');
+        //選択解除
+        list.find('input').prop('checked', false);
+      }
+    });
+
+    //選択しないボタン
+    d.on('click', '.btn_init', function() {
+      //選択解除
+      $('.regionList').find('input').prop('checked', false);
+      //リスト初期化
+      $('#regionList-pref, #regionList-city').empty();
+      //テキスト初期化
+      $('#text_region').text('エリアの選択');
+      $('#input_region').val();
+      //ドロワー隠す
+      $('.drawer.open').drawer('hide');
+    });
+
+    //検索
+    d.on('submit', '.search_form', function(e){
+      e.preventDefault();
+      var form = $(this);
+      var url = form.attr('action');
+      var formData = new FormData(form.get()[0]);
+
+      $.ajax({
+        type: 'get',
+        url: url,
+        dataType: 'json',
+        data: formData,
+        processData: false,
+        contentType: false
+      })
+      .success(function(data){
+        $.ajax({
+          type: 'post',
+          url:  '/post/template_search.html',
+          data: {
+            data: data
+          }
+        })
+        .success(function(html){
+          $('#regionList-search').html(html);
+          $('#drawer_search').drawer('show');
+        })
+        .error(function(){
+          exports.common.ajaxModal.error();
+        });
+      })
+      .error(function(xhr, ajaxOptions, thrownError){
+        // console.log(xhr, ajaxOptions, thrownError);
+        exports.common.ajaxModal.error();
+      });
+
+    });
+
+    d.on('hidden.bs.drawer', '.drawer', function(){
+      $(this).find('.search_input').val('').next('label').css('display', 'block');
+    })
+
+    //フォーム送信
+    $('#post_form').on('submit', function(e){
+      e.preventDefault();
+      var form = $(this);
+      var url = form.attr('action');
+      var method = form.attr('method');
+      var formData = new FormData(form.get()[0]);
+      $.ajax({
+        type: method,
+        url: url,
+        data: formData,
+        processData: false,
+        contentType: false
+      })
+      .success(function(data){
+        console.log(data);
+        if(true) {
+          exports.common.ajaxModal.on('/post/popup_postComplete.html', this, event);
+          formInit()
+        } else {
+          exports.common.ajaxModal.error();
+        }
+      })
+      .error(function(){
+        exports.common.ajaxModal.error();
+      })
+    })
+
+    //フォーム初期化
+    function formInit() {
+      var form = $('#post_form')
+      form.find('textarea, input:text').val('').end().find('input:checked').prop('checked', false);
+      $('.upload_file').each(function(index, elem){
+        replaceFile(elem);
+      });
+    }
+
+  });
+</script>
+
+<div class="contents post_contents">
+
+  <form action="/test.php" method="post" id="post_form">
+    <dl class="form_list">
+      <dd class="form_input upload_formInput">
+        <div class="form_item">
+          <ul class="upload_list">
+            <li class="upload_listItem">
+              <svg role="image" class="upload_icon">
+                <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_photo" />
+              </svg>
+              画像を選択
+              <input type="file" name="upload_file[]" class="upload_file" id="upload_file-main" accept="image/gif,image/jpeg,image/png">
+            </li>
+            <li class="upload_listItem">
+              <svg role="image" class="upload_icon">
+                <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_photo" />
+              </svg>
+              画像を選択
+              <input type="file" name="upload_file[]" class="upload_file" accept="image/gif,image/jpeg,image/png">
+            </li>
+            <li class="upload_listItem">
+              <svg role="image" class="upload_icon">
+                <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_photo" />
+              </svg>
+              画像を選択
+              <input type="file" name="upload_file[]" class="upload_file" accept="image/gif,image/jpeg,image/png">
+            </li>
+          </ul>
+        </div>
+      </dd>
+      <dt class="form_label">
+        記事のタイトルと詳細
+      </dt>
+      <dd class="form_input">
+        <div class="form_item form_item-bb">
+          <input type="text" name="input_title" placeholder="タイトル（1～40文字）">
+        </div>
+      </dd>
+      <dd class="form_input">
+        <div class="form_item">
+          <textarea name="input_detail" placeholder="詳細（20～1000文字）"></textarea>
+        </div>
+      </dd>
+      <dt class="form_label">
+        地域の情報
+      </dt>
+      <dd class="form_input form_next">
+        <a href="#drawer_region" data-toggle="drawer" aria-foldedopen="false" aria-controls="drawer_region">
+          <span id="text_region">エリアの選択</span>
+          <input type="hidden" name="input_region" id="input_region" class="input_region" value="">
+          <svg role="image" class="form_arrow">
+            <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_arrow" />
+          </svg>
+        </a>
+      </dd>
+    </dl>
+
+    <div class="form_submit btn">
+      <button type="submit">送信</button>
+    </div>
+
+  </form>
+
+</div>
+
+<div class="drawer" id="drawer_region" aria-labelledby="drawer">
+  <header class="drawer_header">
+    <div class="header_back">
+      <a class="drawer_back">
+        <svg role="image" class="header_backIcon">
+          <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_arrow" />
+        </svg>
+      </a>
+    </div>
+    <h1 class="header_title">地方の選択</h1>
+  </header>
+
+  <div class="contents drawer_contents">
+    <div class="search">
+      <form action="/json/dummy_city.json" class="search_form">
+        <input type="search" name="search_input-region" id="search_input-region" class="search_input">
+        <label for="search_input-region" class="search_label">
+          <svg role="image" class="search_icon">
+            <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_search" />
+          </svg>
+          キーワードでさがす
+        </label>
+      </form>
+    </div>
+
+    <ul class="regionList" id="regionList-region">
+      <li class="regionList_item">
+        <label class="region_label" for="region-1">
+          北海道
+          <input type="radio" name="radio_region" id="region-1" value="北海道">
+          <svg role="image" class="region_arrow">
+            <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_arrow" />
+          </svg>
+        </label>
+      </li>
+      <li class="regionList_item">
+        <label class="region_label" for="region-2">
+          東北
+          <input type="radio" name="radio_region" id="region-2" value="東北">
+          <svg role="image" class="region_arrow">
+            <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_arrow" />
+          </svg>
+        </label>
+      </li>
+      <li class="regionList_item">
+        <label class="region_label" for="region-3">
+          関東
+          <input type="radio" name="radio_region" id="region-3" value="関東">
+          <svg role="image" class="region_arrow">
+            <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_arrow" />
+          </svg>
+        </label>
+      </li>
+      <li class="regionList_item">
+        <label class="region_label" for="region-4">
+          中部
+          <input type="radio" name="radio_region" id="region-4" value="中部">
+          <svg role="image" class="region_arrow">
+            <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_arrow" />
+          </svg>
+        </label>
+      </li>
+      <li class="regionList_item">
+        <label class="region_label" for="region-5">
+          近畿
+          <input type="radio" name="radio_region" id="region-5" value="近畿">
+          <svg role="image" class="region_arrow">
+            <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_arrow" />
+          </svg>
+        </label>
+      </li>
+      <li class="regionList_item">
+        <label class="region_label" for="region-6">
+          中国
+          <input type="radio" name="radio_region" id="region-6" value="中国">
+          <svg role="image" class="region_arrow">
+            <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_arrow" />
+          </svg>
+        </label>
+      </li>
+      <li class="regionList_item">
+        <label class="region_label" for="region-7">
+          四国
+          <input type="radio" name="radio_region" id="region-7" value="四国">
+          <svg role="image" class="region_arrow">
+            <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_arrow" />
+          </svg>
+        </label>
+      </li>
+      <li class="regionList_item">
+        <label class="region_label" for="region-8">
+          九州
+          <input type="radio" name="radio_region" id="region-8" value="九州">
+          <svg role="image" class="region_arrow">
+            <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_arrow" />
+          </svg>
+        </label>
+      </li>
+    </ul>
+
+  </div>
+
+</div>
+
+<div class="drawer" id="drawer_pref" aria-labelledby="drawer">
+  <header class="drawer_header">
+    <div class="header_back">
+      <a id="drawer_back-pref">
+        <svg role="image" class="header_backIcon">
+          <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_arrow" />
+        </svg>
+      </a>
+    </div>
+    <h1 class="header_title">都道府県の選択</h1>
+  </header>
+
+  <div class="contents drawer_contents">
+    <div class="search">
+      <form action="/json/dummy_city.json" class="search_form">
+        <input type="search" name="search_input-pref" id="search_input-pref" class="search_input">
+        <label for="search_input-pref" class="search_label">
+          <svg role="image" class="search_icon">
+            <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_search" />
+          </svg>
+          キーワードでさがす
+        </label>
+      </form>
+    </div>
+
+    <ul class="regionList" id="regionList-pref">
+    </ul>
+
+  </div>
+
+</div>
+
+<div class="drawer" id="drawer_city" aria-labelledby="drawer">
+  <header class="drawer_header">
+    <div class="header_back">
+      <a id="drawer_back-city">
+        <svg role="image" class="header_backIcon">
+          <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_arrow" />
+        </svg>
+      </a>
+    </div>
+    <h1 class="header_title">エリアの選択</h1>
+  </header>
+
+  <div class="contents drawer_contents">
+
+    <div class="form_submit btn">
+      <button type="button" class="btn_init">選択しない</button>
+    </div>
+
+    <div class="search">
+      <form action="/json/dummy_city.json" class="search_form">
+        <input type="search" name="search_input-city" id="search_input-city" class="search_input">
+        <label for="search_input-city" class="search_label">
+          <svg role="image" class="search_icon">
+            <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_search" />
+          </svg>
+          キーワードでさがす
+        </label>
+      </form>
+    </div>
+
+    <ul class="regionList" id="regionList-city">
+    </ul>
+
+  </div>
+
+</div>
+
+<div class="drawer" id="drawer_search" aria-labelledby="drawer">
+  <header class="drawer_header">
+    <div class="header_back">
+      <a id="drawer_back-search">
+        <svg role="image" class="header_backIcon">
+          <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_arrow" />
+        </svg>
+      </a>
+    </div>
+    <h1 class="header_title">検索結果</h1>
+  </header>
+
+  <div class="contents drawer_contents">
+
+    <div class="search">
+      <form action="/json/dummy_city.json" class="search_form">
+        <input type="search" name="search_input-search" id="search_input-search" class="search_input">
+        <label for="search_input-search" class="search_label">
+          <svg role="image" class="search_icon">
+            <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_search" />
+          </svg>
+          キーワードでさがす
+        </label>
+      </form>
+    </div>
+
+    <ul class="regionList" id="regionList-search">
+    </ul>
+
+  </div>
+
+</div>

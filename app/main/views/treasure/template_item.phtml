@@ -1,0 +1,9 @@
+<? foreach ($_POST['data'] as $key => $value) { ?>
+<li class="list_item">
+  <a href="/detail?id=<?=$value['id']?>">
+    <div class="list_thumb">
+      <img src="/images/item/<?=sprintf('%05d', $value['id'])?>.png" alt="<?=$value['name']?>">
+    </div>
+  </a>
+</li>
+<? } ?>

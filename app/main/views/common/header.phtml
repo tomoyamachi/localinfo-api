@@ -1,0 +1,42 @@
+<header class="header">
+  <nav class="header_nav">
+    <ul class="header_navList">
+      <li class="header_navListItem">
+        <a href="/">
+          <svg role="image" class="header_icon">
+            <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_home" />
+          </svg>
+          HOME
+        </a>
+      </li>
+      <li class="header_navListItem">
+        <a href="/search.html">
+          <svg role="image" class="header_icon">
+            <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_search" />
+          </svg>
+          SEARCH
+        </a>
+      </li>
+      <li class="header_navListItem">
+        <a href="/like.html">
+          <svg role="image" class="header_icon">
+            <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_like" />
+          </svg>
+          LIKE
+        </a>
+      </li>
+      <li class="header_navListItem">
+        <? if (true) { ?>
+          <a onclick="exports.common.ajaxModal.on('/common/popup_login.html', this, event);">
+        <? } else { ?>
+          <a href="/profile.html">
+        <? } ?>
+          <svg role="image" class="header_icon">
+            <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_profile" />
+          </svg>
+          PROFILE
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>

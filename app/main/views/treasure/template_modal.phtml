@@ -1,0 +1,43 @@
+<?= $this->partial('common/header') ?>
+
+<div class="contents">
+
+</div>
+
+<?= $this->partial('common/postBtn') ?>
+
+<div class="modal fade ajax_modal in" style="display:block;">
+
+<div class="modal_dialog modal_dialog-vCenter">
+  <div class="modal_contents">
+    <div class="modal_close">
+      <a data-dismiss="modal" aria-label="Close">
+        <svg role="image" class="modal_closeIcon">
+          <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_close" />
+        </svg>
+      </a>
+    </div>
+
+    <div class="login_head">
+      この機能には<br>
+      ログインが必要です。
+    </div>
+
+    <div class="login_btnList">
+      <div class="login_btn btn">
+        <a href="#">ログイン</a>
+      </div>
+      <div class="login_btn btn">
+        <a href="#">新規登録</a>
+      </div>
+    </div>
+
+    <div class="login_bottom">
+      ログイン／新規登録ページは<br>
+      株式会社ごちぽん共通のページとなります。
+    </div>
+
+  </div>
+</div>
+
+</div>

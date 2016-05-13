@@ -1,0 +1,37 @@
+<?= $this->partial('common/header') ?>
+
+<div class="contents list_contents">
+
+  <div class="list_head">
+    <div class="list_headKey">お気に入り</div>
+    <div class="list_headval">15件</div>
+  </div>
+
+  <div class="sort">
+    <ul class="sort_btnList">
+      <li class="sort_btn">
+        <a href="#">新着順</a>
+      </li>
+      <li class="sort_btn">
+        <a class="current">お気に入り順</a>
+      </li>
+    </ul>
+  </div>
+
+  <ul class="list" id="item_list">
+    <li class="list_item">
+      <a href="/detail.html?id=">
+        <div class="list_thumb">
+          <img src="/images/item/00001.png" alt="">
+        </div>
+      </a>
+    </li>
+  </ul>
+
+  <div class="list_more">
+    <a onclick="exports.common.addItem.add('/json/dummy_item.json', $('#item_list'));">もっと読み込む</a>
+  </div>
+
+</div>
+
+<?= $this->partial('common/postBtn') ?>
