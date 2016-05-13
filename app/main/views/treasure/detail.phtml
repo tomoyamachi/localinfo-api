@@ -1,103 +1,139 @@
+<script>
+  $(function() {
 
-<article class="article">
+    $('#btn_like').on('click', function(){
+      var btn = $(this);
+      var target = $('#like_numVal');
+      var val = parseInt(target.text());
+      $.ajax({
+        type: 'POST',
+        url: '',
+      })
+      .success(function(data){
+        if(false) {
+          btn.addClass('current');
+          target.text(val+1);
+        } else {
+          btn.removeClass('current');
+          target.text(val-1);
+        }
+      });
+    });
 
-     <?= $this->tag->linkTo($loginURL, 'login', false); ?>
-  <div class="mqContainer">
-    <div class="event_section">
-      <div class="wdBoxInner">
-        <div class="wdBox_head mb-10">
-          <div class="head_wdBoxHead">投稿詳細</div>
-        </div>
+    $('#comment_form').on('submit', function(e){
+      e.preventDefault();
+      var form = $(this);
+      var url = form.attr('action');
+      var method = form.attr('method');
+      var formData = new FormData(form.get()[0]);
+      $.ajax({
+        type: method,
+        url: url,
+        data: formData,
+        processData: false,
+        contentType: false
+      })
+      .success(function(data){
+        if(true) {
+          $('#comment_list').prepend(data);
+          exports.common.ajaxModal.on('/popup_commentComplete.html', this, event);
+          formInit();
+        } else {
+          exports.common.ajaxModal.error();
+        }
+      })
+      .error(function(){
+        exports.common.ajaxModal.error();
+      })
+    })
 
-        <div class="upload_detailHead">
-          <div class="upload_detailTitle">
-            <h1><?= $treasure->title ?></h1>
-          </div>
-          <div><?=$treasure->prefecture_name?><?=$treasure->area_name?></div>
-          <img src="<?= $treasure->image_url ?>"/>
-        </div>
+    //フォーム初期化
+    function formInit() {
+      var form = $('#comment_form')
+      form.find('textarea').val('')
+    }
 
-        <div class="upload_like">
-          <div class="upload_likeBtn">
-            <? if ($checkVoteFlag) { ?>
-            <input type="checkbox" name="check_uploadLike" id="check_uploadLike" checked="checked">
-            <? } else { ?>
-            <input type="checkbox" name="check_uploadLike" id="check_uploadLike">
-            <? } ?>
-            <button type="button" id="btn_uploadLike">btn</button>
-          </div>
-          <div class="upload_likeCount">
-            いいね！<span id="upload_likeCountNum"><?= $treasure->like_count ?></span>件
-          </div>
-        </div>
+  });
+</script>
 
-       　<!--削除ボタン-->
-       　<? if ($treasure->account_id == $user->id) { ?>
-       　  <a style="color:background; float:right;" class="click_once tap" onclick="exports.common.popup.on('削除確認ポップアップ')">
-       　    投稿削除
-       　  </a>
-       　  <a style="color:background; float:right;" class="click_once tap" href="編集ボタン">
-       　    投稿編集
-       　  </a>
-       　<? } ?>
+<?= $this->partial('common/header') ?>
 
-        <ul class="upload_commentList">
-          <li>
-            <div class="upload_commentDetail">
-              <div class="upload_commentName"></div>
-              <div class="upload_commentText"></div>
-            </div>
-          </li>
-        </ul>
+<article class="contents item_contents">
 
-        <div class="upload_comment">
-          <div class="upload_detailTitle">
-            <h1><span class="icon_uploadComment"></span>コメント(<span id="upload_commentNum"><?= $treasure->comment_count ?></span>)</h1>
-          </div>
+  <div class="item_img">
+    <img src="/images/item/00001.png" alt="画像タイトルが入ります">
+  </div>
 
-          <div class="upload_commentForm">
-            <form id="form_uploadComment">
-              <textarea name="text_uploadComment" id="text_uploadComment"></textarea>
-              <div class="upload_commentBtn tap">
-                <button type="button" id="btn_uploadConfirm">コメントする</button>
-              </div>
-            </form>
-          </div>
+  <div class="item_head">
+    <div class="item_region">鹿児島県いちき串木野市</div>
+    <h1 class="item_title">タイトルが入ります。</h1>
+  </div>
 
-          <div class="btnList">
-            <? if (!$checkBadFlag) { ?>
-            <div class="btn btn-success btn-col1 tap">
-              <a onclick="exports.common.popup.on('通報')">テーマに反する<br>投稿を報告</a>
-            </div>
-            <? } else { ?>
-            <div class="btn btn-disable btn-col1 tap">
-              <a>報告済み</a>
-            </div>
-            <? } ?>
-          </div>
-
-          <!--コメントしたものの表示-->
-          <ul class="upload_commentList" id="upload_commentList"></ul>
-          <!--過去にコメントしたものの表示-->
-          <ul class="upload_commentList" id="show_commentList"></ul>
-
-          <div class="upload_commentMore" id="watch_more">
-            <a class="upload_commentMore" onClick="showComment()">もっと見る</a>
-          </div>
-
-        </div>
+  <div class="item_body">
+    <div class="like">
+      <div class="like_btn">
+        <button type="button" id="btn_like">
+          <svg role="image" class="like_icon">
+            <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_like" />
+          </svg>
+        </button>
+      </div>
+      <div class="like_num">
+        LIKE<span class="like_numVal" id="like_numVal">100</span>件
       </div>
     </div>
+
+    <div class="item_detail">
+      テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+    </div>
+
+    <section class="comment">
+      <div class="comment_head">
+        <h1 class="comment_title">
+          <svg role="image" class="comment_icon">
+            <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_balloon" />
+          </svg>
+          コメント（100）
+        </h1>
+      </div>
+
+      <div class="comment_input">
+        <form action="/template_comment.html" method="post" id="comment_form">
+          <input type="hidden" name="id" value="1">
+          <input type="hidden" name="name" value="ユーザー名が入ります">
+          <textarea name="comment_textarea" placeholder="コメントを入力してください"></textarea>
+          <div class="comment_btn btn">
+            <button type="submit" class="btn_comment" id="comment_btn">
+              コメントする
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <ul class="comment_list" id="comment_list">
+        <li class="comment_listItem">
+          <div class="comment_thumb">
+            <img src="/images/item/00001.png">
+          </div>
+          <div class="comment_detail">
+            <div class="comment_name">ユーザー名が入ります</div>
+            <div class="comment_text">
+              テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="comment_more">
+        <a onclick="exports.common.addComment.add('/json/dummy_comment.json');">
+          もっと見る
+        </a>
+      </div>
+
+    </section>
 
   </div>
 
 </article>
 
-<script type="text/javascript" src="/js/jquery.bottom-1.0.js"></script>
-<script>
-var post_like_api_url = "<?= $postLikeApiURL ?>";
-var limit = <?= $limitPerConnect ?>;
-var offset = 0;
-var data_end_flag = false;
-</script>
-<script type="text/javascript" src="/js/treasure/detail.js"></script>
+<?= $this->partial('common/postBtn') ?>

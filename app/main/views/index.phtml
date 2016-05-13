@@ -11,69 +11,17 @@
     <meta name="keywords" content="">
     <meta name="robots" content="noindex">
     <meta http-equiv="Content-Style-Type" content="text/css">
-    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="/css/base.css" rel="stylesheet" type="text/css">
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script type="text/javascript" src="/js/bootstrap.js"></script>
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
   </head>
   <body>
-<div class="container">
-     <div class="bg-primary" style="padding:10px;">
-     <h1><a href="/" style="color:#fff;">賞品/企業管理ページ</a></h1>
-     </div>
-<ul class="nav nav-tabs">
-
-<?php
-
-$toolPages = ['member' => 'ログイン',
-              'import' => 'データ入稿',
-              'tool' => '生データ',
-              'member/logout' => 'ログアウト',
-              ];
-
-$explodedRequestURI = explode( '/', $_SERVER['REQUEST_URI'] );
-$page = $explodedRequestURI[1];
-if (! isset($toolPages[$page])) {
-    $page = 'tool';
-}
-
-function active($page,$val) {
-    if ( $page == $val ) {
-        return 'active';
-    }
-}
-
-foreach ($toolPages as $controller => $pageLabel) {
-    echo sprintf('<li role="presentation" class="%s"><a href="/%s">%s</a></li>',
-                 active($page,$controller),
-                 $controller,
-                 $pageLabel);
-}
-?>
-
-</ul>
-<div class="spacer10"></div>
-<input type="button" value="前のページに戻る" onClick="history.back()" class="btn btn-info">
-<div class="spacer10"></div>
-<?php if (isset($error) && $error !== null) : ?>
-<div class="alert alert-danger" role="alert">
-  Error: <?= $error ?>
-</div>
-<div class="spacer20" />
-<?php endif; ?>
-<?php if (isset($flash) && $flash !== null) : ?>
-<div class="alert alert-success" role="success">
-  Notice: <?= $flash ?>
-</div>
-<div class="spacer20" />
-<?php endif; ?>
 
 <?php
 
  echo $this->getContent();
 ?>
-</div>
   </body>
 </html>
