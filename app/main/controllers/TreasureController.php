@@ -1,7 +1,9 @@
 <?php
 namespace Treasure\Main\Controllers;
 
+use \Treasure\Models\Model\Account;
 use \Treasure\Models\Model\Treasure;
+use \Treasure\Models\ApiConnector;
 
 class TreasureController extends \Phalcon\Mvc\Controller
 {
@@ -11,12 +13,24 @@ class TreasureController extends \Phalcon\Mvc\Controller
         if(strpos($this->request->getHTTPReferer(), $config->login_url) !== false) {
             $loginToken = $this->request->get('login_token');
 
+            // 指定されたログイントークンのユーザー情報を取得
+            $result = ApiConnector::authenticate($loginToken, APP_CODE);
+            $accountId = $result['account_id'];
+            $nickname = $result['account_name'];
 
-
-
+            $account = Account::findFirst($accountId);
+            if (!($account instanceof Account)) {
+                $account = new Account();
+                $account->initializeByFirst();
+                $account->set('id', $accountId);
+                $account->set('nickname', $nickname);
+                $account->set('login_token', $loginToken);
+                $account->save();
+            }
+            $this->session->start();
+            $this->session->set('account', $account);
         }
 
-        $ids = Treasure::getSortedTreasureIds();
         $this->view->apiURL = $config->treasure_api_domain.'/treasures';
         $this->view->limitPerConnect = 5;
     }
@@ -39,7 +53,7 @@ class TreasureController extends \Phalcon\Mvc\Controller
         // 一度に読み込むコメント数
         $this->view->limitPerConnect = 5;
 
-        $params = ['callback' => $config->domain, 'app_code' => APP_NAME];
+        $params = ['callback' => $config->domain, 'app_code' => APP_CODE];
         $this->view->loginURL = $config->login_url.'?'.http_build_query($params);
     }
 }

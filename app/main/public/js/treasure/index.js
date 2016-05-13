@@ -22,7 +22,7 @@ $(function () {
                          //$('html,body').animate({scrollTop: 0}, '1');
                      });
   }
-);
+ );
 
 function response_output_html(object) {
     var html = '';
@@ -55,7 +55,7 @@ function showMainImages()
                        //「Loading...」gifを消す
                        $('#loading').html('');
                        obj.data('loading', false);
-                       offset += limit
+                       offset += limit;
                    }).fail(function(data){
                                console.log("error");
                            });
