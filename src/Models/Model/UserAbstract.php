@@ -6,8 +6,7 @@ namespace Treasure\Models\Model;
  */
 class UserAbstract extends \Api\Models\ModelAbstract
 {
-    protected $config = ['storage' => 'Memcached',
-                      'servers' => [['localhost', 11211, 10]]];
+    public $cacheType = 'memcached';
 
     public static function __callStatic($method, $arguments = null)
     {

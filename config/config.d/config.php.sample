@@ -1,7 +1,8 @@
 <?php
-
 return [
     'all' => [
+              'memcached' => ['storage' => 'Memcached',
+                              'servers' => [['localhost', 11211, 10]]],
     ],
     'test' => [
         'sendmail' => [

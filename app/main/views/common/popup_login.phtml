@@ -3,7 +3,7 @@
     <div class="modal_close">
       <a data-dismiss="modal" aria-label="Close">
         <svg role="image" class="modal_closeIcon">
-          <use xlink:href="<?= $this->tag->urlForImage('svg/icons.svg') ?>#icon_close" />
+          <use xlink:href="/svg/icons.svg#icon_close" />
         </svg>
       </a>
     </div>
@@ -15,10 +15,7 @@
 
     <div class="login_btnList">
       <div class="login_btn btn">
-        <a href="#">ログイン</a>
-      </div>
-      <div class="login_btn btn">
-        <a href="#">新規登録</a>
+        <a href="<?= $loginURL ?>">ログイン</a>
       </div>
     </div>
 

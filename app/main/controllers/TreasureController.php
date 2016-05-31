@@ -7,6 +7,14 @@ use \Treasure\Models\ApiConnector;
 
 class TreasureController extends \Phalcon\Mvc\Controller
 {
+
+    public function onConstruct()
+    {
+        $config = $this->di->get('config')->config;
+        $params = ['callback' => $config->domain, 'app_code' => APP_CODE];
+        $this->view->loginURL = $config->login_url.'?'.http_build_query($params);
+    }
+
     public function indexAction()
     {
         $config = $this->di->get('config')->config;

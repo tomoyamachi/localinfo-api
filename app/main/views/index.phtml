@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>ごちぽんAPI</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="robots" content="noindex">
-    <meta http-equiv="Content-Style-Type" content="text/css">
-    <link href="/css/base.css" rel="stylesheet" type="text/css">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8">
+  <meta name="robots" content="INDEX,FOLLOW">
+  <title>お宝ログ</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width">
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script type="text/javascript" src="/js/vendor/drawer.min.js"></script>
-    <script type="text/javascript" src="/js/common.js"></script>
-    <script type="text/javascript" src="/js/vendor/jquery.validate.min.js"></script>
+  <link href="/css/base.css" rel="stylesheet" type="text/css">
+  <script src="http://code.jquery.com/jquery-2.2.2.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/common.js"></script>
+  <script>
+    (function(){
+      $(exports.common.Ready);
+    })();
+  </script>
 
   </head>
   <body>
+<div class="wrapper">
 
 <?php
 
  echo $this->getContent();
 ?>
+</div>
   </body>
 </html>
