@@ -4,7 +4,7 @@
  */
 namespace Test\Unit\src\Forms;
 
-use Treasure\Forms\Model\Comment;
+use Lapi\Forms\Model\Comment;
 
 /**
  * CommentTest
@@ -15,6 +15,6 @@ class CommentTest extends \Test\Unit\TestCase
     public function testConstruct()
     {
         $form = new Comment();
-        $this->assertInstanceOf('Treasure\Forms\Model\Comment', $form);
+        $this->assertInstanceOf('Lapi\Forms\Model\Comment', $form);
     }
 }

@@ -1,8 +1,8 @@
 <?php
 /**
- * Treasure\Config\ProjectConfiguration
+ * Lapi\Config\ProjectConfiguration
  */
-namespace Treasure\Config\ProjectConfiguration;
+namespace Lapi\Config\ProjectConfiguration;
 
 use Gpl\Config\ProjectConfiguration\Base;
 
@@ -30,6 +30,6 @@ class Main extends Base
     protected function initialize()
     {
         $this->di->set('tag', new \Api\Helper\AppTag());
-        //$this->di->set('tag', new \Treasure\Helper\AppTag());
+        //$this->di->set('tag', new \Lapi\Helper\AppTag());
     }
 }

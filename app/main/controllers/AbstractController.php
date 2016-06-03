@@ -1,5 +1,5 @@
 <?php
-namespace Treasure\Tool\Controllers;
+namespace Lapi\Tool\Controllers;
 
 class AbstractController extends \Phalcon\Mvc\Controller
 {

@@ -1,9 +1,9 @@
 <?php
-namespace Treasure\Main\Controllers;
+namespace Lapi\Main\Controllers;
 
-use \Treasure\Models\Model\Account;
-use \Treasure\Models\Model\Treasure;
-use \Treasure\Models\ApiConnector;
+use \Lapi\Models\Model\Account;
+use \Lapi\Models\Model\Treasure;
+use \Lapi\Models\ApiConnector;
 
 class TreasureController extends \Phalcon\Mvc\Controller
 {

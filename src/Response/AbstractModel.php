@@ -1,5 +1,5 @@
 <?php
-namespace Treasure\Response;
+namespace Lapi\Response;
 
 /**
  * Productの情報を配列にして返す

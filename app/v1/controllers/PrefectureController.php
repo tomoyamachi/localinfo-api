@@ -1,8 +1,8 @@
 <?php
-namespace Treasure\V1\Controllers;
+namespace Lapi\V1\Controllers;
 
-use \Treasure\Models\Model\MPrefecture as Prefecture;
-use \Treasure\Response\Prefecture as RPrefecture;
+use \Lapi\Models\Model\MPrefecture as Prefecture;
+use \Lapi\Response\Prefecture as RPrefecture;
 
 class PrefectureController extends \Api\Controllers\Api\AbstractController
 {

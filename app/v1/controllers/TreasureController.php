@@ -1,11 +1,11 @@
 <?php
-namespace Treasure\V1\Controllers;
+namespace Lapi\V1\Controllers;
 
-use \Treasure\Models\Model\Treasure;
-use \Treasure\Response\Treasure as RTreasure;
+use \Lapi\Models\Model\Treasure;
+use \Lapi\Response\Treasure as RTreasure;
 use \Api\Models\Validator;
 
-class TreasureController extends \Treasure\V1\Controllers\GetUserController
+class TreasureController extends \Lapi\V1\Controllers\GetUserController
 {
 
     protected $withoutAccountActions = ['get' => 1, 'getTarget' => 1, 'getTargetUsers' => 1, 'getTargetPrefectures' => 1, 'getTargetAreas' => 1];

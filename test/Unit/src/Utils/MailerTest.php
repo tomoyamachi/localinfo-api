@@ -4,7 +4,7 @@
  */
 namespace Test\Unit\src\Utils;
 
-use Treasure\Utils\Mailer;
+use Lapi\Utils\Mailer;
 
 /**
  * MailerTest

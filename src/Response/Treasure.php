@@ -1,7 +1,7 @@
 <?php
-namespace Treasure\Response;
+namespace Lapi\Response;
 
-class Treasure extends \Treasure\Response\AbstractModel
+class Treasure extends \Lapi\Response\AbstractModel
 {
     protected static $defaultFields = ['id', 'title', 'account_id', 'account_name',
                                        'prefecture_id', 'prefecture_name',

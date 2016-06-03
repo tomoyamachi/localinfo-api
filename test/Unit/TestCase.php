@@ -5,7 +5,7 @@
 namespace Test\Unit;
 
 use \Gpl\Mvc\Application\Launcher;
-use \Treasure\Config\ProjectConfiguration\V1;
+use \Lapi\Config\ProjectConfiguration\V1;
 
 /**
  * TestCase

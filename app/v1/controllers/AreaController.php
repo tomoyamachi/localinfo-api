@@ -1,8 +1,8 @@
 <?php
-namespace Treasure\V1\Controllers;
+namespace Lapi\V1\Controllers;
 
-use \Treasure\Models\Model\MArea as Area;
-use \Treasure\Response\Area as RArea;
+use \Lapi\Models\Model\MArea as Area;
+use \Lapi\Response\Area as RArea;
 
 class AreaController extends \Api\Controllers\Api\AbstractController
 {

@@ -4,7 +4,7 @@
  */
 namespace Test\Unit\src\Models\Model;
 
-use Treasure\Models\Model\MArea;
+use Lapi\Models\Model\MArea;
 
 /**
  * MAreaTest
@@ -15,6 +15,6 @@ class MAreaTest extends \Test\Unit\TestCase
     public function testConstruct()
     {
         $model = new MArea();
-        $this->assertInstanceOf('Treasure\Models\Model\MArea', $model);
+        $this->assertInstanceOf('Lapi\Models\Model\MArea', $model);
     }
 }

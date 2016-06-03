@@ -4,7 +4,7 @@
  */
 namespace Test\Unit\src\Models\Model;
 
-use Treasure\Models\Model\Comment;
+use Lapi\Models\Model\Comment;
 
 /**
  * CommentTest
@@ -15,6 +15,6 @@ class CommentTest extends \Test\Unit\TestCase
     public function testConstruct()
     {
         $model = new Comment();
-        $this->assertInstanceOf('Treasure\Models\Model\Comment', $model);
+        $this->assertInstanceOf('Lapi\Models\Model\Comment', $model);
     }
 }

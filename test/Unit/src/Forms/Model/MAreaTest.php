@@ -4,7 +4,7 @@
  */
 namespace Test\Unit\src\Forms;
 
-use Treasure\Forms\Model\MArea;
+use Lapi\Forms\Model\MArea;
 
 /**
  * MAreaTest
@@ -15,6 +15,6 @@ class MAreaTest extends \Test\Unit\TestCase
     public function testConstruct()
     {
         $form = new MArea();
-        $this->assertInstanceOf('Treasure\Forms\Model\MArea', $form);
+        $this->assertInstanceOf('Lapi\Forms\Model\MArea', $form);
     }
 }

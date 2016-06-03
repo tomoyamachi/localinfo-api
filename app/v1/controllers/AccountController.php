@@ -1,14 +1,14 @@
 <?php
-namespace Treasure\V1\Controllers;
+namespace Lapi\V1\Controllers;
 
-use \Treasure\Models\Model\Product;
-use \Treasure\Models\Model\UAchievement;
-use \Treasure\Response\UAchievement as RUAchievement;
+use \Lapi\Models\Model\Product;
+use \Lapi\Models\Model\UAchievement;
+use \Lapi\Response\UAchievement as RUAchievement;
 
-use \Treasure\Models\Model\ULottery;
-use \Treasure\Response\ULottery as RULottery;
+use \Lapi\Models\Model\ULottery;
+use \Lapi\Response\ULottery as RULottery;
 
-class AccountController extends \Treasure\V1\Controllers\GetUserController
+class AccountController extends \Lapi\V1\Controllers\GetUserController
 {
     /**
      * 商品管理一覧を取得

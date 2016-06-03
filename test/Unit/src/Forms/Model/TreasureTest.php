@@ -4,7 +4,7 @@
  */
 namespace Test\Unit\src\Forms;
 
-use Treasure\Forms\Model\Treasure;
+use Lapi\Forms\Model\Treasure;
 
 /**
  * TreasureTest
@@ -15,6 +15,6 @@ class TreasureTest extends \Test\Unit\TestCase
     public function testConstruct()
     {
         $form = new Treasure();
-        $this->assertInstanceOf('Treasure\Forms\Model\Treasure', $form);
+        $this->assertInstanceOf('Lapi\Forms\Model\Treasure', $form);
     }
 }

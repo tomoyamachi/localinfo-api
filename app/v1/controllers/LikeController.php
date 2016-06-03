@@ -1,12 +1,12 @@
 <?php
-namespace Treasure\V1\Controllers;
+namespace Lapi\V1\Controllers;
 
-use \Treasure\Models\Model\Like as Like;
-use \Treasure\Response\Like as RLike;
+use \Lapi\Models\Model\Like as Like;
+use \Lapi\Response\Like as RLike;
 use \Api\Models\Validator;
-use \Treasure\Models\Model\Treasure;
+use \Lapi\Models\Model\Treasure;
 
-class LikeController extends \Treasure\V1\Controllers\GetUserController
+class LikeController extends \Lapi\V1\Controllers\GetUserController
 {
     protected $withoutAccountActions = ['get' => 1, 'getTarget' => 1, 'getTargetUsers' => 1];
 

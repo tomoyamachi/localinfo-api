@@ -1,8 +1,8 @@
 <?php
 /**
- * Treasure\Config\ProjectConfiguration
+ * Lapi\Config\ProjectConfiguration
  */
-namespace Treasure\Config\ProjectConfiguration;
+namespace Lapi\Config\ProjectConfiguration;
 
 use Gpl\Config\ProjectConfiguration\Base;
 

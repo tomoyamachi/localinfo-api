@@ -1,7 +1,7 @@
 <?php
-namespace Treasure\V1\Controllers;
+namespace Lapi\V1\Controllers;
 
-use \Treasure\Response\Error;
+use \Lapi\Response\Error;
 
 class ErrorController extends \Api\Controllers\Api\ErrorController
 {

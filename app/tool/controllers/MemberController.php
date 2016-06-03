@@ -1,5 +1,5 @@
 <?php
-namespace Treasure\Tool\Controllers;
+namespace Lapi\Tool\Controllers;
 
 class MemberController extends \Phalcon\Mvc\Controller
 {

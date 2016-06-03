@@ -4,7 +4,7 @@
  */
 namespace Test\Unit\src\Models\Model;
 
-use Treasure\Models\Model\Like;
+use Lapi\Models\Model\Like;
 
 /**
  * LikeTest
@@ -15,6 +15,6 @@ class LikeTest extends \Test\Unit\TestCase
     public function testConstruct()
     {
         $model = new Like();
-        $this->assertInstanceOf('Treasure\Models\Model\Like', $model);
+        $this->assertInstanceOf('Lapi\Models\Model\Like', $model);
     }
 }

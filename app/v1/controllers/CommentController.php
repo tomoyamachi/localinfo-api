@@ -1,12 +1,12 @@
 <?php
-namespace Treasure\V1\Controllers;
+namespace Lapi\V1\Controllers;
 
-use \Treasure\Models\Model\Comment as Comment;
-use \Treasure\Models\Model\Treasure;
-use \Treasure\Response\Comment as RComment;
+use \Lapi\Models\Model\Comment as Comment;
+use \Lapi\Models\Model\Treasure;
+use \Lapi\Response\Comment as RComment;
 use \Api\Models\Validator;
 
-class CommentController extends \Treasure\V1\Controllers\GetUserController
+class CommentController extends \Lapi\V1\Controllers\GetUserController
 {
     protected $withoutAccountActions = ['get' => 1, 'getTarget' => 1, 'getTargetUsers' => 1];
 
