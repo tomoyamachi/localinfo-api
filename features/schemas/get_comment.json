@@ -3,12 +3,12 @@
     "type": "object",
     "properties": {
         "id": {"type": "integer"},
-        "treasure_id": {"type": "integer"},
+        "localinfo_id": {"type": "integer"},
         "account_id": {"type": "integer"},
         "account_name": {"type": "string"},
         "comment": {"type": "string"},
         "created_at": {"type": "string"},
         "updated_at": {"type": "string"}
     },
-    "required": ["id", "treasure_id", "account_id", "comment", "created_at", "updated_at"]
+    "required": ["id", "localinfo_id", "account_id", "comment", "created_at", "updated_at"]
 }

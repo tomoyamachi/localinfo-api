@@ -2,7 +2,7 @@
 namespace Lapi\Main\Controllers;
 
 use \Lapi\Models\Model\Account;
-use \Lapi\Models\Model\Treasure;
+use \Lapi\Models\Model\Localinfo;
 use \Lapi\Models\ApiConnector;
 
 class CommonController extends \Phalcon\Mvc\Controller

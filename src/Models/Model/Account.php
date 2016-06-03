@@ -13,7 +13,7 @@ class Account extends \Lapi\Models\Model\UserAbstract
                                      'id' => null,
                                      'nickname' => null,
                                      'comment_count' => 0,
-                                     'treasure_count' => 0,
+                                     'localinfo_count' => 0,
                                      'like_count' => 0,
                                      'status' => 'valid',
                                      'created_at' => 'now',

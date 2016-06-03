@@ -25,58 +25,58 @@ class V1 extends Base
                                            'action' => 'logout'],
                                  ],
 
-              '/v1/treasures' => [
-                                 'Get' => ['controller' => 'treasure',
+              '/v1/localinfos' => [
+                                 'Get' => ['controller' => 'localinfo',
                                            'action' => 'get'],
-                                 'Post' => ['controller' => 'treasure',
+                                 'Post' => ['controller' => 'localinfo',
                                             'action' => 'create'
                                             ]
                                  ],
 
-              '/v1/treasures/{id}' => [
-                                      'Get' => ['controller' => 'treasure',
+              '/v1/localinfos/{id}' => [
+                                      'Get' => ['controller' => 'localinfo',
                                                 'action' => 'getTarget',
-                                                'treasure_id' => 1],
-                                      'Put' => ['controller' => 'treasure',
+                                                'localinfo_id' => 1],
+                                      'Put' => ['controller' => 'localinfo',
                                                 'action' => 'update',
-                                                'treasure_id' => 1],
-                                      'Delete' => ['controller' => 'treasure',
+                                                'localinfo_id' => 1],
+                                      'Delete' => ['controller' => 'localinfo',
                                                 'action' => 'delete',
-                                                'treasure_id' => 1],
+                                                'localinfo_id' => 1],
                                       ],
-              '/v1/accounts/{id}/treasures' => [
-                                           'Get' => ['controller' => 'treasure',
+              '/v1/accounts/{id}/localinfos' => [
+                                           'Get' => ['controller' => 'localinfo',
                                                      'action' => 'getTargetUsers',
                                                      'account_id' => 1
                                                      ],
                                            ],
 
 
-              '/v1/treasures/{id}/comments' => [
+              '/v1/localinfos/{id}/comments' => [
                                  'Get' => ['controller' => 'comment',
                                            'action' => 'get',
-                                           'treasure_id' => 1],
+                                           'localinfo_id' => 1],
                                  'Post' => ['controller' => 'comment',
                                             'action' => 'create',
-                                            'treasure_id' => 1,
+                                            'localinfo_id' => 1,
                                             ],
                                  ],
 
 
-              '/v1/treasures/{id}/comments/{id}' => [
+              '/v1/localinfos/{id}/comments/{id}' => [
                                  'Get' => ['controller' => 'comment',
                                            'action' => 'getTarget',
-                                           'treasure_id' => 1,
+                                           'localinfo_id' => 1,
                                            'comment_id' => 2,
                                            ],
                                  'Put' => ['controller' => 'comment',
                                            'action' => 'update',
-                                           'treasure_id' => 1,
+                                           'localinfo_id' => 1,
                                            'comment_id' => 2,
                                            ],
                                  'Delete' => ['controller' => 'comment',
                                             'action' => 'delete',
-                                            'treasure_id' => 1,
+                                            'localinfo_id' => 1,
                                             'comment_id' => 2,
                                             ],
                                  ],
@@ -90,31 +90,31 @@ class V1 extends Base
                                            ],
 
 
-              '/v1/treasures/{id}/likes' => [
+              '/v1/localinfos/{id}/likes' => [
                                  'Get' => ['controller' => 'like',
                                            'action' => 'get',
-                                           'treasure_id' => 1],
+                                           'localinfo_id' => 1],
                                  'Post' => ['controller' => 'like',
                                             'action' => 'create',
-                                            'treasure_id' => 1,
+                                            'localinfo_id' => 1,
                                             ],
                                  ],
 
 
-              '/v1/treasures/{id}/likes/{id}' => [
+              '/v1/localinfos/{id}/likes/{id}' => [
                                  'Get' => ['controller' => 'like',
                                            'action' => 'getTarget',
-                                           'treasure_id' => 1,
+                                           'localinfo_id' => 1,
                                            'like_id' => 2,
                                            ],
                                  'Put' => ['controller' => 'like',
                                            'action' => 'update',
-                                           'treasure_id' => 1,
+                                           'localinfo_id' => 1,
                                            'like_id' => 2,
                                            ],
                                  'Delete' => ['controller' => 'like',
                                             'action' => 'delete',
-                                            'treasure_id' => 1,
+                                            'localinfo_id' => 1,
                                             'like_id' => 2,
                                             ],
                                  ],
@@ -138,8 +138,8 @@ class V1 extends Base
                                            'prefecture_id' => 1
                                            ],
                                  ],
-              '/v1/prefectures/{id}/treasures' => [
-                                 'Get' => ['controller' => 'treasure',
+              '/v1/prefectures/{id}/localinfos' => [
+                                 'Get' => ['controller' => 'localinfo',
                                            'action' => 'getTargetPrefectures',
                                            'prefecture_id' => 1
                                            ],
@@ -159,8 +159,8 @@ class V1 extends Base
                                            'area_id' => 2,
                                            ],
                                  ],
-              '/v1/prefectures/{id}/areas/{id}/treasures' => [
-                                 'Get' => ['controller' => 'treasure',
+              '/v1/prefectures/{id}/areas/{id}/localinfos' => [
+                                 'Get' => ['controller' => 'localinfo',
                                            'action' => 'getTargetAreas',
                                            'prefecture_id' => 1,
                                            'area_id' => 2,

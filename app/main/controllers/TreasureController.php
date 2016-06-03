@@ -2,10 +2,10 @@
 namespace Lapi\Main\Controllers;
 
 use \Lapi\Models\Model\Account;
-use \Lapi\Models\Model\Treasure;
+use \Lapi\Models\Model\Localinfo;
 use \Lapi\Models\ApiConnector;
 
-class TreasureController extends \Phalcon\Mvc\Controller
+class LocalinfoController extends \Phalcon\Mvc\Controller
 {
 
     public function onConstruct()
@@ -39,7 +39,7 @@ class TreasureController extends \Phalcon\Mvc\Controller
             $this->session->set('account', $account);
         }
 
-        $this->view->apiURL = $config->treasure_api_domain.'/treasures';
+        $this->view->apiURL = $config->localinfo_api_domain.'/localinfos';
         $this->view->limitPerConnect = 5;
     }
 
@@ -49,15 +49,15 @@ class TreasureController extends \Phalcon\Mvc\Controller
     public function detailAction()
     {
         $config = $this->di->get('config')->config;
-        $treasureId = $this->dispatcher->getParam('id');
-        $this->view->treasure = Treasure::getInstance()->findFirstById($treasureId);
+        $localinfoId = $this->dispatcher->getParam('id');
+        $this->view->localinfo = Localinfo::getInstance()->findFirstById($localinfoId);
         $this->view->checkVoteFlag = false;
 
         $this->view->user = (object) ['id' => 1];
         $this->view->checkBadFlag = false;
 
         // いいね/いいね取り消しに用いるURL
-        $this->view->postLikeApiURL = sprintf('%s/treasures/%d/likes', $config->treasure_api_domain, $treasureId);
+        $this->view->postLikeApiURL = sprintf('%s/localinfos/%d/likes', $config->localinfo_api_domain, $localinfoId);
         // 一度に読み込むコメント数
         $this->view->limitPerConnect = 5;
 

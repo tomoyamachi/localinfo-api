@@ -11,10 +11,10 @@ class ReactionAbstract extends \Lapi\Models\Model\PostDataAbstract
 {
     protected static $defaultData;
 
-    ///// 以下はTreasureモデルのみoverride ////
-    public function initializeByFirst($treasureId)
+    ///// 以下はLocalinfoモデルのみoverride ////
+    public function initializeByFirst($localinfoId)
     {
-        $this->set('treasure_id', $treasureId);
+        $this->set('localinfo_id', $localinfoId);
         foreach (static::$defaultData as $column => $default) {
             if ($default === 'now') {
                 $default = date('Y-m-d h:i:s');
@@ -34,8 +34,8 @@ class ReactionAbstract extends \Lapi\Models\Model\PostDataAbstract
         $from = false;
         \Api\Models\Validator::setAndValidatePostData($this, $postData, $config, $from);
         // prefecture_idをチェック
-        $condition = ['field' => 'treasure_id'];
-        $this->checkValidate(new OwnValidator\TreasureIdValidator($condition));
+        $condition = ['field' => 'localinfo_id'];
+        $this->checkValidate(new OwnValidator\LocalinfoIdValidator($condition));
         return $this->validationHasFailed() ? false : true;
     }
 }

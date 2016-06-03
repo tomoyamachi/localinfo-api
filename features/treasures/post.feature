@@ -1,8 +1,8 @@
-@treasure @login @post
+@localinfo @login @post
 Feature: お宝を作成
   @success @tmp
   Scenario: お宝情報を作成
-    When I am logged in as "treasure_valid_token"
+    When I am logged in as "localinfo_valid_token"
     And I set form request body to:
       | title           | テスト投稿                          |
       | prefecture_id | 1                                   |
@@ -10,9 +10,9 @@ Feature: お宝を作成
       | comment         | よいよい                            |
       | image           | file://features/support/sample.jpeg |
       | thumbnail           | file://features/support/sample.jpeg |
-    And I send a POST request to "treasures"
+    And I send a POST request to "localinfos"
     Then the response status should be "200"
-    And the JSON response should follow "features/schemas/get_treasure.json"
+    And the JSON response should follow "features/schemas/get_localinfo.json"
 
   @failure
   Scenario: ログインしていない場合は作成できない
@@ -23,19 +23,19 @@ Feature: お宝を作成
       | area_id       |                             1 |
       | comment         |                      よいよい |
       | image           | file://features/support/sample.jpeg |
-    And I send a POST request to "treasures"
+    And I send a POST request to "localinfos"
     Then the response status should be "403"
 
   @failure
   Scenario Outline: 不正なパラメータの場合も操作できない
-    When I am logged in as "treasure_valid_token"
+    When I am logged in as "localinfo_valid_token"
     And I set form request body to:
       | title           | テスト投稿                          |
       | prefecture_id | <m_prefecture_id>             |
       | area_id       | <m_area_id>                   |
       | comment         | comment                       |
       | image           | file://features/support/sample.jpeg |
-    And I send a POST request to "treasures"
+    And I send a POST request to "localinfos"
     Then the response status should be "<status>"
     And I grab "$['success']" as "success"
     Then "success" should be equal "<success>"

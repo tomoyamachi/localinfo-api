@@ -74,7 +74,6 @@ return array (
     ),
   ),
   'placeholder' =>  array (
-    'price' => 1000,
   ),
   'search_filter' =>  array (
     'account_id' => 'アカウントID',

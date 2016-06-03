@@ -2,7 +2,7 @@
 namespace Lapi\V1\Controllers;
 
 use \Lapi\Models\Model\Comment as Comment;
-use \Lapi\Models\Model\Treasure;
+use \Lapi\Models\Model\Localinfo;
 use \Lapi\Response\Comment as RComment;
 use \Api\Models\Validator;
 
@@ -21,14 +21,14 @@ class CommentController extends \Lapi\V1\Controllers\GetUserController
         }
 
         // IDに問題がないか確認
-        $treasureId = $this->dispatcher->getParam('treasure_id');
-        $response = $this->checkPositiveInteger($treasureId);
+        $localinfoId = $this->dispatcher->getParam('localinfo_id');
+        $response = $this->checkPositiveInteger($localinfoId);
         if ($response !== true) {
             return $response;
         }
 
         // 引数に問題がなければ検索
-        $params['conditions'] = ['treasure_id' => $treasureId];
+        $params['conditions'] = ['localinfo_id' => $localinfoId];
         $commentModel = Comment::getInstance();
         $comments = $commentModel->findStatusValid($params);
         $result = RComment::getMultipleContent($comments);
@@ -114,8 +114,8 @@ class CommentController extends \Lapi\V1\Controllers\GetUserController
         $this->db->begin();
 
         $comment = new Comment();
-        $treasureId = $this->dispatcher->getParam('treasure_id');
-        $comment->initializeByFirst($treasureId);
+        $localinfoId = $this->dispatcher->getParam('localinfo_id');
+        $comment->initializeByFirst($localinfoId);
         $postCommentData = $this->request->getPost('comment');
         $result = $this->getCreateResult($comment, $postCommentData);
         if ($result instanceof \Gpl\Http\Response) {
@@ -124,11 +124,11 @@ class CommentController extends \Lapi\V1\Controllers\GetUserController
         }
 
         // お宝に紐づくコメント数を増やす
-        $treasureModel = Treasure::getInstance();
-        $treasure = $treasureModel->findFirstById($treasureId);
-        if ($treasure instanceof Treasure) {
-            $treasure->addCommentCount();
-            if ($treasure->update() == false) {
+        $localinfoModel = Localinfo::getInstance();
+        $localinfo = $localinfoModel->findFirstById($localinfoId);
+        if ($localinfo instanceof Localinfo) {
+            $localinfo->addCommentCount();
+            if ($localinfo->update() == false) {
                 $this->db->rollback();
                 return;
             }
@@ -168,19 +168,19 @@ class CommentController extends \Lapi\V1\Controllers\GetUserController
 
     /**
      * create, updateの共通部分
-     * @param \UTreasureComment $comment
+     * @param \ULocalinfoComment $comment
      * @return array
      */
     private function getCreateResult($comment, $postCommentData)
     {
-        $treasureId = $this->dispatcher->getParam('treasure_id');
-        $response = $this->checkPositiveInteger($treasureId);
+        $localinfoId = $this->dispatcher->getParam('localinfo_id');
+        $response = $this->checkPositiveInteger($localinfoId);
         if ($response !== true) {
             return $response;
         }
 
         $accountId = $this->account['account_id'];
-        $createParams = ['treasure_id' => $treasureId, 'account_id' => $accountId, 'comment' => $postCommentData];
+        $createParams = ['localinfo_id' => $localinfoId, 'account_id' => $accountId, 'comment' => $postCommentData];
 
         $config = new \Api\Models\Tool\Config('comment');
         $addData = $comment->addFirstData($createParams, $config);
@@ -206,8 +206,8 @@ class CommentController extends \Lapi\V1\Controllers\GetUserController
      */
     public function deleteAction()
     {
-        $treasureId = $this->dispatcher->getParam('treasure_id');
-        $response = $this->checkPositiveInteger($treasureId);
+        $localinfoId = $this->dispatcher->getParam('localinfo_id');
+        $response = $this->checkPositiveInteger($localinfoId);
         if ($response !== true) {
             return $response;
         }
@@ -229,11 +229,11 @@ class CommentController extends \Lapi\V1\Controllers\GetUserController
         if ($comment->delete()) {
 
             // お宝に紐づくコメント数を減らす
-            $treasureModel = Treasure::getInstance();
-            $treasure = $treasureModel->findFirstById($treasureId);
-            if ($treasure instanceof Treasure) {
-                $treasure->removeCommentCount();
-                if ($treasure->update() == false) {
+            $localinfoModel = Localinfo::getInstance();
+            $localinfo = $localinfoModel->findFirstById($localinfoId);
+            if ($localinfo instanceof Localinfo) {
+                $localinfo->removeCommentCount();
+                if ($localinfo->update() == false) {
                     $this->db->rollback();
                     return;
                 }

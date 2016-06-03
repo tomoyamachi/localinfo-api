@@ -3,7 +3,7 @@ use Gpl\Db\Table;
 use Gpl\Db\Column;
 use Gpl\Db\Index;
 
-return Table::getDefinition('treasure', [
+return Table::getDefinition('localinfo', [
         'columns' => [
     Column::getPrimaryKey('id'),
     Column::getInteger('account_id'),

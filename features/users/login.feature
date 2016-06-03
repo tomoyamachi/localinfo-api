@@ -12,7 +12,7 @@ Feature: ログイントークンでのログイン
     And the JSON response should follow "features/schemas/success_login.json"
     Examples:
       | token                | app_code |
-      | treasure_valid_token | treasure |
+      | localinfo_valid_token | localinfo |
 
   @failure
   Scenario Outline: 存在しないパラメータでログイン
@@ -24,7 +24,7 @@ Feature: ログイントークンでのログイン
     Then the response status should be "400"
     Examples:
       | token        | app_code |
-      | invalidtoken | treasure |
+      | invalidtoken | localinfo |
 
   @failure
   Scenario Outline: Check unsupported methods

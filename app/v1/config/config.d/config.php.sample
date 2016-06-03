@@ -3,13 +3,13 @@
 return [
         'prod' => [
                    'account_domain' => 'http://api.platform.prod.amachi.rznapp.com/v2/',
-                   'image_domain' => 'http://image.treasure.prod.amachi.rznapp.com/',
-                   'whitelist' => ['http://main.treasure.prod.amachi.rznapp.com' => true],
+                   'image_domain' => 'http://image.localinfo.prod.amachi.rznapp.com/',
+                   'whitelist' => ['http://main.localinfo.prod.amachi.rznapp.com' => true],
 
                    ],
         'test' => [
                    'account_domain' => 'http://api.platform.test.amachi.rznapp.com/v2/',
-                   'image_domain' => 'http://image.treasure.prod.amachicucu.rznapp.com/',
-                   'whitelist' => ['http://main.treasure.prod.amachi.rznapp.com' => true],
+                   'image_domain' => 'http://image.localinfo.prod.amachicucu.rznapp.com/',
+                   'whitelist' => ['http://main.localinfo.prod.amachi.rznapp.com' => true],
                    ],
 ];

@@ -28,7 +28,7 @@ function response_output_html(object) {
     var html = '';
     for(var number = 0; number < object.length; number++) {
         html += '<li class="list_item">';
-        html += '<a href="/treasure/detail/' + object[number]['id'] + '">';
+        html += '<a href="/localinfo/detail/' + object[number]['id'] + '">';
         html += '<div class="list_thumb">';
         html += '<img src="' + object[number]['thumbnail_url'] + '"/>';
         html += '</div>';

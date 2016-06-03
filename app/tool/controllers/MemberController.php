@@ -4,7 +4,7 @@ namespace Lapi\Tool\Controllers;
 class MemberController extends \Phalcon\Mvc\Controller
 {
     const VALID_USERNAME = 'gochipon';
-    const VALID_PASSWORD = 'treasure';
+    const VALID_PASSWORD = 'localinfo';
     /**
      * ログイン画面
      */

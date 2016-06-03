@@ -4,9 +4,9 @@ namespace Lapi\Models\Validator;
 use Phalcon\Mvc\Model\Validator;
 use Phalcon\Mvc\Model\ValidatorInterface;
 use Phalcon\Mvc\EntityInterface;
-use Lapi\Models\Model\Treasure;
+use Lapi\Models\Model\Localinfo;
 
-class TreasureIdValidator extends Validator implements ValidatorInterface
+class LocalinfoIdValidator extends Validator implements ValidatorInterface
 {
     public function validate(EntityInterface $model)
     {
@@ -14,13 +14,13 @@ class TreasureIdValidator extends Validator implements ValidatorInterface
 
         if (! $this->validPositiveInteger($model->$field)) {
             $message = sprintf("1以上の値を指定してください");
-            $this->appendMessage($message, $field, "TreasureIdValidator");
+            $this->appendMessage($message, $field, "LocalinfoIdValidator");
             return false;
         }
 
-        if (! $this->validTreasureId($model->$field)) {
+        if (! $this->validLocalinfoId($model->$field)) {
             $message = sprintf("データがありません");
-            $this->appendMessage($message, $field, "TreasureIdValidator");
+            $this->appendMessage($message, $field, "LocalinfoIdValidator");
             return false;
         }
 
@@ -43,14 +43,14 @@ class TreasureIdValidator extends Validator implements ValidatorInterface
      * 文字数チェック
      * @return boolean
      */
-    public function validTreasureId($parameter)
+    public function validLocalinfoId($parameter)
     {
-        $treasure = Treasure::findFirst($parameter);
-        if ($treasure == null) {
+        $localinfo = Localinfo::findFirst($parameter);
+        if ($localinfo == null) {
             return false;
         }
 
-        if ($treasure->id == $parameter) {
+        if ($localinfo->id == $parameter) {
             return true;
         }
         return false;

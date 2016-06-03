@@ -2,7 +2,7 @@
 return [
     'all' => [
         '/' => [
-            'controller' => 'treasure',
+            'controller' => 'localinfo',
             'action'     => 'index'
         ],
         '/:action' => [

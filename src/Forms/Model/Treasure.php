@@ -7,7 +7,7 @@ namespace Lapi\Forms\Model;
 /**
  * Lapi
  */
-class Lapi extends \Lapi\Forms\Model\Base\Treasure
+class Lapi extends \Lapi\Forms\Model\Base\Localinfo
 {
 
     /**

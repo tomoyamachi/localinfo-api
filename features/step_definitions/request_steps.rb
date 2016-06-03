@@ -83,7 +83,7 @@ Given /^I am logged in as "(.*)"$/ do |token|
 
   @body = {
     :login_token => token,
-    :app_code => 'treasure',
+    :app_code => 'localinfo',
   }
 
   request_url = $BASEURL+'login'

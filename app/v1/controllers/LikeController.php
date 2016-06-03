@@ -4,7 +4,7 @@ namespace Lapi\V1\Controllers;
 use \Lapi\Models\Model\Like as Like;
 use \Lapi\Response\Like as RLike;
 use \Api\Models\Validator;
-use \Lapi\Models\Model\Treasure;
+use \Lapi\Models\Model\Localinfo;
 
 class LikeController extends \Lapi\V1\Controllers\GetUserController
 {
@@ -21,14 +21,14 @@ class LikeController extends \Lapi\V1\Controllers\GetUserController
         }
 
         // IDに問題がないか確認
-        $treasureId = $this->dispatcher->getParam('treasure_id');
-        $response = $this->checkPositiveInteger($treasureId);
+        $localinfoId = $this->dispatcher->getParam('localinfo_id');
+        $response = $this->checkPositiveInteger($localinfoId);
         if ($response !== true) {
             return $response;
         }
 
         // 引数に問題がなければ検索
-        $params['conditions'] = ['treasure_id' => $treasureId];
+        $params['conditions'] = ['localinfo_id' => $localinfoId];
         $likeModel = Like::getInstance();
         $likes = $likeModel->findStatusValid($params);
         $result = RLike::getMultipleContent($likes);
@@ -110,8 +110,8 @@ class LikeController extends \Lapi\V1\Controllers\GetUserController
         $this->db->begin();
 
         $like = new Like();
-        $treasureId = $this->dispatcher->getParam('treasure_id');
-        $like->initializeByFirst($treasureId);
+        $localinfoId = $this->dispatcher->getParam('localinfo_id');
+        $like->initializeByFirst($localinfoId);
         $result = $this->getCreateResult($like);
         if ($result instanceof \Gpl\Http\Response) {
             $this->db->rollback();
@@ -119,11 +119,11 @@ class LikeController extends \Lapi\V1\Controllers\GetUserController
         }
 
         // お宝に紐づくいいね数を増やす
-        $treasureModel = Treasure::getInstance();
-        $treasure = $treasureModel->findFirstById($treasureId);
-        if ($treasure instanceof Treasure) {
-            $treasure->addLikeCount();
-            if ($treasure->update() == false) {
+        $localinfoModel = Localinfo::getInstance();
+        $localinfo = $localinfoModel->findFirstById($localinfoId);
+        if ($localinfo instanceof Localinfo) {
+            $localinfo->addLikeCount();
+            if ($localinfo->update() == false) {
                 $this->db->rollback();
                 return;
             }
@@ -161,19 +161,19 @@ class LikeController extends \Lapi\V1\Controllers\GetUserController
 
     /**
      * create, updateの共通部分
-     * @param \UTreasureLike $like
+     * @param \ULocalinfoLike $like
      * @return array
      */
     private function getCreateResult($like)
     {
-        $treasureId = $this->dispatcher->getParam('treasure_id');
-        $response = $this->checkPositiveInteger($treasureId);
+        $localinfoId = $this->dispatcher->getParam('localinfo_id');
+        $response = $this->checkPositiveInteger($localinfoId);
         if ($response !== true) {
             return $response;
         }
 
         $accountId = $this->account['account_id'];
-        $createParams = ['treasure_id' => $treasureId, 'account_id' => $accountId];
+        $createParams = ['localinfo_id' => $localinfoId, 'account_id' => $accountId];
 
         $config = new \Api\Models\Tool\Config('like');
         $addData = $like->addFirstData($createParams, $config);
@@ -199,8 +199,8 @@ class LikeController extends \Lapi\V1\Controllers\GetUserController
      */
     public function deleteAction()
     {
-        $treasureId = $this->dispatcher->getParam('treasure_id');
-        $response = $this->checkPositiveInteger($treasureId);
+        $localinfoId = $this->dispatcher->getParam('localinfo_id');
+        $response = $this->checkPositiveInteger($localinfoId);
         if ($response !== true) {
             return $response;
         }
@@ -219,11 +219,11 @@ class LikeController extends \Lapi\V1\Controllers\GetUserController
 
         if ($like->delete()) {
             // お宝に紐づくいいね数を減らす
-            $treasureModel = Treasure::getInstance();
-            $treasure = $treasureModel->findFirstById($treasureId);
-            if ($treasure instanceof Treasure) {
-                $treasure->removeLikeCount();
-                if ($treasure->update() == false) {
+            $localinfoModel = Localinfo::getInstance();
+            $localinfo = $localinfoModel->findFirstById($localinfoId);
+            if ($localinfo instanceof Localinfo) {
+                $localinfo->removeLikeCount();
+                if ($localinfo->update() == false) {
                     $this->db->rollback();
                     return;
                 }
