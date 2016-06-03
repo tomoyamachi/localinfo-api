@@ -27,11 +27,6 @@ return array (
       ),
       'label' => 'いいね数',
     ),
-    'price' =>    array (
-      'validation' =>      array (
-      ),
-      'label' => '参考価格(円)',
-    ),
     'thumbnail' =>    array (
       'validation' =>      array (
       ),

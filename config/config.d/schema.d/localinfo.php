@@ -10,7 +10,6 @@ return Table::getDefinition('localinfo', [
     Column::getVarchar('title'),
     Column::getInteger('comment_count'),
     Column::getInteger('like_count'),
-    Column::getInteger('price'),
     Column::getVarchar('thumbnail'),
     Column::getVarchar('image'),
     Column::getText('comment'),
