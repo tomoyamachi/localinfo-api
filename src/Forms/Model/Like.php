@@ -1,13 +1,13 @@
 <?php
 /**
- * Treasure\Forms\Model
+ * Lapi\Forms\Model
  */
-namespace Treasure\Forms\Model;
+namespace Lapi\Forms\Model;
 
 /**
  * Like
  */
-class Like extends \Treasure\Forms\Model\Base\Like
+class Like extends \Lapi\Forms\Model\Base\Like
 {
 
     /**

@@ -1,13 +1,13 @@
 <?php
 /**
- * Treasure\Forms\Model
+ * Lapi\Forms\Model
  */
-namespace Treasure\Forms\Model;
+namespace Lapi\Forms\Model;
 
 /**
  * Comment
  */
-class Comment extends \Treasure\Forms\Model\Base\Comment
+class Comment extends \Lapi\Forms\Model\Base\Comment
 {
 
     /**

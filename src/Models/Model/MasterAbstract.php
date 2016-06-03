@@ -1,5 +1,5 @@
 <?php
-namespace Treasure\Models\Model;
+namespace Lapi\Models\Model;
 
 /**
  * マスター系のデータ

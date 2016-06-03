@@ -1,13 +1,13 @@
 <?php
 /**
- * Treasure\Models\Model
+ * Lapi\Models\Model
  * お宝に1対多で対応するものの抽象クラス
  */
-namespace Treasure\Models\Model;
+namespace Lapi\Models\Model;
 
-use Treasure\Models\Validator as OwnValidator;
+use Lapi\Models\Validator as OwnValidator;
 
-class ReactionAbstract extends \Treasure\Models\Model\PostDataAbstract
+class ReactionAbstract extends \Lapi\Models\Model\PostDataAbstract
 {
     protected static $defaultData;
 

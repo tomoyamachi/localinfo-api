@@ -1,13 +1,13 @@
 <?php
 /**
- * Treasure\Forms\Model
+ * Lapi\Forms\Model
  */
-namespace Treasure\Forms\Model;
+namespace Lapi\Forms\Model;
 
 /**
  * MPoint
  */
-class MPoint extends \Treasure\Forms\Model\Base\MPoint
+class MPoint extends \Lapi\Forms\Model\Base\MPoint
 {
 
     /**

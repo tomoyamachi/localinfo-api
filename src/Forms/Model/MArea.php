@@ -1,13 +1,13 @@
 <?php
 /**
- * Treasure\Forms\Model
+ * Lapi\Forms\Model
  */
-namespace Treasure\Forms\Model;
+namespace Lapi\Forms\Model;
 
 /**
  * MArea
  */
-class MArea extends \Treasure\Forms\Model\Base\MArea
+class MArea extends \Lapi\Forms\Model\Base\MArea
 {
 
     /**

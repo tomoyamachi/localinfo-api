@@ -1,8 +1,8 @@
 <?php
 /**
- * Treasure\Models
+ * Lapi\Models
  */
-namespace Treasure\Models;
+namespace Lapi\Models;
 
 /**
  * Model

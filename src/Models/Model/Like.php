@@ -1,13 +1,13 @@
 <?php
 /**
- * Treasure\Models\Model
+ * Lapi\Models\Model
  */
-namespace Treasure\Models\Model;
+namespace Lapi\Models\Model;
 
 /**
  * Like
  */
-class Like extends \Treasure\Models\Model\ReactionAbstract
+class Like extends \Lapi\Models\Model\ReactionAbstract
 {
     protected static $defaultData = [
                                      'id' => null,

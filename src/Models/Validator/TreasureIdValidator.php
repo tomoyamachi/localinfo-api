@@ -1,10 +1,10 @@
 <?php
-namespace Treasure\Models\Validator;
+namespace Lapi\Models\Validator;
 
 use Phalcon\Mvc\Model\Validator;
 use Phalcon\Mvc\Model\ValidatorInterface;
 use Phalcon\Mvc\EntityInterface;
-use Treasure\Models\Model\Treasure;
+use Lapi\Models\Model\Treasure;
 
 class TreasureIdValidator extends Validator implements ValidatorInterface
 {

@@ -1,5 +1,5 @@
 <?php
-namespace Treasure\Models\Model;
+namespace Lapi\Models\Model;
 
 /**
  * ユーザーが作成するデータ

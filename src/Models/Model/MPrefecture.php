@@ -1,12 +1,12 @@
 <?php
 /**
- * Treasure\Models\Model
+ * Lapi\Models\Model
  */
-namespace Treasure\Models\Model;
+namespace Lapi\Models\Model;
 
 /**
  * MPrefecture
  */
-class MPrefecture extends \Treasure\Models\Model\MasterAbstract
+class MPrefecture extends \Lapi\Models\Model\MasterAbstract
 {
 }

@@ -1,13 +1,13 @@
 <?php
 /**
- * Treasure\Models\Model
+ * Lapi\Models\Model
  */
-namespace Treasure\Models\Model;
+namespace Lapi\Models\Model;
 
-use \Treasure\Models\ApiConnector;
+use \Lapi\Models\ApiConnector;
 
 // 投稿データの共通処理部分
-class PostDataAbstract extends \Treasure\Models\Model\UserAbstract
+class PostDataAbstract extends \Lapi\Models\Model\UserAbstract
 {
     const STATUS_VALID = 'valid';
     const STATUS_INVALID = 'invalid';

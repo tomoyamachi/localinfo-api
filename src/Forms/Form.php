@@ -1,8 +1,8 @@
 <?php
 /**
- * Treasure\Forms
+ * Lapi\Forms
  */
-namespace Treasure\Forms;
+namespace Lapi\Forms;
 
 /**
  * Form

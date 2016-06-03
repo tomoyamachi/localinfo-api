@@ -1,5 +1,5 @@
 <?php
-namespace Treasure\Models;
+namespace Lapi\Models;
 
 use Phalcon\Http\Client\Request;
 use Phalcon\Http\Response\StatusCode;

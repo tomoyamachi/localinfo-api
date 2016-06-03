@@ -1,15 +1,15 @@
 <?php
 /**
- * Treasure\Models\Model
+ * Lapi\Models\Model
  */
-namespace Treasure\Models\Model;
+namespace Lapi\Models\Model;
 
-use Treasure\Models\Validator as OwnValidator;
+use Lapi\Models\Validator as OwnValidator;
 
 /**
  * Treasure
  */
-class Treasure extends \Treasure\Models\Model\PostDataAbstract
+class Treasure extends \Lapi\Models\Model\PostDataAbstract
 {
     protected static $defaultData = [
                                      'id' => null,
