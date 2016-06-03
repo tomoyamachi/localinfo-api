@@ -17,7 +17,7 @@ return array (
       ),
       'label' => 'トークン',
     ),
-    'treasure_count' =>    array (
+    'localinfo_count' =>    array (
       'validation' =>      array (
       ),
       'label' => '投稿お宝数',

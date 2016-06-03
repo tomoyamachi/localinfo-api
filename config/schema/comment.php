@@ -13,7 +13,7 @@ return array (
       ),
       'label' => '投稿者',
     ),
-    'treasure_id' =>    array (
+    'localinfo_id' =>    array (
       'validation' =>      array (
         'require' => true,
       ),
@@ -44,7 +44,7 @@ return array (
   ),
   'search_filter' =>  array (
     'account_id' => '投稿者',
-    'treasure_id' => 'お宝',
+    'localinfo_id' => 'お宝',
     'comment' => 'コメント内容',
     'status' => '状態',
     'created_at' => '作成日',

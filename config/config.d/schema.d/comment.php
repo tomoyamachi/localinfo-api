@@ -7,7 +7,7 @@ return Table::getDefinition('comment', [
         'columns' => [
     Column::getPrimaryKey('id'),
     Column::getVarchar('account_id', ['notNull' => true]),
-    Column::getVarchar('treasure_id', ['notNull' => true]),
+    Column::getVarchar('localinfo_id', ['notNull' => true]),
     Column::getText('comment'),
     Column::getVarchar('status'),
     Column::getDateTime('created_at'),
@@ -15,7 +15,7 @@ return Table::getDefinition('comment', [
                       ],
         'indexes' => [
            Index::getPrimary(['id']),
-        Index::getIndex(['treasure_id','status']),
+        Index::getIndex(['localinfo_id','status']),
         Index::getIndex(['account_id','status']),
         ]
 ]);

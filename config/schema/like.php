@@ -13,7 +13,7 @@ return array (
       ),
       'label' => 'いいねした人',
     ),
-    'treasure_id' =>    array (
+    'localinfo_id' =>    array (
       'validation' =>      array (
         'require' => true,
       ),
@@ -39,7 +39,7 @@ return array (
   ),
   'search_filter' =>  array (
     'account_id' => 'いいねした人',
-    'treasure_id' => 'お宝',
+    'localinfo_id' => 'お宝',
     'created_at' => '作成日',
     'updated_at' => '更新日',
   ),

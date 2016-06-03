@@ -13,6 +13,16 @@ return array (
       ),
       'label' => '名前',
     ),
+    'longitude' =>    array (
+      'validation' =>      array (
+      ),
+      'label' => '緯度',
+    ),
+    'latitude' =>    array (
+      'validation' =>      array (
+      ),
+      'label' => '経度',
+    ),
   ),
   'placeholder' =>  array (
   ),

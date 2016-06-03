@@ -3,14 +3,19 @@ use Gpl\Db\Table;
 use Gpl\Db\Column;
 use Gpl\Db\Index;
 
-return Table::getDefinition('account', [
+return Table::getDefinition('localinfo', [
         'columns' => [
     Column::getPrimaryKey('id'),
-    Column::getVarchar('nickname'),
-    Column::getText('login_token'),
-    Column::getInteger('localinfo_count'),
+    Column::getInteger('account_id'),
+    Column::getVarchar('title'),
     Column::getInteger('comment_count'),
     Column::getInteger('like_count'),
+    Column::getInteger('price'),
+    Column::getVarchar('thumbnail'),
+    Column::getVarchar('image'),
+    Column::getText('comment'),
+    Column::getInteger('prefecture_id'),
+    Column::getInteger('area_id'),
     Column::getVarchar('status'),
     Column::getDateTime('created_at'),
     Column::getDateTime('updated_at'),
