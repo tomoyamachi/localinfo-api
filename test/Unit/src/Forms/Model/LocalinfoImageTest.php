@@ -4,7 +4,7 @@
  */
 namespace Test\Unit\src\Forms;
 
-use Localinfo\Forms\Model\LocalinfoImage;
+use Lapi\Forms\Model\LocalinfoImage;
 
 /**
  * LocalinfoImageTest
@@ -15,6 +15,6 @@ class LocalinfoImageTest extends \Test\Unit\TestCase
     public function testConstruct()
     {
         $form = new LocalinfoImage();
-        $this->assertInstanceOf('Localinfo\Forms\Model\LocalinfoImage', $form);
+        $this->assertInstanceOf('Lapi\Forms\Model\LocalinfoImage', $form);
     }
 }

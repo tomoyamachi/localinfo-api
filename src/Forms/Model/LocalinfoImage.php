@@ -1,13 +1,13 @@
 <?php
 /**
- * Localinfo\Forms\Model
+ * Lapi\Forms\Model
  */
-namespace Localinfo\Forms\Model;
+namespace Lapi\Forms\Model;
 
 /**
  * LocalinfoImage
  */
-class LocalinfoImage extends \Localinfo\Forms\Model\Base\LocalinfoImage
+class LocalinfoImage extends \Lapi\Forms\Model\Base\LocalinfoImage
 {
 
     /**

@@ -152,12 +152,8 @@ class Localinfo extends \Lapi\Models\Model\PostDataAbstract
      */
     protected function getImageUrl()
     {
-        if ($this->image) {
-            $config = require APP_DIR.'/v1/config/config.d/config.php';
-            $imageDomain = $config[APPLICATION_ENV]['image_domain'];
-            return $imageDomain.$this->image;
-        }
-        return '';
+        $image = LocalinfoImage::findFirst($this->main_image_id);
+        return $image->getImageUrl();
     }
 
     /**
@@ -166,11 +162,7 @@ class Localinfo extends \Lapi\Models\Model\PostDataAbstract
      */
     protected function getThumbnailUrl()
     {
-        if ($this->thumbnail) {
-            $config = require APP_DIR.'/v1/config/config.d/config.php';
-            $imageDomain = $config[APPLICATION_ENV]['image_domain'];
-            return $imageDomain.$this->thumbnail;
-        }
-        return '';
+        $image = LocalinfoImage::findFirst($this->main_image_id);
+        return $image->getThumbnailUrl();
     }
 }
