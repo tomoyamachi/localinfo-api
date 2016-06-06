@@ -10,8 +10,7 @@ return Table::getDefinition('localinfo', [
     Column::getVarchar('title'),
     Column::getInteger('comment_count'),
     Column::getInteger('like_count'),
-    Column::getVarchar('thumbnail'),
-    Column::getVarchar('image'),
+    Column::getInteger('main_image_id'),
     Column::getText('comment'),
     Column::getInteger('prefecture_id'),
     Column::getInteger('area_id'),
@@ -21,5 +20,6 @@ return Table::getDefinition('localinfo', [
                       ],
         'indexes' => [
            Index::getPrimary(['id']),
+        Index::getIndex(['main_image_id']),
         ]
 ]);

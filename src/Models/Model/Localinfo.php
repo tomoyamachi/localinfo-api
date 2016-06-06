@@ -21,7 +21,6 @@ class Localinfo extends \Lapi\Models\Model\PostDataAbstract
                                      'like_count' => 0,
                                      'comment' => null,
                                      'image' => null,
-                                     'thumbnail' => null,
                                      'status' => 'valid',
                                      'created_at' => 'now',
                                      'updated_at' => 'now'

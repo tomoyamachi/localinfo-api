@@ -27,15 +27,10 @@ return array (
       ),
       'label' => 'いいね数',
     ),
-    'thumbnail' =>    array (
+    'main_image_id' =>    array (
       'validation' =>      array (
       ),
-      'label' => 'サムネ画像',
-    ),
-    'image' =>    array (
-      'validation' =>      array (
-      ),
-      'label' => '画像',
+      'label' => 'メイン画像',
     ),
     'comment' =>    array (
       'validation' =>      array (
@@ -72,7 +67,6 @@ return array (
   ),
   'search_filter' =>  array (
     'account_id' => 'アカウントID',
-    'image' => '画像',
     'comment' => 'ひとこと',
     'prefecture_id' => '県ID',
     'area_id' => 'エリアID',
