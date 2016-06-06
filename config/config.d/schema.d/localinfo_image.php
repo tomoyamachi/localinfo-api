@@ -7,7 +7,6 @@ return Table::getDefinition('localinfo_image', [
         'columns' => [
     Column::getPrimaryKey('id'),
     Column::getInteger('localinfo_id'),
-    Column::getVarchar('file'),
     Column::getVarchar('image'),
     Column::getVarchar('status'),
     Column::getDateTime('created_at'),

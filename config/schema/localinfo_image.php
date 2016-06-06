@@ -12,11 +12,6 @@ return array (
       ),
       'label' => 'ご当地情報ID',
     ),
-    'file' =>    array (
-      'validation' =>      array (
-      ),
-      'label' => '画像名',
-    ),
     'image' =>    array (
       'validation' =>      array (
       ),
