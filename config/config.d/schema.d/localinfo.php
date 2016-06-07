@@ -14,6 +14,8 @@ return Table::getDefinition('localinfo', [
     Column::getText('comment'),
     Column::getInteger('prefecture_id'),
     Column::getInteger('area_id'),
+    Column::getInteger('latitude'),
+    Column::getInteger('longitude'),
     Column::getVarchar('status'),
     Column::getDateTime('created_at'),
     Column::getDateTime('updated_at'),

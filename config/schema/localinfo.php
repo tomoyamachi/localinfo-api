@@ -47,6 +47,16 @@ return array (
       ),
       'label' => 'エリアID',
     ),
+    'latitude' =>    array (
+      'validation' =>      array (
+      ),
+      'label' => '緯度',
+    ),
+    'longitude' =>    array (
+      'validation' =>      array (
+      ),
+      'label' => '経度',
+    ),
     'status' =>    array (
       'validation' =>      array (
       ),

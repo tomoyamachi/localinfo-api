@@ -14,9 +14,7 @@ class LocalinfoImage extends \Lapi\Models\Model\UserAbstract
      */
     public function getThumbnailUrl()
     {
-        $config = require APP_DIR.'/v1/config/config.d/config.php';
-        $imageDomain = $config[APPLICATION_ENV]['image_domain'];
-        return $imageDomain.'localinfo/'.$this->image;
+        return APP_IMAGE_DOMAIN.'/localinfo/'.$this->image;
     }
 
     /**
@@ -24,8 +22,6 @@ class LocalinfoImage extends \Lapi\Models\Model\UserAbstract
      */
     public function getImageUrl()
     {
-        $config = require APP_DIR.'/v1/config/config.d/config.php';
-        $imageDomain = $config[APPLICATION_ENV]['image_domain'];
-        return $imageDomain.'localinfo/'.$this->image;
+        return APP_IMAGE_DOMAIN.'/localinfo/'.$this->image;
     }
 }
