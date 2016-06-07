@@ -1,0 +1,98 @@
+<?php
+include 'header.phtml';
+
+function _render_delta($val, $flag) {
+	if (is_array($val)) {
+		if (empty($val['old'])) {
+			// add
+			$delta = 'background-color: #bfb';
+			$whitespace = '#7c72';
+		} else {
+			// modify
+			$delta = 'background-color: #fd8';
+			$whitespace = '#feb97e';
+		}
+		foreach ($val as $k => $v) {
+			$val[$k] = preg_replace('%([\s　]+)%u', '<em style="background-color: ' . $whitespace . ';">\1</em>', $v);
+		}
+		return sprintf('<div><span class="delta" style="%s; margin-bottom: 2px;">%s</span></div><div><span style="%s;">%s</span></div>', $delta, $val['old'], $delta, $val['new']);
+	} else {
+		if ($flag == \Api\Models\Tool\ImportAbstract::FLAG_DELETE) {
+			// remove
+			$val = sprintf('<span style="background-color: #f88;">%s</span>', $val);
+		}
+		return $val;
+	}
+}
+
+$pages = $pages_;
+$current_page = $page_;
+?>
+<h1 class="orange">入稿</h1>
+<div class="hr3"></div>
+
+<?php if (count($incomings) > 0) { ?>
+<p>以下のデータを開発環境のテーブルに入稿します。よろしければ【実行】ボタンを押して下さい。</p>
+<p>更新方法：<span style="color: violet; font-weight: bold;"><?= $modes[$mode]['name'] ?></span></p>
+
+<?php foreach ($incomings as $incoming) { ?>
+<h2><?= $incoming::getImporter() ?></h2>
+<h3>更新対象</h3>
+<div class="table">
+<?php if ($importer === $incoming::getImporter()) { ?>
+  <table style="empty-cells: show;">
+  <tr>
+  <?php $fields = $incoming->fields; ?>
+  <?php foreach ($fields as $key => $val) { ?>
+    <th><?= $val['label'] ?></th>
+  <?php } ?>
+  </tr>
+  <?php if (!empty($result)) { foreach ($result as $num => $row) { ?>
+  <tr>
+    <?php foreach ($fields as $field => $field_val) { ?>
+    <td><?= _render_delta($row[$field], $row['flag']) ?></td>
+    <?php } ?>
+  </tr>
+  <?php } } else { ?>
+  <tr>
+    <td colspan="<?= count($fields) ?>">更新が必要なデータはありません</td>
+  </tr>
+  <?php } ?>
+  </table>
+  <div class="pagination">
+<?php
+    for ($p = 1; $p <= count($pages); $p++) {
+        if ($p == $current_page) {
+?>
+        <span class="current"><?= $p ?></span>
+<?php
+        } else {
+?>
+        <span><a href="/import/incoming/<?= $importer ?>?p=<?= $p ?>"><?= $p ?></a></span>
+<?php
+        }
+    }
+?>
+  <p><?= count($incoming->table) ?> 件</p>
+  </div>
+<?php } else { ?>
+  <table>
+  <tr><th>&nbsp;</th></tr>
+  <tr><td><a href="/import/incoming/<?= $incoming->getImporter() ?>"><?= count($incoming->table) ?> 件</a></td></tr>
+  </table>
+<?php } ?>
+</div>
+<?php } ?>
+
+<form method="post" action="/import/commit">
+<p><input type="checkbox" name="data[check]" value="1">上記入稿データに誤りが無い事を確認しました</a></p>
+<p><input type="text" name="data[user_name]" size="30" placeholder="入稿者の名前を入力して下さい" /></p>
+<?php if (!empty($check)) { ?><div style="color: red; font-weight: bold;">確認のチェックまたは入稿者の名前が入力されていません。</div><?php } ?>
+<input type="submit" name="data[a][execute]" value="実行" />&nbsp;
+<input type="submit" name="data[a][cancel]" value="キャンセル" />
+</form>
+<?php } else { ?>
+<p>選択されたテーブルは既に開発環境に入稿済みです。</p>
+<?php } ?>
+
+<?php include 'footer.phtml'; ?>

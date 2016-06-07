@@ -1,0 +1,100 @@
+<?php
+include 'header.phtml';
+
+function _render_diff($val) {
+	if (is_array($val)) {
+		if (empty($val['old'])) {
+			// add
+			$diff = 'background-color: #bfb;';
+		} else if (empty($val['new'])) {
+			// remove
+			$diff = 'background-color: #f88;';
+		} else {
+			// modify
+			$diff = 'background-color: #fd8;';
+		}
+		return sprintf('<div style="%s; margin-bottom: 2px;">%s&nbsp;</div><div style="%s">%s&nbsp;</div>', $diff, $val['old'], $diff, $val['new']);
+	} else {
+		return $val;
+	}
+}
+
+function _get_schema_fields($import) {
+	$schema = $import->getSchema();
+	$fields = $import->fields;
+	foreach ($fields as $key => $val) {
+		if (empty($schema[$key])) {
+			unset($fields[$key]);
+		}
+	}
+	return $fields;
+}
+
+$outgoings = $this->outgoings;
+$pages = $this->pages_;
+$current_page = $this->page_;
+?>
+<h1 class="orange">同期</h1>
+<div class="hr3"></div>
+
+<?php if (count($outgoings) > 0) { ?>
+<p>以下の開発環境のテーブルを本番環境のテーブルへ同期します。よろしければ【実行】ボタンを押して下さい。</p>
+<p>更新対象：<span style="color: violet; font-weight: bold;"><?= implode(', ', $this->providers) ?></span>&nbsp;&nbsp;更新方法：<span style="color: violet; font-weight: bold;"><?= $this->modes[$this->mode]['name'] ?></span></p>
+
+<?php foreach ($outgoings as $outgoing) { ?>
+<h2>[<?= $outgoing->provider_id ?>]<?= $outgoing::TEXT ?></h2>
+<div class="table">
+<?php $imp = $outgoing->provider_id . '.' . $outgoing::IMPORTER; ?>
+<?php if ($this->importer === $imp) { ?>
+  <table>
+  <tr>
+  <?php $fields = _get_schema_fields($outgoing); ?>
+  <?php foreach ($fields as $key => $val) { ?>
+    <th><?= $val['name'] ?></th>
+  <?php } ?>
+  </tr>
+  <?php foreach ($this->result as $num => $row) { ?>
+  <tr>
+    <?php foreach ($fields as $field => $field_val) { ?>
+    <td><?= _render_diff($row[$field]) ?></td>
+    <?php } ?>
+  </tr>
+  <?php } ?>
+  </table>
+  <div class="pagination">
+  <?php 
+    for ($p = 1; $p <= count($pages); $p++) { 
+	  if ($p == $current_page) { 
+  ?>
+      <span class="current" style="line-height: 3em;"><?= $p ?></span>
+  <?php
+      } else {
+  ?>
+      <span style="line-height: 3em;"><a href="/import/outgoing/<?= $this->importer ?>?p=<?= $p ?>"><?= $p ?></a></span>
+  <?php 
+      }
+    }
+  ?>
+    <p><?= count($outgoing->table) ?> 件</p>
+  </div> 
+<?php } else { ?>
+  <table>
+  <tr><th>&nbsp;</th></tr>
+  <tr><td><a href="/import/outgoing/<?= $imp ?>"><?= count($outgoing->table) ?> 件</a></td></tr>
+  </table>
+<?php } ?>
+</div>
+<?php } ?>
+
+<form method="post" action="/import/push">
+<p><input type="checkbox" name="data[check]" value="1">上記同期データに誤りが無い事を確認しました</a></p>
+<p><input type="text" name="data[user_name]" size="30" placeholder="同期実行者の名前を入力して下さい" /></p>
+<?php if (!empty($this->check)) { ?><div style="color: red; font-weight: bold;">確認のチェックまたは同期実行者の名前が入力されていません。</div><?php } ?>
+<input type="submit" name="data[a][execute]" value="実行" />&nbsp;
+<input type="submit" name="data[a][cancel]" value="キャンセル" />
+</form>
+<?php } else { ?>
+<p>選択されたテーブルは既に本番環境に同期済みです。</p>
+<?php } ?>
+
+<?php include 'footer.phtml'; ?>

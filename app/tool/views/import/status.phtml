@@ -1,0 +1,35 @@
+<?php include 'header.phtml'; ?>
+<h1 class="orange">ステータス</h1>
+<div class="hr3"></div>
+
+<ul style="list-style: none;">
+<?php foreach ($types as $key => $val) { ?>
+  <li style="display: inline;"><a href="/import/index?type=<?= $key ?>"><?= $val['name'] ?></a>&nbsp;</li>
+<?php } ?>
+  <li style="display: inline;">ステータス</li>
+</ul>
+
+<div class="table">
+<table>
+<tr><th>マスタ名</th><th>入稿日時</th><th>入稿者</th><th>追加件数</th><th>変更件数</th><th>削除件数</th><th>入稿後の同期有無</th><th>同期日時</th><th>同期者</th><th>追加件数</th><th>変更件数</th><th>削除件数</th><th>&nbsp;</th></tr>
+<?php foreach ($result as $name => $table) { ?>
+<tr>
+  <td><?= $name ?></td>
+<?php foreach ($types as $key => $val) { ?>
+  <td><?= (!isset($table[$key]['ins_date']) ? '' : $table[$key]['ins_date']) ?></td>
+  <td><?= (!isset($table[$key]['user_name']) ? '' : $table[$key]['user_name']) ?></td>
+  <td><?= (!isset($table[$key]['add_num']) ? '' : $table[$key]['add_num']) ?></td>
+  <td><?= (!isset($table[$key]['mod_num']) ? '' : $table[$key]['mod_num']) ?></td>
+  <td><?= (!isset($table[$key]['del_num']) ? '' : $table[$key]['del_num']) ?></td>
+  <?php if ($key != \Api\Models\Tool\ImportLog::TYPE_PUSH) { ?>
+  <td><?= (!isset($table[\Api\Models\Tool\ImportLog::TYPE_PUSH]['ins_date']) ? '' : '○') ?></td>
+  <?php } else { ?>
+  <td><a href="/import/log?name=<?= $name ?>">履歴</a></td>
+  <?php } ?>
+<?php } ?>
+</tr>
+<?php } ?>
+</table>
+</div>
+
+<?php include 'footer.phtml'; ?>

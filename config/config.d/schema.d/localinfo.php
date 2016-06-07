@@ -22,6 +22,8 @@ return Table::getDefinition('localinfo', [
                       ],
         'indexes' => [
            Index::getPrimary(['id']),
-        Index::getIndex(['main_image_id']),
+        Index::getIndex(['account_id']),
+        Index::getIndex(['prefecture_id']),
+        Index::getIndex(['area_id']),
         ]
 ]);

@@ -1,0 +1,15 @@
+<?php include 'header.phtml'; ?>
+<h1 class="orange">ログ</h1>
+<div class="hr3"></div>
+
+<h2><?= $name ?></h2>
+<div class="table">
+<table>
+<tr><th>日時</th><th>種別</th><th>実行者</th><th>追加件数</th><th>変更件数</th><th>削除件数</th><th>メッセージ</th></tr>
+<?php foreach ($result as $log) { ?>
+<tr><td><?= $log['created_at'] ?></td><td><?= $log['type'] ?></td><td><?= $log['user_name'] ?></td><td><?= $log['add_num'] ?></td><td><?= $log['mod_num'] ?></td><td><?= $log['del_num'] ?></td><td><pre><?= $log['message'] ?></pre></td></tr>
+<?php } ?>
+</table>
+</div>
+
+<?php include 'footer.phtml'; ?>

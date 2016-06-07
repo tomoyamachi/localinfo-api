@@ -1,0 +1,131 @@
+<?php
+include 'header.phtml';
+
+function _render_tables($data, $type, $title, $tables) {
+  echo '<div class="table"><table><tr><th>' . $title . '</th></tr>';
+  foreach ($tables as $table) {
+    if (!empty($table['text'])) {
+      $name_text = $table['name'] . '(' . $table['text'] . ')';
+      if ($type == \Api\Models\Tool\ImportLog::TYPE_COMMIT) {
+        echo '<tr><td><a href="/import/add/' . $table['class'] . '">' . $name_text . '</a></td></tr>';
+      } else {
+        echo '<tr><td><label><input type="checkbox" name="data[tables][' . $table['class'] . ']" value="' . $table['class'] . '"' . (!empty($data['tables'][$table['class']]) ? ' checked="checked"' : '') . '>' . $name_text . '</input></label></td></tr>';
+      }
+    } else {
+      echo '<tr><td>' . $table['name'] . '</td></tr>';
+    }
+  }
+  echo '</table></div>';
+}
+
+?>
+<h1 class="orange"><?= \Api\Models\Tool\ImportLog::$types[$type]['name'] ?></h1>
+<div class="hr3"></div>
+
+<ul style="list-style: none;">
+<?php foreach ($types as $key => $val) { ?>
+  <li style="display: inline;"><?php if ($type == $key) { ?><?= $val['name'] ?><?php } else { ?><a href="/import/index?type=<?= $key ?>"><?= $val['name'] ?></a><?php } ?>&nbsp;</li>
+<?php } ?>
+  <li style="display: inline;"><a href="/import/status">履歴</a></li>
+</ul>
+
+<form method="post" action="/import/index">
+<input type="hidden" name="type" value="<?= $type ?>" />
+<?php
+    if ($type == \Api\Models\Tool\ImportLog::TYPE_COMMIT) {
+?>
+<div class="table">
+<table>
+<tr><th><label for="tsv">Excelシートデータ</label></th></tr>
+<tr><td><textarea name="data[tsv]" id="tsv" cols="120" rows="30" style="width: 99%;"><?= (empty($data['tsv']) ? '' : $data['tsv']) ?></textarea></td></tr>
+</table>
+</div>
+
+<div class="table">
+<table>
+<tr><th>リストア</th></tr>
+<tr><td>
+<select name="data[class]">
+<option value=""></option>
+<?php foreach ($tables as $num => $table) { if (empty($table['class'])) continue; ?><option value="<?= $table['class'] ?>"><?= sprintf('%s(%s)', $table['name'], $table['text']) ?></option><?php } ?>
+</select>
+<input type="submit" name="data[a][restore]" value="取得" />
+</td></tr>
+</table>
+</div>
+
+<div class="table">
+<table>
+<tr><th>入稿方法</th></tr>
+<?php foreach ($modes as $key => $val) { ?>
+<tr><td><input id="<?= $key ?>" type="radio" name="data[mode]" value="<?= $key ?>"<?= ($key == $mode ? ' checked="checked"' : '') ?>><label for="<?= $key ?>"><?= $val['name'] ?></label></td></tr>
+<?php } ?>
+</table>
+</div>
+
+<input type="submit" name="data[a][incoming]" value="確認" />
+<?php
+} else {
+	// 本番管理ツール用
+	foreach( \Api\Models\Tool\Import::getDisplayCategory() as $category  => $name ) {
+		$result = array();
+		foreach( $tables as $k => $v ) {
+			if ( isset( $v['class'] ) ) {
+				$class = "\\GApi\\Models\\Tool\\Import\\".$v['class'];
+				$method = 'canSyncCategory';
+				if ( $class::$method( $category ) ) {
+					$result[] = $v;
+				};
+			}
+		}
+		_render_tables($data, $type, '同期対象テーブル['. $name. ']', $result);
+	}
+
+  echo '<div class="table"><label style="font-size:90%;"><input id="check_all" type="checkbox">テーブル一括チェック</label></div>';
+
+  echo '<div class="table"><table><tr><th>同期方法</th></tr>';
+  foreach ($modes as $key => $val) {
+    echo '<tr><td><input type="radio" name="data[mode]" value="' . $key . '"' . ($key == $mode ? ' checked="checked"' : '') . '>' . $val['name'] . ($key == \Api\Models\Tool\ImportAbstract::MODE_FULL ? '（スキーマも更新されます）' : '') . '</input></td></tr>';
+  }
+  echo '</table></div>';
+
+  echo '<div class="table"><table><tr><th>同期元</th></tr>';
+  foreach ($servers as $key => $val) {
+    echo '<tr><td><input type="radio" name="data[server]" value="' . $key . '"' . ($key == $mode ? ' checked="checked"' : '') . '>' . $val['name'] . '</input></td></tr>';
+  }
+  echo '</table></div>';
+
+  echo '<input type="submit" name="data[a][outgoing]" value="確認" />';
+}
+?>
+</form>
+
+<?php
+foreach ($errors as $num => $error) {
+	if (!is_numeric($num)) {
+		echo '<div style="color: red; font-weight: bold;">' . $error . '</div>';
+	} else {
+		foreach ($error as $field => $msg) {
+			if (is_array($msg)) {
+				//echo '<div style="color: red; font-weight: bold;">' . ($num > 0 ? sprintf('%3d 行目 ', $num + 1) : '') . (!empty($field) ? "[" . $fields[$field]['name'] . "]" : '') . current($msg) . '</div>';
+                echo '<div style="color: red; font-weight: bold;">' . ($num > 0 ? sprintf('%3d 行目 ', $num + 1) : '') . (!empty($field) ? "[" . $field . "]" : '') . current($msg) . '</div>';
+			} else {
+				echo '<div style="color: red; font-weight: bold;">' . ($num > 0 ? sprintf('%3d 行目 ', $num + 1) : '') . $msg . '</div>';
+			}
+		}
+	}
+}
+?>
+
+<script type="text/javascript">
+$(function() {
+    $("#check_all").change(function() {
+        var checked = $(this).is(":checked");
+        $("input[type=checkbox][name^=data\\[tables\\]]").each(function() {
+            $(this).prop("checked", checked);
+        });
+    });
+});
+</script>
+
+<?php include 'footer.phtml'; ?>

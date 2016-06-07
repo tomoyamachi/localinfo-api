@@ -1,0 +1,25 @@
+<?php include 'header.phtml'; ?>
+
+        <form enctype="multipart/form-data" action="/import/delcache" method="post">
+            対象サーバー
+                <select name="server">
+                    <option value="unselected">未選択</option>
+                    <option value="all">全サーバー</option>
+                    <?php foreach ( $this->servers as $server ): ?>
+                    <option value="<?= $server; ?>"><?= $server; ?></option>
+                    <?php endforeach; ?>
+                </select>
+
+            <input type="submit" value="キャッシュ削除" />
+            <div class="spacer"></div>
+        </form>
+<?php
+             if (!empty($this->results)){
+                 echo '<br/><h1>実行結果</h1>';
+}
+foreach ($this->results as $server => $result ) {
+    echo sprintf('<h2>%s</h2>',$server);
+    print_r($result);
+    echo '<br/>================<br/><br/>';
+}
+include 'footer.phtml';
