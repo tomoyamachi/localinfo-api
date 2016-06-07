@@ -1,0 +1,36 @@
+<?= $this->partial('common/header') ?>
+
+
+<div class="contents list_contents">
+
+  <div class="sort">
+    <ul class="sort_btnList">
+      <li class="sort_btn">
+        <a href="#">新着順</a>
+      </li>
+      <li class="sort_btn">
+        <a class="current">お気に入り順</a>
+      </li>
+    </ul>
+  </div>
+
+  <ul class="list" id="html">
+  </ul>
+
+  <div class="list_more" id="loading_notice">
+     <div id="loading" style="text-align:center"></div>
+     <div id="load_navi" style="text-align:center">下にスクロールするとロードできるよ</div>
+  </div>
+
+</div>
+
+<?= $this->partial('common/postBtn') ?>
+
+<script type="text/javascript" src="/js/jquery.bottom-1.0.js"></script>
+<script>
+var api_url = "<?= $apiURL ?>";
+var limit = <?= $limitPerConnect ?>;
+var offset = 0;
+var data_end_flag = false;
+</script>
+<script type="text/javascript" src="/js/localinfo/index.js"></script>
