@@ -165,4 +165,27 @@ class Localinfo extends \Lapi\Models\Model\PostDataAbstract
         $image = LocalinfoImage::findFirst($this->main_image_id);
         return $image->getThumbnailUrl();
     }
+
+    /**
+     * ランダムでn件取得
+     * @return resultset
+     */
+    public static function getRandom($limit)
+    {
+        // TODO : 全件検索になるので、indexが付いているものを選択する
+        $params = ['limit' => $limit,'order' => 'RAND()'];
+        return Localinfo::findByParams($params);
+    }
+
+    /**
+     * 近くのものからランダムでn件取得
+     * @return resultset
+     */
+    public function getNearBy($limit)
+    {
+        // TODO : 全件検索になるので、indexが付いているものを選択する
+        $condition = ['prefecture_id' => $this->prefecture_id];
+        $params = ['conditions' => $condition, 'limit' => $limit, 'order' => 'RAND()'];
+        return Localinfo::findByParams($params);
+    }
 }

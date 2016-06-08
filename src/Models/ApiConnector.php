@@ -113,6 +113,7 @@ class ApiConnector
     public static function getAccount($accountId)
     {
         $provider = self::createProvider();
+
         $response = $provider->get('accounts/'.$accountId, ['fields' => 'nickname', 'api_token' => self::API_TOKEN]);
         if ($response->header->statusCode === StatusCode::OK) {
             $account = GJson::unserialize($response->body);

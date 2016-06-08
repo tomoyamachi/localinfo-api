@@ -33,6 +33,17 @@ class V1 extends Base
                                             ]
                                  ],
 
+              '/v1/localinfos/random' => [
+                                 'Get' => ['controller' => 'getrandom',
+                                           'action' => 'getLocalinfo'],
+                                 ],
+
+              '/v1/localinfos/near/{id}' => [
+                                 'Get' => ['controller' => 'getrandom',
+                                           'action' => 'getNearLocalinfo',
+                                           'localinfo_id' => 1],
+                                 ],
+
               '/v1/localinfos/{id}' => [
                                       'Get' => ['controller' => 'localinfo',
                                                 'action' => 'getTarget',

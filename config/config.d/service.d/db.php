@@ -4,13 +4,18 @@ use Phalcon\DI;
 use Phalcon\Db\Adapter\Pdo\Mysql as Db;
 
 $di = DI::getDefault();
-$di->set('db', function () use ($di) {
 
+if (APPLICATION_ENV !== 'prod') {
+    $di->set('profiler', function () {
+            return new Phalcon\Db\Profiler();
+    }, true);
+}
+
+$di->set('db', function () use ($di) {
     if (!$di->has('config')) {
         return;
     }
     $config = $di->get('config');
-
 
     $descriptor = $config->database->toArray();
     if ($config->database->get('initialize', false)) {
@@ -18,5 +23,17 @@ $di->set('db', function () use ($di) {
     }
     $db = new Db($descriptor);
 
+    if (APPLICATION_ENV !== 'prod') {
+        $eventsManager = new \Phalcon\Events\Manager();
+        $eventsManager->attach('db', function ($event, $connection) use ($di) {
+            if ($event->getType() == 'beforeQuery') {
+                $di->get('profiler')->startProfile($connection->getSQLStatement());
+            }
+            if ($event->getType() == 'afterQuery') {
+                $di->get('profiler')->stopProfile();
+            }
+        });
+        $db->setEventsManager($eventsManager);
+    }
     return $db;
 });

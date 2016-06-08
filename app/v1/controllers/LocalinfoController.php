@@ -23,7 +23,6 @@ class LocalinfoController extends \Lapi\V1\Controllers\GetUserController
         // 引数に問題がなければ検索
         $localinfoModel = Localinfo::getInstance();
         $localinfos = $localinfoModel->findStatusValid($params);
-
         // 欲しいFieldを取得
         $fields = [];
         $fieldTexts = $this->request->get('fields');
@@ -102,7 +101,6 @@ class LocalinfoController extends \Lapi\V1\Controllers\GetUserController
      */
     private function getTargetAttributes($attribute)
     {
-
         $params = $this->checkLimitOffsetParameter();
         if ($params instanceof \Gpl\Http\Response) {
             return;
