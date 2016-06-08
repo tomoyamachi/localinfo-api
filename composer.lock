@@ -166,12 +166,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:gochipon/php-phalcon.git",
-                "reference": "684ee769b079c9011a7568d5e08c819359006d31"
+                "reference": "7f6219515fb140124b06c1d0e0b6eb62d2c9a336"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gochipon/php-phalcon/zipball/684ee769b079c9011a7568d5e08c819359006d31",
-                "reference": "684ee769b079c9011a7568d5e08c819359006d31",
+                "url": "https://api.github.com/repos/gochipon/php-phalcon/zipball/7f6219515fb140124b06c1d0e0b6eb62d2c9a336",
+                "reference": "7f6219515fb140124b06c1d0e0b6eb62d2c9a336",
                 "shasum": ""
             },
             "require": {
@@ -207,7 +207,7 @@
                 "phalcon",
                 "php5"
             ],
-            "time": "2016-03-31 07:48:28"
+            "time": "2016-06-08 03:29:07"
         },
         {
             "name": "guzzle/guzzle",
@@ -366,12 +366,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPMailer/PHPMailer.git",
-                "reference": "e9fa5349750ceefeb233fdc4ece803bbc8328a76"
+                "reference": "1d85f9ef3ecfc42bbc4f3c70d5e37ca9a65f629a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/e9fa5349750ceefeb233fdc4ece803bbc8328a76",
-                "reference": "e9fa5349750ceefeb233fdc4ece803bbc8328a76",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/1d85f9ef3ecfc42bbc4f3c70d5e37ca9a65f629a",
+                "reference": "1d85f9ef3ecfc42bbc4f3c70d5e37ca9a65f629a",
                 "shasum": ""
             },
             "require": {
@@ -418,7 +418,7 @@
                 }
             ],
             "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
-            "time": "2016-06-02 14:17:11"
+            "time": "2016-06-06 09:09:37"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -479,12 +479,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "a158f13992a3147d466af7a23b564ac719a4ddd8"
+                "reference": "2a6b8713f8bdb582058cfda463527f195b066110"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/a158f13992a3147d466af7a23b564ac719a4ddd8",
-                "reference": "a158f13992a3147d466af7a23b564ac719a4ddd8",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/2a6b8713f8bdb582058cfda463527f195b066110",
+                "reference": "2a6b8713f8bdb582058cfda463527f195b066110",
                 "shasum": ""
             },
             "require": {
@@ -531,7 +531,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2016-05-03 18:59:18"
+            "time": "2016-06-06 11:11:27"
         },
         {
             "name": "tomoya-amachi/api-phalcon",
