@@ -16,12 +16,12 @@ return array (
     'longitude' =>    array (
       'validation' =>      array (
       ),
-      'label' => '緯度',
+      'label' => '経度',
     ),
     'latitude' =>    array (
       'validation' =>      array (
       ),
-      'label' => '経度',
+      'label' => '緯度',
     ),
   ),
   'placeholder' =>  array (

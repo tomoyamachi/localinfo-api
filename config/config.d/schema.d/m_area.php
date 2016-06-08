@@ -8,6 +8,8 @@ return Table::getDefinition('m_area', [
     Column::getPrimaryKey('id'),
     Column::getInteger('prefecture_id'),
     Column::getVarchar('name', ['notNull' => true]),
+    Column::getVarchar('longitude'),
+    Column::getVarchar('latitude'),
                       ],
         'indexes' => [
            Index::getPrimary(['id']),
