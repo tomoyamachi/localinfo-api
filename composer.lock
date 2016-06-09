@@ -166,12 +166,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:gochipon/php-phalcon.git",
-                "reference": "7f6219515fb140124b06c1d0e0b6eb62d2c9a336"
+                "reference": "95aa6857e7ad2cef778703401aa62a205af38a09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gochipon/php-phalcon/zipball/7f6219515fb140124b06c1d0e0b6eb62d2c9a336",
-                "reference": "7f6219515fb140124b06c1d0e0b6eb62d2c9a336",
+                "url": "https://api.github.com/repos/gochipon/php-phalcon/zipball/95aa6857e7ad2cef778703401aa62a205af38a09",
+                "reference": "95aa6857e7ad2cef778703401aa62a205af38a09",
                 "shasum": ""
             },
             "require": {
@@ -207,7 +207,7 @@
                 "phalcon",
                 "php5"
             ],
-            "time": "2016-06-08 03:29:07"
+            "time": "2016-06-09 08:28:47"
         },
         {
             "name": "guzzle/guzzle",
@@ -539,12 +539,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:tomoya-amachi/api-phalcon.git",
-                "reference": "450a309c6f582bc694fe54e3fbf501462f757bc2"
+                "reference": "96cd32c800d83c201e3f4623b4fd0cace33ff892"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tomoya-amachi/api-phalcon/zipball/450a309c6f582bc694fe54e3fbf501462f757bc2",
-                "reference": "450a309c6f582bc694fe54e3fbf501462f757bc2",
+                "url": "https://api.github.com/repos/tomoya-amachi/api-phalcon/zipball/96cd32c800d83c201e3f4623b4fd0cace33ff892",
+                "reference": "96cd32c800d83c201e3f4623b4fd0cace33ff892",
                 "shasum": ""
             },
             "require": {
@@ -553,8 +553,7 @@
                 "fluent/logger": "v1.0.0",
                 "gochipon/php-common": "dev-master",
                 "phalcon/incubator": "dev-master",
-                "php": ">=5.5.0",
-                "twilio/sdk": "dev-master"
+                "php": ">=5.5.0"
             },
             "require-dev": {
                 "phalcon/devtools": "dev-master"
@@ -583,57 +582,7 @@
                 "phalcon",
                 "php5"
             ],
-            "time": "2016-06-03 07:33:55"
-        },
-        {
-            "name": "twilio/sdk",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/twilio/twilio-php.git",
-                "reference": "d7d9be918f12e809d64ff6dac7411801b1a98e58"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/d7d9be918f12e809d64ff6dac7411801b1a98e58",
-                "reference": "d7d9be918f12e809d64ff6dac7411801b1a98e58",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2.1"
-            },
-            "require-dev": {
-                "mockery/mockery": ">=0.7.2",
-                "phpunit/phpunit": "4.5.*"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "Services/Twilio.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kevin Burke",
-                    "email": "kevin@twilio.com"
-                },
-                {
-                    "name": "Kyle Conroy",
-                    "email": "kyle+pear@twilio.com"
-                }
-            ],
-            "description": "A PHP wrapper for Twilio's API",
-            "homepage": "http://github.com/twilio/twilio-php",
-            "keywords": [
-                "api",
-                "sms",
-                "twilio"
-            ],
-            "time": "2016-02-26 17:29:07"
+            "time": "2016-06-09 10:36:41"
         }
     ],
     "packages-dev": [
