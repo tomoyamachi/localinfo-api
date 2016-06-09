@@ -9,7 +9,7 @@ namespace Lapi\Models;
 class FileUploader
 {
     protected $connection = null;
-    const IMAGE_FOLDER_PATH = '/var/home/platform-image/localinfo/';
+    const IMAGE_FOLDER_PATH = '/var/home/pf/localinfo/';
 
     /**
      * request用のモデルを作成

@@ -52,7 +52,7 @@ class LocalinfoImage extends \Lapi\Models\Model\UserAbstract
      */
     public function getThumbnailUrl()
     {
-        return APP_IMAGE_DOMAIN.'/localinfo/'.$this->image;
+        return APP_IMAGE_DOMAIN.'/pf/localinfo/'.$this->image;
     }
 
     /**
@@ -60,7 +60,7 @@ class LocalinfoImage extends \Lapi\Models\Model\UserAbstract
      */
     public function getImageUrl()
     {
-        return APP_IMAGE_DOMAIN.'/localinfo/'.$this->image;
+        return APP_IMAGE_DOMAIN.'/pf/localinfo/'.$this->image;
     }
 
     /*

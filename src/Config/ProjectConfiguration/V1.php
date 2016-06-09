@@ -170,15 +170,12 @@ class V1 extends Base
                                            'area_id' => 2,
                                            ],
                                  ],
-              '/v1/prefectures/{id}/areas/{id}/localinfos' => [
+              '/v1/areas/{id}/localinfos' => [
                                  'Get' => ['controller' => 'localinfo',
                                            'action' => 'getTargetAreas',
-                                           'prefecture_id' => 1,
-                                           'area_id' => 2,
+                                           'area_id' => 1,
                                            ],
                                  ],
-
-
               ];
 
     /**
