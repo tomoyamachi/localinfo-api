@@ -1,13 +1,13 @@
 <?php
 /**
- * Localinfo\Forms\Model
+ * Lapi\Forms\Model
  */
-namespace Localinfo\Forms\Model;
+namespace Lapi\Forms\Model;
 
 /**
  * ImportLog
  */
-class ImportLog extends \Localinfo\Forms\Model\Base\ImportLog
+class ImportLog extends \Lapi\Forms\Model\Base\ImportLog
 {
 
     /**

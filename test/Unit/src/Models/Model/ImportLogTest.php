@@ -4,7 +4,7 @@
  */
 namespace Test\Unit\src\Models\Model;
 
-use Localinfo\Models\Model\ImportLog;
+use Lapi\Models\Model\ImportLog;
 
 /**
  * ImportLogTest
@@ -15,6 +15,6 @@ class ImportLogTest extends \Test\Unit\TestCase
     public function testConstruct()
     {
         $model = new ImportLog();
-        $this->assertInstanceOf('Localinfo\Models\Model\ImportLog', $model);
+        $this->assertInstanceOf('Lapi\Models\Model\ImportLog', $model);
     }
 }
