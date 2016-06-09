@@ -152,8 +152,11 @@ class Localinfo extends \Lapi\Models\Model\PostDataAbstract
      */
     protected function getImageUrl()
     {
-        $image = LocalinfoImage::findFirst($this->main_image_id);
-        return $image->getImageUrl();
+        $image = LocalinfoImage::findFirstByIdStrict($this->main_image_id);
+        if ($image instanceof LocalinfoImage) {
+            return $image->getImageUrl();
+        }
+        return null;
     }
 
     /**
@@ -162,19 +165,30 @@ class Localinfo extends \Lapi\Models\Model\PostDataAbstract
      */
     protected function getThumbnailUrl()
     {
-        $image = LocalinfoImage::findFirst($this->main_image_id);
-        return $image->getThumbnailUrl();
+        $image = LocalinfoImage::findFirstByIdStrict($this->main_image_id);
+        if ($image instanceof LocalinfoImage) {
+            return $image->getThumbnailUrl();
+        }
+        return null;
     }
 
     /**
      * ランダムでn件取得
      * @return resultset
      */
-    public static function getRandom($limit)
+    public static function getRandom($limit, $condition = [])
     {
-        // TODO : 全件検索になるので、indexが付いているものを選択する
-        $params = ['limit' => $limit,'order' => 'RAND()'];
-        return Localinfo::findByParams($params);
+        // 全件取得すると、using indexできないので、一回idのみ取得
+        $params = ['columns' => 'id','limit' => $limit,'order' => 'RAND()'];
+        $params['conditions'] = $condition;
+        $random = Localinfo::findByParams($params);
+        $ids = [];
+        foreach ($random as $data) {
+            $ids[] = $data->id;
+        }
+        // 獲得したidで検索
+        $condition = ['id in' => $ids];
+        return Localinfo::findByParams(['conditions' => $condition]);
     }
 
     /**
@@ -183,9 +197,7 @@ class Localinfo extends \Lapi\Models\Model\PostDataAbstract
      */
     public function getNearBy($limit)
     {
-        // TODO : 全件検索になるので、indexが付いているものを選択する
         $condition = ['prefecture_id' => $this->prefecture_id];
-        $params = ['conditions' => $condition, 'limit' => $limit, 'order' => 'RAND()'];
-        return Localinfo::findByParams($params);
+        return self::getRandom($limit, $condition);
     }
 }

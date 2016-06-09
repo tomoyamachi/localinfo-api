@@ -20,23 +20,6 @@ Feature: お宝一覧の取得とお宝詳細の取得をする
 
 
   @failure
-  Scenario Outline: Invalid offset setting
-      When I send and accept JSON
-      And I send a GET request to "localinfos?limit=<limit>&offset=<offset>"
-      Then the response status should be "<status>"
-    Examples:
-      | limit | offset | status |
-      |    -1 |      1 |    400 |
-      |     0 |      1 |    400 |
-      |     1 |      1 |    200 |
-      |    50 |     -1 |    400 |
-      |    １ |      1 |    400 |
-      |     1 |     １ |    400 |
-      |    -1 |     -1 |    400 |
-      | limit | offset |    400 |
-      |     0 |      0 |    400 |
-
-  @failure
   Scenario Outline: Check unsupported methods
     when I send and accept JSON
     And I send a <method> request to "<action>"

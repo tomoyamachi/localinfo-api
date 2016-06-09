@@ -9,6 +9,7 @@ namespace Lapi\Forms\Model;
  */
 class Localinfo extends \Lapi\Forms\Model\Base\Localinfo
 {
+
     /**
      * initialize
      */

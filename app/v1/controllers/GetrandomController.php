@@ -18,6 +18,7 @@ class GetrandomController extends \Api\Controllers\Api\AbstractController
         // 引数に問題がなければ検索
         $localinfos = Localinfo::getRandom($limit);
         $result = RLocalinfo::getMultipleContent($localinfos);
+        $params['limit'] = $limit;
         $params['result'] = $result;
         $params['count'] = count($localinfos);
         return $this->responseValidStatus($params);
@@ -33,17 +34,16 @@ class GetrandomController extends \Api\Controllers\Api\AbstractController
         $limit = $this->request->getQuery('limit', null, 10);
         // TODO : あとでテストを書く
         $this->checkPositiveInteger($limit);
-
         $this->checkPositiveInteger($localinfoId);
+
         $localinfo = Localinfo::findFirst($localinfoId);
 
         $localinfos = $localinfo->getNearBy($limit);
         $result = RLocalinfo::getMultipleContent($localinfos);
+        $params['limit'] = $limit;
         $params['result'] = $result;
         $params['count'] = count($localinfos);
         return $this->responseValidStatus($params);
-
-
     }
 
 

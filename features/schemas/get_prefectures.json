@@ -5,7 +5,6 @@
         "total": {"type": "integer"},
         "count": {"type": "integer"},
         "limit": {"type": "integer"},
-        "offset": {"type": "integer"},
         "result" : {
             "type" : "array",
             "items": {
@@ -18,5 +17,5 @@
             }
         }
     },
-    "required": ["count", "limit", "offset", "result"]
+    "required": ["count", "limit", "result"]
 }
