@@ -3,7 +3,6 @@ define('CONFIG_DIR', dirname(__DIR__));
 define('TOP_DIR', dirname(CONFIG_DIR));
 
 
-
 define('APP_DIR', TOP_DIR.'/app');
 define('BIN_DIR', TOP_DIR.'/bin');
 define('DATA_DIR', TOP_DIR.'/data');

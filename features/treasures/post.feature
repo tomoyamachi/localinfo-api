@@ -8,8 +8,9 @@ Feature: お宝を作成
       | prefecture_id | 1                                   |
       | area_id       | 1                                   |
       | comment         | よいよい                            |
-      | image           | file://features/support/sample.jpeg |
-      | thumbnail           | file://features/support/sample.jpeg |
+      | main           | file://features/support/sample.jpeg |
+      | sub1           | file://features/support/sample.jpeg |
+      | sub2           | file://features/support/sample.jpeg |
     And I send a POST request to "localinfos"
     Then the response status should be "200"
     And the JSON response should follow "features/schemas/get_localinfo.json"

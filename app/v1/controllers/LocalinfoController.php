@@ -2,6 +2,7 @@
 namespace Lapi\V1\Controllers;
 
 use \Lapi\Models\Model\Localinfo;
+use \Lapi\Models\Model\LocalinfoImage;
 use \Lapi\Response\Localinfo as RLocalinfo;
 use \Api\Models\Validator;
 
@@ -151,26 +152,10 @@ class LocalinfoController extends \Lapi\V1\Controllers\GetUserController
             $params[$key] = $this->request->getPost($key);
         }
 
-        //アップロードされるファイルがあるか確認し、あれば適切な場所に移動。
-        if ($this->request->hasFiles() == true) {
-            $baseLocation = TOP_DIR.'/files/';
-            foreach ($this->request->getUploadedFiles() as $file) {
-                $path = sprintf(
-                    '%s/%s_%s_%s',
-                    $file->getKey(),
-                    $this->account['account_id'],
-                    time(),
-                    $file->getName()
-                );
+        $transaction = $this->transactionManager->get();
+        $localinfo->setTransaction($transaction);
 
-                if ($file->moveTo($baseLocation . $path)) {
-                    $params[$file->getKey()] = $path;
-                }
-            }
-        }
-
-
-        $result = $this->getCreateResult($localinfo, $params);
+        $result = $this->getCreateResult($localinfo, $params, $transaction);
 
         return $this->responseValidStatus($result);
     }
@@ -204,7 +189,10 @@ class LocalinfoController extends \Lapi\V1\Controllers\GetUserController
             return $this->responseAuthorizeError();
         }
 
-        $result = $this->getCreateResult($localinfo, $params);
+        $transaction = $this->transactionManager->get();
+        $localinfo->setTransaction($transaction);
+
+        $result = $this->getCreateResult($localinfo, $params, $transaction);
         return $this->responseValidStatus($result);
     }
 
@@ -214,12 +202,13 @@ class LocalinfoController extends \Lapi\V1\Controllers\GetUserController
      * @param array $params
      * @return array
      */
-    private function getCreateResult($localinfo, $params)
+    private function getCreateResult($localinfo, $params, $transaction)
     {
         $accountId = $this->account['account_id'];
         $params['account_id'] = $accountId;
 
         $config = new \Api\Models\Tool\Config('localinfo');
+
         $addData = $localinfo->addFirstData($params, $config);
 
         /* 更新成功してもしなくてもHTTPステータスは200で、successのステータスが変わる */
@@ -229,7 +218,26 @@ class LocalinfoController extends \Lapi\V1\Controllers\GetUserController
             $result['success'] = false;
             $result['message'] = $errorMessages;
         } else {
-            $localinfo->save();
+            if ($localinfo->save() == false)  {
+                $transaction->rollback("Cannot save");
+            }
+
+            //アップロードされるファイルがあるか確認し、あれば適切な場所に移動。
+            if ($this->request->hasFiles() == true) {
+
+                // ssh通信を開始
+                $uploader = new \Lapi\Models\FileUploader();
+                foreach ($this->request->getUploadedFiles() as $file) {
+                    $image = LocalinfoImage::createDataFromPostFile($localinfo, $file, $uploader, $transaction,  $this->account['account_id']);
+                    // postのフィールド名がmainだったら、それをmain画像に指定
+                    if ($image && ($file->getKey() === 'main')) {
+                        $localinfo->set('main_image_id', $image->id);
+                    }
+                }
+                $localinfo->save();
+            }
+            $transaction->commit();
+
             $result = RLocalinfo::getContent($localinfo);
             $result['success'] = true;
         }
