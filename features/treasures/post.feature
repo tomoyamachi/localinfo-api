@@ -23,7 +23,7 @@ Feature: お宝を作成
       | prefecture_id |                             1 |
       | area_id       |                             1 |
       | comment         |                      よいよい |
-      | image           | file://features/support/sample.jpeg |
+      | main           | file://features/support/sample.jpeg |
     And I send a POST request to "localinfos"
     Then the response status should be "403"
 
@@ -35,7 +35,7 @@ Feature: お宝を作成
       | prefecture_id | <m_prefecture_id>             |
       | area_id       | <m_area_id>                   |
       | comment         | comment                       |
-      | image           | file://features/support/sample.jpeg |
+      | main           | file://features/support/sample.jpeg |
     And I send a POST request to "localinfos"
     Then the response status should be "<status>"
     And I grab "$['success']" as "success"
