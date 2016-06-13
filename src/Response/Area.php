@@ -1,7 +1,7 @@
 <?php
 namespace Lapi\Response;
 
-class Area extends \Lapi\Response\AbstractModel
+class Area extends \Api\Response\AbstractModel
 {
     protected static $defaultFields = ['id', 'prefecture_id', 'name'];
 }
