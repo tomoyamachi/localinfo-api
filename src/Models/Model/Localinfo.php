@@ -32,6 +32,57 @@ class Localinfo extends \Lapi\Models\Model\PostDataAbstract
                                   self::STATUS_INVALID => '無効',];
     protected static $instance = null;
 
+
+    /* idの検索で、数値以外を含んだ文字列が来た場合、subkeyを検索する */
+    /**
+     * findByParams
+     */
+    public static function findByParams(array $params)
+    {
+        $params = self::formatParams($params);
+        return static::find($params);
+    }
+
+    /**
+     * findFirstByParams
+     */
+    public static function findFirstByParams(array $params)
+    {
+        $params = self::formatParams($params);
+        return static::findFirst($params);
+    }
+
+    // idの値によって、column名を変更
+    private static function returnPrimaryKeyColumn($value) {
+        // 配列の場合は、最初の要素が数値以外の文字列を含んでいるかのみを確認
+        if (is_array($value)) {
+            $value = $value[0];
+        }
+        // 数値以外の文字列が入っていればsubkey
+        if (! ctype_digit($value)) {
+            return 'subkey';
+        }
+        return 'id';
+    }
+
+    /**
+     * formatParams
+     */
+    protected static function formatParams(array $params)
+    {
+
+        foreach ($params['conditions'] as $condition => $value) {
+            if ($condition == 'id') {
+                // 数値でなければsubkeyで検索
+                $condition = self::returnPrimaryKeyColumn($value);
+                unset($params['conditions']['id']);
+                $params['conditions'][$condition] = $value;
+                continue;
+            }
+        }
+        return parent::formatParams($params);
+    }
+
     public function initializeByFirst()
     {
         foreach (static::$defaultData as $column => $default) {

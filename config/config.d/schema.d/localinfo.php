@@ -6,6 +6,7 @@ use Gpl\Db\Index;
 return Table::getDefinition('localinfo', [
         'columns' => [
     Column::getPrimaryKey('id'),
+    Column::getVarchar('subkey'),
     Column::getInteger('account_id'),
     Column::getVarchar('title'),
     Column::getInteger('comment_count'),
@@ -23,7 +24,8 @@ return Table::getDefinition('localinfo', [
         'indexes' => [
            Index::getPrimary(['id']),
         Index::getIndex(['account_id']),
-        Index::getIndex(['prefecture_id']),
-        Index::getIndex(['area_id']),
+        Index::getIndex(['prefecture_id','status']),
+        Index::getIndex(['area_id','status']),
+        Index::getIndex(['subkey','status']),
         ]
 ]);

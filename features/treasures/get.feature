@@ -6,8 +6,11 @@ Feature: お宝一覧の取得とお宝詳細の取得をする
       And I send a GET request to "localinfos?limit=10&offset=0"
       Then the response status should be "200"
       And the JSON response should follow "features/schemas/get_localinfos.json"
-      When I grab "$['result'][0]['id']" as "localinfo_id"
+      When I grab "$['result'][2]['id']" as "localinfo_id"
       And I send a GET request to "localinfos/{localinfo_id}"
+      And the JSON response should follow "features/schemas/get_localinfo.json"
+      When I grab "$['subkey']" as "subkey"
+      And I send a GET request to "localinfos/{subkey}"
       And the JSON response should follow "features/schemas/get_localinfo.json"
 
   @success

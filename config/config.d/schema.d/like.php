@@ -14,5 +14,6 @@ return Table::getDefinition('like', [
                       ],
         'indexes' => [
            Index::getPrimary(['id']),
+        Index::getIndex(['account_id','status']),
         ]
 ]);

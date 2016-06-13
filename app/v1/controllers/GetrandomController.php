@@ -12,7 +12,6 @@ class GetrandomController extends \Api\Controllers\Api\AbstractController
     public function getLocalinfoAction()
     {
         $limit = $this->request->getQuery('limit', null, 10);
-        // TODO : あとでテストを書く
         $this->checkPositiveInteger($limit);
 
         // 引数に問題がなければ検索
@@ -31,12 +30,16 @@ class GetrandomController extends \Api\Controllers\Api\AbstractController
     public function getNearLocalinfoAction()
     {
         $localinfoId = $this->dispatcher->getParam('localinfo_id');
-        $limit = $this->request->getQuery('limit', null, 10);
-        // TODO : あとでテストを書く
-        $this->checkPositiveInteger($limit);
-        $this->checkPositiveInteger($localinfoId);
 
-        $localinfo = Localinfo::findFirst($localinfoId);
+
+        $limit = $this->request->getQuery('limit', null, 10);
+        $this->checkPositiveInteger($limit);
+        if (ctype_digit($localinfoId)) {
+            $this->checkPositiveInteger($localinfoId);
+        }
+
+        $condition = ['id' => $localinfoId];
+        $localinfo = Localinfo::findFirstByParams(['conditions' => $condition]);
 
         $localinfos = $localinfo->getNearBy($limit);
         $result = RLocalinfo::getMultipleContent($localinfos);

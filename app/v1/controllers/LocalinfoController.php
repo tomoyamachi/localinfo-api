@@ -50,15 +50,12 @@ class LocalinfoController extends \Lapi\V1\Controllers\GetUserController
     public function getTargetAction()
     {
         $localinfoId = $this->dispatcher->getParam('localinfo_id');
-        $response = $this->checkPositiveInteger($localinfoId);
-        if ($response !== true) {
-            return;
+        if (ctype_digit($localinfoId)) {
+            $this->checkPositiveInteger($localinfoId);
         }
-
-
         try {
-            $localinfoModel = Localinfo::getInstance();
-            $localinfo = $localinfoModel->findFirstById($localinfoId);
+            $condition = ['id' => $localinfoId];
+            $localinfo = Localinfo::findFirstByParams(['conditions' => $condition]);
             $result = RLocalinfo::getcontent($localinfo);
         } catch (\Exception $e) {
             return $this->responseExceptionError($e);
@@ -132,9 +129,6 @@ class LocalinfoController extends \Lapi\V1\Controllers\GetUserController
         return $this->responseValidStatus($params);
     }
 
-
-
-
     /**
      * レビューを作成
      */
@@ -166,9 +160,8 @@ class LocalinfoController extends \Lapi\V1\Controllers\GetUserController
     public function updateAction()
     {
         $localinfoId = $this->dispatcher->getParam('localinfo_id');
-        $response = $this->checkPositiveInteger($localinfoId);
-        if ($response !== true) {
-            return;
+        if (ctype_digit($localinfoId)) {
+            $this->checkPositiveInteger($localinfoId);
         }
 
         $required = ['title', 'comment', 'prefecture_id', 'area_id'];
@@ -179,10 +172,11 @@ class LocalinfoController extends \Lapi\V1\Controllers\GetUserController
             }
         }
 
-        $localinfo = Localinfo::findFirstByIdStrict($localinfoId);
+        $condition = ['id' => $localinfoId];
+        $localinfo = Localinfo::findFirstByParams(['conditions' => $condition]);
 
         if (! $localinfo instanceof Localinfo) {
-            return $this->responseParameterError('指定されたレビューが見つかりません');
+            return $this->responseParameterError('指定された情報が見つかりません');
         }
 
         if ($localinfo->account_id != $this->account['account_id']) {
@@ -257,7 +251,8 @@ class LocalinfoController extends \Lapi\V1\Controllers\GetUserController
             return;
         }
 
-        $localinfo = Localinfo::findFirstByIdStrict($localinfoId);
+        $condition = ['id' => $localinfoId];
+        $localinfo = Localinfo::findFirstByParams(['conditions' => $condition]);
 
         if ($localinfo->account_id != $this->account['account_id']) {
             return $this->responseAuthorizeError();

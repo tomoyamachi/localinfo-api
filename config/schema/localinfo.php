@@ -7,6 +7,11 @@ return array (
       ),
       'label' => 'ID',
     ),
+    'subkey' =>    array (
+      'validation' =>      array (
+      ),
+      'label' => 'idではなくsubkeyで検索もできるように',
+    ),
     'account_id' =>    array (
       'validation' =>      array (
       ),
@@ -76,6 +81,7 @@ return array (
   'placeholder' =>  array (
   ),
   'search_filter' =>  array (
+    'subkey' => 'idではなくsubkeyで検索もできるように',
     'account_id' => 'アカウントID',
     'comment' => 'ひとこと',
     'prefecture_id' => '県ID',

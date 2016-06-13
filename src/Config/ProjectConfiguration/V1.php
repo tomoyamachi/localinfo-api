@@ -38,13 +38,12 @@ class V1 extends Base
                                            'action' => 'getLocalinfo'],
                                  ],
 
-              '/v1/localinfos/near/{id}' => [
+              '/v1/localinfos/near/[a-z]?([0-9-]+)' => [
                                  'Get' => ['controller' => 'getrandom',
                                            'action' => 'getNearLocalinfo',
                                            'localinfo_id' => 1],
                                  ],
-
-              '/v1/localinfos/{id}' => [
+              '/v1/localinfos/[a-z]?([0-9-]+)' => [
                                       'Get' => ['controller' => 'localinfo',
                                                 'action' => 'getTarget',
                                                 'localinfo_id' => 1],
@@ -62,7 +61,6 @@ class V1 extends Base
                                                      ],
                                            ],
 
-
               '/v1/localinfos/{id}/comments' => [
                                  'Get' => ['controller' => 'comment',
                                            'action' => 'get',
@@ -74,7 +72,7 @@ class V1 extends Base
                                  ],
 
 
-              '/v1/localinfos/{id}/comments/{id}' => [
+              '/v1/localinfos/[a-z]?([0-9-]+)/comments/{id}' => [
                                  'Get' => ['controller' => 'comment',
                                            'action' => 'getTarget',
                                            'localinfo_id' => 1,
@@ -101,7 +99,7 @@ class V1 extends Base
                                            ],
 
 
-              '/v1/localinfos/{id}/likes' => [
+              '/v1/localinfos/[a-z]?([0-9-]+)/likes' => [
                                  'Get' => ['controller' => 'like',
                                            'action' => 'get',
                                            'localinfo_id' => 1],
@@ -112,7 +110,7 @@ class V1 extends Base
                                  ],
 
 
-              '/v1/localinfos/{id}/likes/{id}' => [
+              '/v1/localinfos/[a-z]?([0-9-]+)/likes/{id}' => [
                                  'Get' => ['controller' => 'like',
                                            'action' => 'getTarget',
                                            'localinfo_id' => 1,
