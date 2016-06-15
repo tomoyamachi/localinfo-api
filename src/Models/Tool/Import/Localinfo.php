@@ -8,7 +8,7 @@ class Localinfo extends \Api\Models\Tool\ImportAbstract
      * @var array
      */
     protected $config= array(
-        'primary' => ['id'],
+        'primary' => ['subkey'],
         'table'   => 'localinfo',
         'schema'  => []
     );
