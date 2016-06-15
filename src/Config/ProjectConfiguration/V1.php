@@ -38,12 +38,12 @@ class V1 extends Base
                                            'action' => 'getLocalinfo'],
                                  ],
 
-              '/v1/localinfos/near/[a-z]?([0-9-]+)' => [
+              '/v1/localinfos/near/([a-z]?([0-9-]+))' => [
                                  'Get' => ['controller' => 'getrandom',
                                            'action' => 'getNearLocalinfo',
                                            'localinfo_id' => 1],
                                  ],
-              '/v1/localinfos/[a-z]?([0-9-]+)' => [
+              '/v1/localinfos/([a-z]?([0-9-]+))' => [
                                       'Get' => ['controller' => 'localinfo',
                                                 'action' => 'getTarget',
                                                 'localinfo_id' => 1],

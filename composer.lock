@@ -166,12 +166,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:gochipon/php-phalcon.git",
-                "reference": "95aa6857e7ad2cef778703401aa62a205af38a09"
+                "reference": "5b392247918dbc23fd14383586129051267548e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gochipon/php-phalcon/zipball/95aa6857e7ad2cef778703401aa62a205af38a09",
-                "reference": "95aa6857e7ad2cef778703401aa62a205af38a09",
+                "url": "https://api.github.com/repos/gochipon/php-phalcon/zipball/5b392247918dbc23fd14383586129051267548e5",
+                "reference": "5b392247918dbc23fd14383586129051267548e5",
                 "shasum": ""
             },
             "require": {
@@ -207,7 +207,7 @@
                 "phalcon",
                 "php5"
             ],
-            "time": "2016-06-09 08:28:47"
+            "time": "2016-06-15 02:46:17"
         },
         {
             "name": "guzzle/guzzle",
@@ -426,19 +426,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "1460e98b53d2f916f1b4123069c96c90844a1a4d"
+                "reference": "cb756ca1d13dfca2bce28b47579ac13dfb408579"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/1460e98b53d2f916f1b4123069c96c90844a1a4d",
-                "reference": "1460e98b53d2f916f1b4123069c96c90844a1a4d",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/cb756ca1d13dfca2bce28b47579ac13dfb408579",
+                "reference": "cb756ca1d13dfca2bce28b47579ac13dfb408579",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "require-dev": {
-                "mockery/mockery": "~0.9.1,<0.9.4"
+                "mockery/mockery": "~0.9.1"
             },
             "type": "library",
             "extra": {
@@ -471,7 +471,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2016-05-11 12:36:48"
+            "time": "2016-06-14 20:23:16"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -539,12 +539,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:tomoya-amachi/api-phalcon.git",
-                "reference": "96cd32c800d83c201e3f4623b4fd0cace33ff892"
+                "reference": "f5147ccd17b4068ab83559b747baa532064c82da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tomoya-amachi/api-phalcon/zipball/96cd32c800d83c201e3f4623b4fd0cace33ff892",
-                "reference": "96cd32c800d83c201e3f4623b4fd0cace33ff892",
+                "url": "https://api.github.com/repos/tomoya-amachi/api-phalcon/zipball/f5147ccd17b4068ab83559b747baa532064c82da",
+                "reference": "f5147ccd17b4068ab83559b747baa532064c82da",
                 "shasum": ""
             },
             "require": {
@@ -582,7 +582,7 @@
                 "phalcon",
                 "php5"
             ],
-            "time": "2016-06-09 10:36:41"
+            "time": "2016-06-15 09:20:35"
         }
     ],
     "packages-dev": [

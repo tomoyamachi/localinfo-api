@@ -16,5 +16,4 @@ define('COMPOSER_DIR', VAR_DIR.'/composer');
 define('APPLICATION_ENV', getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'prod');
 define('APP_IMAGE_DOMAIN', getenv('APP_IMAGE_DOMAIN'));
 define('IMAGE_VERSION', 1);
-define('APP_CODE', 'localinfo'); // PFに登録してあるm_application_code
-define('APP_NAME', 'お宝ログ'); // サイト名
+define('APP_CODE', 'localinfos'); // PFに登録してあるm_application_code
