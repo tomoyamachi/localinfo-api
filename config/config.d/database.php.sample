@@ -1,28 +1,55 @@
 <?php
-
 return [
     'all' => [
-        'adapter'     => 'Mysql',
-        'host'        => 'localhost',
-        'username'    => 'root',
-        'password'    => '',
-        'dbname'      => 'localinfo',
-        'charset' => 'utf8',
-        'options' => [
-                      PDO::ATTR_EMULATE_PREPARES => false,
-                      PDO::ATTR_STRINGIFY_FETCHES => false,
-                      ]
+              'master' => [
+                                 'adapter'     => 'Mysql',
+                                 'host'        => '127.0.0.1',
+                                 'username'    => 'root',
+                                 'password'    => '',
+                                 'dbname'      => 'localinfo',
+                                 'charset' => 'utf8',
+                                 'options' => [
+                                               PDO::ATTR_EMULATE_PREPARES => false,
+                                               PDO::ATTR_STRINGIFY_FETCHES => false,
+                                               ]
+                                 ],
+              'slave' => [
+                                 'adapter'     => 'Mysql',
+                                 'host'        => '127.0.0.1',
+                                 'username'    => 'root',
+                                 'password'    => '',
+                                 'dbname'      => 'localinfo',
+                                 'charset' => 'utf8',
+                                 'options' => [
+                                               PDO::ATTR_EMULATE_PREPARES => false,
+                                               PDO::ATTR_STRINGIFY_FETCHES => false,
+                                               ]
+                                 ],
     ],
     'test' => [
-        'adapter'     => 'Mysql',
-        'host'        => 'localhost',
-        'username'    => 'root',
-        'password'    => '',
-        'dbname'      => 'localinfo_test',
-        'charset' => 'utf8',
-        'options' => [
-                      PDO::ATTR_EMULATE_PREPARES => false,
-                      PDO::ATTR_STRINGIFY_FETCHES => false,
-                      ]
+              'master' => [
+                                 'adapter'     => 'Mysql',
+                                 'host'        => '127.0.0.1',
+                                 'username'    => 'root',
+                                 'password'    => '',
+                                 'dbname'      => 'localinfo_test',
+                                 'charset' => 'utf8',
+                                 'options' => [
+                                               PDO::ATTR_EMULATE_PREPARES => false,
+                                               PDO::ATTR_STRINGIFY_FETCHES => false,
+                                               ]
+                                 ],
+              'slave' => [
+                                 'adapter'     => 'Mysql',
+                                 'host'        => '127.0.0.1',
+                                 'username'    => 'root',
+                                 'password'    => '',
+                                 'dbname'      => 'localinfo_test',
+                                 'charset' => 'utf8',
+                                 'options' => [
+                                               PDO::ATTR_EMULATE_PREPARES => false,
+                                               PDO::ATTR_STRINGIFY_FETCHES => false,
+                                               ]
+                                 ],
     ]
 ];
