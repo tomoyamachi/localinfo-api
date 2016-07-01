@@ -1,3 +1,3 @@
-# yotsuya-tresure-site
+# localinfo-api 
 
-お宝情報のAPI/サイト
+サンプルAPI/サイト
